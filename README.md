@@ -61,8 +61,14 @@
     <img align=top  src="https://github-readme-stats.vercel.app/api/top-langs/?username=sonwjnn&langs_count=10&theme=dracula&hide_border=true&include_all_commits=truecount_private=true&layout=compact"/>
 <div>
 
+---  
+  
+![Snake animation](https://github.com/s-shemmee/s-shemmee/blob/output/github-contribution-grid-snake.svg)
+
+---
+
 <br>
-<h2 align="left">Where to find me ?</h2>
+<h2 align="left">Where to find me ? <img src="https://media.giphy.com/media/lGhBlBMIN2XsEteTN3/giphy.gif" width="60"></h2>
 <br>
 <!-- https://icons8.com -->
 <div align="center">
@@ -82,3 +88,4 @@
     <img src="https://img.icons8.com/bubbles/100/000000/apple-mail.png" alt="trungquandev-email" />
   </a>
 </div>
+  
