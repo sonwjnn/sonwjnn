@@ -1,3 +1,6 @@
+<div align="center">
+  <img width="100%" src="assets/banner.png" alt="cover"/>
+</div>
 <h1 align="center">Hi 👋, I'm sonwjnn</h1>
 
 <p align="center">
@@ -61,9 +64,3 @@
     <img align=top  src="https://github-readme-stats.vercel.app/api?username=sonwjnn&theme=dracula&hide_border=true&show_icons=true&include_all_commits=true&count_private=true"/>
     <img align=top  src="https://github-readme-stats.vercel.app/api/top-langs/?username=sonwjnn&langs_count=10&theme=dracula&hide_border=true&include_all_commits=truecount_private=true&layout=compact"/>
 <div>
-
-
-
-
-
-
