@@ -11,8 +11,6 @@
 
 - 💬 Ask me about **MERN**
 
-- 📫 How to reach me **nguyenlehoangson2106@gmail.com**
-
 - ⚡ Fun fact **I think i am trying to learn to intern**
 
 <p align="left">
