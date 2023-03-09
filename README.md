@@ -66,7 +66,7 @@
 ---
 
 <br>
-<h2 align="left">Connect with Me <img src="https://media.giphy.com/media/lGhBlBMIN2XsEteTN3/giphy.gif" width="60"></h2>
+<h2 align="left">Connect with Me... <img src="https://media.giphy.com/media/lGhBlBMIN2XsEteTN3/giphy.gif" width="60"></h2>
 <br>
 <!-- https://icons8.com -->
 <div align="center">
