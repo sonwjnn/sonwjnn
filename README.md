@@ -1,11 +1,7 @@
 <div align="center">
   <img width="100%" src="assets/banner.png" alt="cover"/>
 </div>
-<h1 align="center">Hi 👋, I'm sonwjnn</h1>
 
-<p align="center">
-  <img src="https://camo.githubusercontent.com/5ddf73ad3a205111cf8c686f687fc216c2946a75005718c8da5b837ad9de78c9/68747470733a2f2f7468756d62732e6766796361742e636f6d2f4576696c4e657874446576696c666973682d736d616c6c2e676966" width="400" height="50%"/>
-</p>
 
 <h2>A little more about me...  <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"></h2>
 
@@ -22,7 +18,7 @@
 <p align="left">
 </p>
 
-<h2 align="center">🛠 Technologies and Tools 🛠</h2>
+<h2 align="left">Technologies and Tools 🛠</h2>
 <br>
 <!-- https://simpleicons.org/ -->
 <span><img src="https://img.shields.io/badge/JavaScript-282C34?logo=javascript&logoColor=F7DF1E" alt="JavaScript logo" title="JavaScript" height="25" /></span>
