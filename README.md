@@ -5,9 +5,8 @@
 <p align="center" color="#36BCF7FF"><img src="https://readme-typing-svg.herokuapp.com?lines=I'm+a+Frontend+Developer+:3;"></p>
 
 
-### A little more about me...  <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50">
+<h2 aligh="left">A little more about me...  <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"></h2>
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=sonwjnn&label=Profile%20views&color=0e75b6&style=flat" alt="sonwjnn" /> </p>
 
@@ -17,13 +16,10 @@
 
 - ⚡ Fun fact **I think i am trying to learn to intern**
 
-<p align="left">
-</p>
+---
 
+<h2 aligh="left">Technologies and Tools 🛠</h2>
 
-### Technologies and Tools 🛠
-
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 <!-- https://simpleicons.org/ -->
 <span><img src="https://img.shields.io/badge/JavaScript-282C34?logo=javascript&logoColor=F7DF1E" alt="JavaScript logo" title="JavaScript" height="25" /></span>
@@ -59,42 +55,42 @@
 <span><img src="https://img.shields.io/badge/Firebase-282C34?logo=firebase&logoColor=FFCA28" alt="Firebase logo" title="Firebase" height="25" /></span>
 &nbsp;
 
+---
 
+<h2 aligh="left">GitHub Stats <img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="25px" height="20px"></h2>
 
-###  GitHub Stats <img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="25px" height="20px">
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
 <div>
     <img align=top  src="https://github-readme-stats.vercel.app/api?username=sonwjnn&theme=dracula&hide_border=true&show_icons=true&include_all_commits=true&count_private=true"/>
     <img align=top  src="https://github-readme-stats.vercel.app/api/top-langs/?username=sonwjnn&langs_count=10&theme=dracula&hide_border=true&include_all_commits=truecount_private=true&layout=compact"/>
 <div>
 
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">  
+--- 
   
 ![Snake animation](https://github.com/s-shemmee/s-shemmee/blob/output/github-contribution-grid-snake.svg)
 
+---
   
-### Connect with Me... <img src="https://media.giphy.com/media/lGhBlBMIN2XsEteTN3/giphy.gif" width="60">
+<h2 aligh="left">Connect with Me... <img src="https://media.giphy.com/media/lGhBlBMIN2XsEteTN3/giphy.gif" width="60"></h2>
   
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
   
 
 <!-- https://icons8.com -->
 <div align="center">
   <a href="https://www.facebook.com/son.neymar.94/" target="blank">
-    <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" alt="trungquandev-facebook" />
+    <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" alt="sonwjnn-facebook" />
   </a>
   <a href="#!" target="blank">
-    <img src="https://img.icons8.com/bubbles/100/000000/youtube-squared.png" alt="trungquandev-youtube" />
+    <img src="https://img.icons8.com/bubbles/100/000000/youtube-squared.png" alt="sonwjnn-youtube" />
   </a>
   <a href="https://www.linkedin.com/in/ho%C3%A0ng-s%C6%A1n-33a548269/" target="blank">
-    <img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" alt="trungquandev-linkedin" />
+    <img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" alt="sonwjnn-linkedin" />
   </a>
   <a href="https://www.instagram.com/sonn_wjh/" target="blank">
-    <img src="https://img.icons8.com/bubbles/100/000000/instagram.png" alt="trungquandev-instagram" />
+    <img src="https://img.icons8.com/bubbles/100/000000/instagram.png" alt="sonwjnn-instagram" />
   </a>
   <a href="mailto:nguyenlehoangson2106@gmail.com" target="top">
-    <img src="https://img.icons8.com/bubbles/100/000000/apple-mail.png" alt="trungquandev-email" />
+    <img src="https://img.icons8.com/bubbles/100/000000/apple-mail.png" alt="sonwjnn-email" />
   </a>
 </div>
   
