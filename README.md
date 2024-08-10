@@ -61,6 +61,8 @@
 <span><img src="https://img.shields.io/badge/Node.js-282C34?logo=node.js&logoColor=00F200" alt="Node.js logo" title="Node.js" height="25" /></span>
 &nbsp;
 <span><img src="https://img.shields.io/badge/Express-282C34?logo=express&logoColor=FFFFFF" alt="Express.js logo" title="Express.js" height="25" /></span>
+<span><img src="https://img.shields.io/badge/Hono-282C34?logo=hono&logoColor=E36002" alt="Hono logo" title="Hono" height="25" /></span>
+&nbsp;
 
 
 <h2 aligh="left">Database 🛢️</h2>
@@ -73,8 +75,6 @@
 <span><img src="https://img.shields.io/badge/Supabase-282C34?logo=supabase&logoColor=3FCF8E" alt="Supabase logo" title="Supabase" height="25" /></span>
 &nbsp;
 <span><img src="https://img.shields.io/badge/Firebase-282C34?logo=firebase&logoColor=FFCA28" alt="Firebase logo" title="Firebase" height="25" /></span>
-&nbsp;
-<span><img src="https://img.shields.io/badge/Hono-282C34?logo=hono&logoColor=E36002" alt="Hono logo" title="Hono" height="25" /></span>
 &nbsp;
 
 
