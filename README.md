@@ -5,7 +5,7 @@
 <p align="center" color="#36BCF7FF"><img src="https://readme-typing-svg.herokuapp.com?lines=I'm+a+Frontend+Developer+:3;"></p>
 
 
-<h2 aligh="left">A little more about me...  <img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"></h2>
+<h2 aligh="left"><img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"> A little more about me...</h2>
 
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=sonwjnn&label=Profile%20views&color=0e75b6&style=flat" alt="sonwjnn" /> </p>
@@ -18,7 +18,11 @@
 
 ---
 
-<h2 aligh="left">Frontend Technologies 🎨</h2>
+<h2 aligh="left">💻 Tech Stack</h2>
+
+
+
+<h3 aligh="left">🎨 Front-end</h2>
 
 
 <!-- https://simpleicons.org/ -->
@@ -48,7 +52,7 @@
 &nbsp;
 
 
-<h2 aligh="left">Backend Technologies 🤖</h2>
+<h3 aligh="left">🤖 Back-end</h2>
 
 
 <!-- https://simpleicons.org/ -->
@@ -65,7 +69,7 @@
 &nbsp;
 
 
-<h2 aligh="left">Database 🛢️</h2>
+<h3 aligh="left">🛢️ Database</h2>
 <span><img src="https://img.shields.io/badge/MongoDB-282C34?logo=mongodb&logoColor=47A248" alt="MongoDB logo" title="MongoDB" height="25" /></span>
 &nbsp;
 <span><img src="https://img.shields.io/badge/MySQL-282C34?logo=mysql" alt="MySQL logo" title="MySQL" height="25" /></span>
@@ -78,19 +82,19 @@
 &nbsp;
 
 
-<h2 aligh="left">Other 🛠</h2>
+<h3 aligh="left">🛠 Other</h2>
 <span><img src="https://img.shields.io/badge/git-282C34?logo=git&logoColor=F05032" alt="git logo" title="git" height="25" /></span>
 &nbsp;
 <span><img src="https://img.shields.io/badge/Neovim-282C34?logo=neovim&logoColor=57A143" alt="Neovim logo" title="Neovim" height="25" /></span>
 &nbsp;
-<span><img src="https://custom-icon-badges.demolab.com/badge/VS%20Code-0078d7.svg?logo=vsc&logoColor=0078d7" alt="Visual Studio Code logo" title="Visual Studio Code" height="25" /></span>
+<span><img src="https://custom-icon-badges.demolab.com/badge/VS%20Code-282C34.svg?logo=vsc&logoColor=0078d7" alt="Visual Studio Code logo" title="Visual Studio Code" height="25" /></span>
 &nbsp;
 <span><img src="https://img.shields.io/badge/Figma-282C34?logo=figma&logoColor=F24E1E" alt="Figma logo" title="Figma" height="25" /></span>
 &nbsp;
 
 ---
 
-<h2 aligh="left">GitHub Stats <img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="25px" height="20px"></h2>
+<h2 aligh="left"><img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="25px" height="20px"> GitHub Stats</h2>
 
 
 <div>
