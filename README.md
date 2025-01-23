@@ -10,12 +10,6 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=sonwjnn&label=Profile%20views&color=0e75b6&style=flat" alt="sonwjnn" /> </p>
 
-- 🌱 I’m currently learning **React**
-
-- 💬 Ask me about **MERN**
-
-- ⚡ Fun fact **I think i am trying to learn to intern**
-
 ---
 
 <h2 aligh="left">💻 Tech Stack</h2>
@@ -65,6 +59,7 @@
 <span><img src="https://img.shields.io/badge/Node.js-282C34?logo=node.js&logoColor=00F200" alt="Node.js logo" title="Node.js" height="25" /></span>
 &nbsp;
 <span><img src="https://img.shields.io/badge/Express-282C34?logo=express&logoColor=FFFFFF" alt="Express.js logo" title="Express.js" height="25" /></span>
+<span><img src="https://img.shields.io/badge/Socket.io-282C34?logo=Socket.io&logoColor=FFFFFF" alt="Socket.IO logo" title="Socket.IO" height="25" /></span>
 <span><img src="https://img.shields.io/badge/Hono-282C34?logo=hono&logoColor=E36002" alt="Hono logo" title="Hono" height="25" /></span>
 &nbsp;
 
