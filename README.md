@@ -2,8 +2,7 @@
   <img width="100%" src="assets/banner.png" alt="cover"/>
 </div>
 
-<p align="center" color="#36BCF7FF"><img src="/assets/banner.png"></p>
-
+<p align="center" color="#36BCF7FF"><img src="https://readme-typing-svg.herokuapp.com?lines=I'm+a+Frontend+Developer+:3;"></p>
 
 <h2 aligh="left"><img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"> A little more about me...</h2>
 
