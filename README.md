@@ -36,7 +36,7 @@ I am a student with hands-on experience in React and Next.js through personal pr
 
 <p align="left">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=js,ts,c,cpp" />
+    <img src="https://skillicons.dev/icons?i=js,ts" />
   </a>
 </p>
 
