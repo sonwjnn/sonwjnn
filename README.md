@@ -43,26 +43,18 @@ I am a student with hands-on experience in React and Next.js through personal pr
 <h4 aligh="left">🎨 Front-end</h4>
 
 <p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nextjs,react,redux,tailwind,html,css,scss,bootstrap,jquery,babel,bun,vite,yarn,npm" />
-  </a>
+  <img src="https://skillicons.dev/icons?i=nextjs,react,redux,tailwind,html,css,scss,bootstrap,jquery,babel,bun,vite" />&nbsp;&nbsp;<img src="https://go-skill-icons.vercel.app/api/icons?i=shadcn,authjs,jwt&titles=true" />
 </p>
 
 <h4 aligh="left">🤖 Back-end</h4>
 
 <p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nodejs,nextjs,express,postgres,mysql,mongodb" />
-    <img src="https://skills-icons.vercel.app/api/icons?i=socketio,hono" />
-  </a>
+  <img src="https://skillicons.dev/icons?i=nodejs,nextjs,express,postgres,mysql,mongodb" />&nbsp;&nbsp;<img src="https://go-skill-icons.vercel.app/api/icons?i=socketio,hono&titles=true" />
 </p>
 
 <h4 aligh="left">🛢️ Database</h4>
 <p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=postgres,mysql,supabase,firebase,mongodb,prisma" />
-    <img src="https://skills-icons.vercel.app/api/icons?i=drizzle" />
-  </a>
+  <img src="https://skillicons.dev/icons?i=postgres,mysql,supabase,firebase,mongodb,prisma" />&nbsp;&nbsp;<img src="https://go-skill-icons.vercel.app/api/icons?i=drizzle&titles=true" />
 </p>
 
 
