@@ -71,18 +71,17 @@ I am a student with hands-on experience in React and Next.js through personal pr
 <h3>&nbsp;</h3>
 
 <h3 aligh="left"><img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="25px" height="20px"> GitHub Stats</h2>
-<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-
-<p>
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=sonwjnn&theme=ambient_gradient&hide_border=true&include_all_commits=true&count_private=true" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sonwjnn&count_private=true&include_all_commits=true&show_icons=true&hide_border=true&hide=html,java&layout=compact&langs_count=8&theme=midnight-purple"/>
-</p>
-
-<p>
+  <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
+<div align="center">
+  <p>
+    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=sonwjnn&theme=ambient_gradient&hide_border=true&include_all_commits=true&count_private=true" />
+    <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sonwjnn&count_private=true&include_all_commits=true&show_icons=true&hide_border=true&hide=html,java&layout=compact&langs_count=8&theme=midnight-purple"/>
+  </p>
   
-  <img height="180em"  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=sonwjnn&theme=midnight_purple" alt="sonwjnn"/>
- 
-</p>
+  <p> 
+    <img height="180em"  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=sonwjnn&theme=midnight_purple" alt="sonwjnn"/>
+  </p>
+</div>
 
 <h3>&nbsp;</h3>
 
@@ -92,9 +91,43 @@ I am a student with hands-on experience in React and Next.js through personal pr
     </a>
 </h2> 
 
+<h3>&nbsp;</h3>
 
-![Snake animation](https://github.com/s-shemmee/s-shemmee/blob/output/github-contribution-grid-snake.svg)
+<h3 aligh="left"><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2VqaGNoNTltb2hlczlpcWRua25rYnd4am9hZ2VsaXpwMnhxZHV1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/WUlplcMpOCEmTGBtBW/giphy.gif" width="50">&nbsp; Featured Projects</h3>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
+<div align="center">
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/sonwjnn/knowflare">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=knowflare" alt="Knowflare" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/sonwjnn/respotify">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=respotify" alt="Spotify Clone" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/sonwjnn/rediscord">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=rediscord" alt="Discord Clone" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/sonwjnn/ecommerce-store">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=ecommerce-store" alt="Shopee Clone" />
+      </a>
+    </td>
+  </tr>
+</table>
+</div>
+
+<div align="center">
+  <img src="https://github.com/s-shemmee/s-shemmee/blob/output/github-contribution-grid-snake-dark.svg" alt="Dark Snake" />
+</div>
   
 <h3 aligh="left"><img src="https://media.giphy.com/media/lGhBlBMIN2XsEteTN3/giphy.gif" width="60"> Contact with me :3</h2>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
