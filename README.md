@@ -74,10 +74,16 @@ I am a student with hands-on experience in React and Next.js through personal pr
 <h3 aligh="left"><img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ryk/giphy.gif" width="25px" height="20px"> GitHub Stats</h2>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-<div>
-    <img align=top  src="https://github-readme-stats.vercel.app/api?username=sonwjnn&theme=dracula&hide_border=true&show_icons=true&include_all_commits=true&count_private=true"/>
-    <img align=top  src="https://github-readme-stats.vercel.app/api/top-langs/?username=sonwjnn&langs_count=10&theme=dracula&hide_border=true&include_all_commits=truecount_private=true&layout=compact"/>
-</div>
+<p>
+  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=sonwjnn&theme=ambient_gradient&hide_border=true&include_all_commits=true&count_private=true" />
+  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sonwjnn&count_private=true&include_all_commits=true&show_icons=true&hide_border=true&hide=html,java&layout=compact&langs_count=8&theme=midnight-purple"/>
+</p>
+
+<p>
+  
+  <img height="180em"  src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=sonwjnn&theme=midnight_purple" alt="sonwjnn"/>
+ 
+</p>
 
 <h3>&nbsp;</h3>
 
