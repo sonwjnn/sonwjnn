@@ -122,6 +122,18 @@ I am a student with hands-on experience in React and Next.js through personal pr
       </a>
     </td>
   </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/sonwjnn/gamehub">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=gamehub" alt="Poker Game FE" />
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/sonwjnn/gamehub-backend">
+        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=gamehub-backend" alt="Poker Game BE" />
+      </a>
+    </td>
+  </tr>
 </table>
 </div>
 
