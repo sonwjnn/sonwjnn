@@ -32,13 +32,19 @@ I am a student with hands-on experience in React and Next.js through personal pr
 <h3 aligh="left"><img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width ="30">&nbsp; Tech Stack</h3>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
+<h4 aligh="left">🌐 Language</h4>
 
+<p align="left">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=js,ts,c,cpp" />
+  </a>
+</p>
 
 <h4 aligh="left">🎨 Front-end</h4>
 
 <p align="left">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nextjs,react,js,ts,redux,tailwind,html,css,scss,bootstrap,jquery,babel,bun,vite,yarn,npm" />
+    <img src="https://skillicons.dev/icons?i=nextjs,react,redux,tailwind,html,css,scss,bootstrap,jquery,babel,bun,vite,yarn,npm" />
   </a>
 </p>
 
@@ -46,7 +52,7 @@ I am a student with hands-on experience in React and Next.js through personal pr
 
 <p align="left">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=nodejs,nextjs,js,ts,express,postgres,mysql,mongodb" />
+    <img src="https://skillicons.dev/icons?i=nodejs,nextjs,express,postgres,mysql,mongodb" />
     <img src="https://skills-icons.vercel.app/api/icons?i=socketio,hono" />
   </a>
 </p>
