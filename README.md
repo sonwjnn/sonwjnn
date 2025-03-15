@@ -21,8 +21,7 @@ I am a student with hands-on experience in React and Next.js through personal pr
   - *NodeJS*
 - 🚀 I’m eager to join new projects.
 - ✔ Feel free to ask me anything! I’m motivated to help others.
-- Outside tech, I enjoy socializing with friends, 🎮 playing video games, 🎵 listening to music, and I also love working at a café when I have free time..
-- 📫 Reach out to me at: <a href="nguyenlehoangson2106@gmail.com">nguyenlehoangson2106@gmail.com</a>
+- Outside tech, I enjoy socializing with friends, 🎮 playing video games, 🎵 listening to music, and I also love working at a café when I have free time.
 <br>
 
 
