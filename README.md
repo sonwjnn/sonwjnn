@@ -4,8 +4,8 @@
   <img width="100%" src="assets/banner.png" alt="cover"/>
 </div>
 
-<div align="center" color="#36BCF7FF">
-  <img src="https://readme-typing-svg.herokuapp.com?lines=I'm+Son,+a+Frontend+Developer+:3;" width="500" height="80">
+<div align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Architects+Daughter&color=%2338C2FF&size=50&center=true&vCenter=true&height=60&width=600&&duration=3000&lines=Heyyy!+I'm+Son;I'm+a+Frontend+Developer;Welcome+to+my+profile!" alt="Title"></img>
 </div>
 
 <h3 aligh="left"><img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"> A little more about me...</h3>
