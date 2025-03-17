@@ -34,11 +34,8 @@ I am a student with hands-on experience in React and Next.js through personal pr
 
 <h4 aligh="left">🌐 Language</h4>
 
-<p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=js,ts" />
-  </a>
-</p>
+[![JavaScript](https://skillicons.dev/icons?i=js)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![TypeScript](https://skillicons.dev/icons?i=ts)](https://www.typescriptlang.org/)
 
 <h4 aligh="left">🎨 Front-end</h4>
 
