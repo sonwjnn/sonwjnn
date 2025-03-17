@@ -61,7 +61,7 @@ I am a student with hands-on experience in React and Next.js through personal pr
 <h4 aligh="left">🛠 Other</h4>
 <p align="left">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,neovim,vscode,figma,ps,postman,ubuntu,arch,linux" />
+    <img src="https://skillicons.dev/icons?i=git,vim,neovim,vscode,figma,ps,postman,ubuntu,arch,linux" />
   </a>
 </p>
 
@@ -94,46 +94,14 @@ I am a student with hands-on experience in React and Next.js through personal pr
 <h3 aligh="left"><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2VqaGNoNTltb2hlczlpcWRua25rYnd4am9hZ2VsaXpwMnhxZHV1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/WUlplcMpOCEmTGBtBW/giphy.gif" width="50">&nbsp; Featured Projects</h3>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-<div align="center">
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/sonwjnn/knowflare">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=knowflare" alt="Knowflare" />
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/sonwjnn/respotify">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=respotify" alt="Spotify Clone" />
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/sonwjnn/rediscord">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=rediscord" alt="Discord Clone" />
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/sonwjnn/ecommerce-store">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=ecommerce-store" alt="Shopee Clone" />
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/sonwjnn/gamehub">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=gamehub" alt="Poker Game FE" />
-      </a>
-    </td>
-    <td align="center">
-      <a href="https://github.com/sonwjnn/gamehub-backend">
-        <img src="https://github-readme-stats.vercel.app/api/pin/?username=sonwjnn&theme=tokyonight&hide_border=true&show_icons=true&repo=gamehub-backend" alt="Poker Game BE" />
-      </a>
-    </td>
-  </tr>
-</table>
-</div>
+<p align="center">
+    <a href="https://github.com/sonwjnn/knowflare"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=knowflare&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="knowflare"></a>
+    <a href="https://github.com/sonwjnn/respotify"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=respotify&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="respotify"></a>
+    <a href="https://github.com/sonwjnn/rediscord"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin?username=sonwjnn&repo=rediscord&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="rediscord"></a>
+    <a href="https://github.com/sonwjnn/ecommerce-store"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=ecommerce-store&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="ecommerce-store"></a>
+    <a href="https://github.com/sonwjnn/gamehub"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=gamehub&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="gamehub"></a>
+    <a href="https://github.com/sonwjnn/gamehub-backend"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=gamehub-backend&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="gamehub-backend"></a>
+</p>
 
 <div align="center">
   <img src="https://github.com/s-shemmee/s-shemmee/blob/output/github-contribution-grid-snake-dark.svg" alt="Dark Snake" />
@@ -147,9 +115,6 @@ I am a student with hands-on experience in React and Next.js through personal pr
 <div align="center">
   <a href="https://www.facebook.com/profile.php?id=100011436148089" target="blank">
     <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" alt="sonwjnn-facebook" />
-  </a>
-  <a href="#!" target="blank">
-    <img src="https://img.icons8.com/bubbles/100/000000/youtube-squared.png" alt="sonwjnn-youtube" />
   </a>
   <a href="https://www.linkedin.com/in/ho%C3%A0ng-s%C6%A1n-33a548269/" target="blank">
     <img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" alt="sonwjnn-linkedin" />
