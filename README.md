@@ -42,28 +42,57 @@ I am a student with hands-on experience in React and Next.js through personal pr
 
 <h4 aligh="left">🎨 Front-end</h4>
 
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=nextjs,react,redux,tailwind,html,css,scss,bootstrap,jquery,babel,bun,vite" />&nbsp;&nbsp;<img src="https://go-skill-icons.vercel.app/api/icons?i=shadcn,authjs,jwt&titles=true" />
-</p>
+[![Next.js](https://skillicons.dev/icons?i=nextjs)](https://nextjs.org/)
+[![React](https://skillicons.dev/icons?i=react)](https://react.dev/)
+[![Redux](https://skillicons.dev/icons?i=redux)](https://redux.js.org/)
+[![Tailwind CSS](https://skillicons.dev/icons?i=tailwind)](https://tailwindcss.com/)
+[![HTML](https://skillicons.dev/icons?i=html)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS](https://skillicons.dev/icons?i=css)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![SCSS](https://skillicons.dev/icons?i=scss)](https://sass-lang.com/)
+[![Bootstrap](https://skillicons.dev/icons?i=bootstrap)](https://getbootstrap.com/)
+[![jQuery](https://skillicons.dev/icons?i=jquery)](https://jquery.com/)
+[![Babel](https://skillicons.dev/icons?i=babel)](https://babeljs.io/)
+[![Bun](https://skillicons.dev/icons?i=bun)](https://bun.sh/)
+[![Vite](https://skillicons.dev/icons?i=vite)](https://vitejs.dev/)
+[![shadcn/ui](https://go-skill-icons.vercel.app/api/icons?i=shadcn)](https://ui.shadcn.com/)
+[![Auth.js](https://go-skill-icons.vercel.app/api/icons?i=authjs)](https://authjs.dev/)
+[![JWT](https://go-skill-icons.vercel.app/api/icons?i=jwt)](https://jwt.io/)
 
 <h4 aligh="left">🤖 Back-end</h4>
 
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=nodejs,nextjs,express,postgres,mysql,mongodb" />&nbsp;&nbsp;<img src="https://go-skill-icons.vercel.app/api/icons?i=socketio,hono&titles=true" />
-</p>
+[![Node.js](https://skillicons.dev/icons?i=nodejs)](https://nodejs.org/)
+[![Next.js](https://skillicons.dev/icons?i=nextjs)](https://nextjs.org/)
+[![Express](https://skillicons.dev/icons?i=express)](https://expressjs.com/)
+[![PostgreSQL](https://skillicons.dev/icons?i=postgres)](https://www.postgresql.org/)
+[![MySQL](https://skillicons.dev/icons?i=mysql)](https://www.mysql.com/)
+[![MongoDB](https://skillicons.dev/icons?i=mongodb)](https://www.mongodb.com/)
+[![Socket.IO](https://go-skill-icons.vercel.app/api/icons?i=socketio)](https://socket.io/)
+[![Hono](https://go-skill-icons.vercel.app/api/icons?i=hono)](https://hono.dev/)
 
 <h4 aligh="left">🛢️ Database</h4>
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=postgres,mysql,supabase,firebase,mongodb,prisma" />&nbsp;&nbsp;<img src="https://go-skill-icons.vercel.app/api/icons?i=drizzle&titles=true" />
-</p>
+
+[![PostgreSQL](https://skillicons.dev/icons?i=postgres)](https://www.postgresql.org/)
+[![MySQL](https://skillicons.dev/icons?i=mysql)](https://www.mysql.com/)
+[![Supabase](https://skillicons.dev/icons?i=supabase)](https://supabase.com/)
+[![Firebase](https://skillicons.dev/icons?i=firebase)](https://firebase.google.com/)
+[![MongoDB](https://skillicons.dev/icons?i=mongodb)](https://www.mongodb.com/)
+[![Prisma](https://skillicons.dev/icons?i=prisma)](https://www.prisma.io/)
+[![Drizzle](https://go-skill-icons.vercel.app/api/icons?i=drizzle)](https://orm.drizzle.team/)
+
 
 
 <h4 aligh="left">🛠 Other</h4>
-<p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,vim,neovim,vscode,figma,ps,postman,ubuntu,arch,linux" />
-  </a>
-</p>
+
+[![Git](https://skillicons.dev/icons?i=git)](https://git-scm.com/)
+[![Vim](https://skillicons.dev/icons?i=vim)](https://www.vim.org/)
+[![Neovim](https://skillicons.dev/icons?i=neovim)](https://neovim.io/)
+[![VS Code](https://skillicons.dev/icons?i=vscode)](https://code.visualstudio.com/)
+[![Figma](https://skillicons.dev/icons?i=figma)](https://www.figma.com/)
+[![Adobe Photoshop](https://skillicons.dev/icons?i=ps)](https://www.adobe.com/products/photoshop.html)
+[![Postman](https://skillicons.dev/icons?i=postman)](https://www.postman.com/)
+[![Ubuntu](https://skillicons.dev/icons?i=ubuntu)](https://ubuntu.com/)
+[![Arch Linux](https://skillicons.dev/icons?i=arch)](https://archlinux.org/)
+[![Linux](https://skillicons.dev/icons?i=linux)](https://www.linux.org/)
 
 
 <h3>&nbsp;</h3>
