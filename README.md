@@ -18,7 +18,7 @@ I am a student with hands-on experience in React and Next.js through personal pr
 - 📚 I’m currently learning ...
   - *NextJS*
   - *TypeScript*
-  - *NodeJS*
+  - *NestJS*
 - 🚀 I’m eager to join new projects.
 - ✔ Feel free to ask me anything! I’m motivated to help others.
 - Outside tech, I enjoy socializing with friends, 🎮 playing video games, 🎵 listening to music, and I also love working at a café when I have free time.
@@ -58,6 +58,7 @@ I am a student with hands-on experience in React and Next.js through personal pr
 <h4 aligh="left">🤖 Back-end</h4>
 
 [![Node.js](https://skillicons.dev/icons?i=nodejs)](https://nodejs.org/)
+[![Node.js](https://skillicons.dev/icons?i=nestjs)](https://nestjs.com/)
 [![Next.js](https://skillicons.dev/icons?i=nextjs)](https://nextjs.org/)
 [![Express](https://skillicons.dev/icons?i=express)](https://expressjs.com/)
 [![PostgreSQL](https://skillicons.dev/icons?i=postgres)](https://www.postgresql.org/)
