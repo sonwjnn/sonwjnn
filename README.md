@@ -13,12 +13,15 @@
 
 <img align="right" width=200px alt="Unicorn" src="https://media.tenor.com/XP4tw9P1yFoAAAAM/dedsec.gif"/>
 
-I am a student with hands-on experience in React and Next.js through personal projects. With curiosity, dedication, and a solid grasp of new technologies, I am confident in my ability to excel in any tasks assigned.
+I'm a Frontend Developer with 1 year of experience building fast, user-friendly
+web apps using ReactJS<br/>and NextJS. Enjoy exploring new technologies,
+fixing challenges, and creating useful applications.
+
 
 - 📚 I’m currently learning ...
   - *NextJS*
-  - *TypeScript*
   - *NestJS*
+  - *TypeScript*
 - 🚀 I’m eager to join new projects.
 - ✔ Feel free to ask me anything! I’m motivated to help others.
 - Outside tech, I enjoy socializing with friends, 🎮 playing video games, 🎵 listening to music, and I also love working at a café when I have free time.
@@ -99,7 +102,7 @@ I am a student with hands-on experience in React and Next.js through personal pr
   <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 <div align="center">
   <p>
-    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=sonwjnn&theme=ambient_gradient&hide_border=true&include_all_commits=true&count_private=true" />
+    <img height="180em" src="https://github-readme-stats.vercel.app/api?username=sonwjnn&theme=midnight-purple&hide_border=true&include_all_commits=true&count_private=true" />
     <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sonwjnn&count_private=true&include_all_commits=true&show_icons=true&hide_border=true&hide=html,java&layout=compact&langs_count=8&theme=midnight-purple"/>
   </p>
   
