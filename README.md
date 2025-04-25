@@ -13,9 +13,7 @@
 
 <img align="right" width=200px alt="Unicorn" src="https://media.tenor.com/XP4tw9P1yFoAAAAM/dedsec.gif"/>
 
-I'm a Frontend Developer with 1 year of experience building fast, user-friendly
-web apps using ReactJS<br/>and NextJS. Enjoy exploring new technologies,
-fixing challenges, and creating useful applications.
+Frontend Developer focused on building performant, intuitive web interfaces with ReactJS and NextJS. I enjoy crafting clean code, solving real-world problems, and continuously learning new tools.
 
 
 - 📚 I’m currently learning ...
