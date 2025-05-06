@@ -59,12 +59,9 @@ Frontend Developer focused on building performant, intuitive web interfaces with
 <h4 aligh="left">🤖 Back-end</h4>
 
 [![Node.js](https://skillicons.dev/icons?i=nodejs)](https://nodejs.org/)
-[![Node.js](https://skillicons.dev/icons?i=nestjs)](https://nestjs.com/)
+[![Nest.js](https://skillicons.dev/icons?i=nestjs)](https://nestjs.com/)
 [![Next.js](https://skillicons.dev/icons?i=nextjs)](https://nextjs.org/)
 [![Express](https://skillicons.dev/icons?i=express)](https://expressjs.com/)
-[![PostgreSQL](https://skillicons.dev/icons?i=postgres)](https://www.postgresql.org/)
-[![MySQL](https://skillicons.dev/icons?i=mysql)](https://www.mysql.com/)
-[![MongoDB](https://skillicons.dev/icons?i=mongodb)](https://www.mongodb.com/)
 [![Socket.IO](https://go-skill-icons.vercel.app/api/icons?i=socketio)](https://socket.io/)
 [![Hono](https://go-skill-icons.vercel.app/api/icons?i=hono)](https://hono.dev/)
 
