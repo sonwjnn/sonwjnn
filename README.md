@@ -141,9 +141,6 @@ Frontend Developer focused on building performant, intuitive web interfaces with
   <a href="https://www.facebook.com/profile.php?id=100011436148089" target="blank">
     <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" alt="sonwjnn-facebook" />
   </a>
-  <a href="https://www.linkedin.com/in/ho%C3%A0ng-s%C6%A1n-33a548269/" target="blank">
-    <img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" alt="sonwjnn-linkedin" />
-  </a>
   <a href="https://www.instagram.com/sonn_wjh/" target="blank">
     <img src="https://img.icons8.com/bubbles/100/000000/instagram.png" alt="sonwjnn-instagram" />
   </a>
