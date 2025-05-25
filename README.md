@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-  [![](https://raw.githubusercontent.com/sonwjnn/sonwjnn/7850cc328da5bcd6de78411c779a7e54358b89e4/assets/chat.svg)](https://www.linkedin.com/in/nguyen-le-hoang-son-33a548269)
+  <img src="https://readme-typing-svg.herokuapp.com?font=Architects+Daughter&color=%2338C2FF&size=50&center=true&vCenter=true&height=60&width=600&&duration=3000&lines=Heyyy!+I'm+Son;I'm+a+Frontend+Developer;Welcome+to+my+profile!" alt="Title"></img>
 </div>
 
 <h3 aligh="left"><img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"> A little more about me...</h3>
