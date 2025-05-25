@@ -119,8 +119,8 @@ Frontend Developer focused on building performant, intuitive web interfaces with
     <a href="https://github.com/sonwjnn/respotify"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=respotify&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="respotify"></a>
     <a href="https://github.com/sonwjnn/rediscord"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin?username=sonwjnn&repo=rediscord&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="rediscord"></a>
     <a href="https://github.com/sonwjnn/ecommerce-store"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=ecommerce-store&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="ecommerce-store"></a>
-    <a href="https://github.com/sonwjnn/gamehub"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=gamehub&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="gamehub"></a>
-    <a href="https://github.com/sonwjnn/gamehub-backend"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=gamehub-backend&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="gamehub-backend"></a>
+    <a href="https://github.com/sonwjnn/sondraw-FE"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=sondraw-FE&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="sondraw-FE"></a>
+    <a href="https://github.com/sonwjnn/sondraw-BE"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=sonwjnn&repo=sondraw-BE&theme=react&bg_color=1F222E&title_color=F85D7F&hide_border=true&icon_color=F8D866&show_icons=false" alt="sondraw-BE"></a>
 </p>
 
 <div align="center">
