@@ -1,3 +1,5 @@
+<!-- https://github.com/jasonlong/jasonlong -->
+
 <svg width="550" height="684" viewBox="0 0 550 684" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <style>
     .bubble {
@@ -247,9 +249,9 @@
     </circle>
   </g>
 
-  <!-- Hi, I'm Jason -->
+  <!-- Hi, I'm Son -->
   <g transform="translate(10, 0)" class="msg-1 bubble">
-    <rect width="133" height="42" rx="18" />
+    <rect width="120" height="42" rx="18" />
     <text x="15" y="27">Hi, I'm Son</text>
   </g>
 
@@ -272,7 +274,7 @@
 
   <!-- From Columbus... -->
   <g transform="translate(10, 48)" class="msg-2">
-    <rect width="439" height="66" rx="18" class="bubble" />
+    <rect width="520" height="66" rx="18" class="bubble" />
     <text x="15" y="27">I live in Ho Chi Minh City, Vietnam where it’s supposed to be</text>
     <text x="15" y="50">31° C and <tspan class="emoji">☀️</tspan> today.</text>
   </g>
@@ -296,9 +298,9 @@
 
   <!-- Work -->
   <g transform="translate(10, 120)" class="msg-3">
-    <rect width="456" height="66" rx="18" class="bubble" />
-    <text x="15" y="27">I’m a Frontend Developer at Toast Canvas VN,</text>
-    <text x="15" y="50">specializing in React, Next.js, and responsive web applications.</text>
+    <rect width="475" height="66" rx="18" class="bubble" />
+    <text x="15" y="27">I’m a Frontend Developer, specializing in React, Next.js</text>
+    <text x="15" y="50"> and responsive web applications.</text>
   </g>
 
   <!-- typing 4 -->

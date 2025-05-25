@@ -5,7 +5,7 @@
 </div>
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Architects+Daughter&color=%2338C2FF&size=50&center=true&vCenter=true&height=60&width=600&&duration=3000&lines=Heyyy!+I'm+Son;I'm+a+Frontend+Developer;Welcome+to+my+profile!" alt="Title"></img>
+  [![](https://raw.githubusercontent.com/sonwjnn/sonwjnn/7850cc328da5bcd6de78411c779a7e54358b89e4/assets/chat.svg)](https://www.linkedin.com/in/nguyen-le-hoang-son-33a548269)
 </div>
 
 <h3 aligh="left"><img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"> A little more about me...</h3>
@@ -15,16 +15,14 @@
 
 Frontend Developer focused on building performant, intuitive web interfaces with ReactJS and NextJS. I enjoy crafting clean code, solving real-world problems, and continuously learning new tools.
 
-
 - 📚 I’m currently learning ...
-  - *NextJS*
-  - *NestJS*
-  - *TypeScript*
+  - _NextJS_
+  - _NestJS_
+  - _TypeScript_
 - 🚀 I’m eager to join new projects.
 - ✔ Feel free to ask me anything! I’m motivated to help others.
 - Outside tech, I enjoy socializing with friends, 🎮 playing video games, 🎵 listening to music, and I also love working at a café when I have free time.
-<br>
-
+  <br>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=sonwjnn&label=Profile%20views&color=0e75b6&style=flat" alt="sonwjnn" /> </p>
 
@@ -75,8 +73,6 @@ Frontend Developer focused on building performant, intuitive web interfaces with
 [![Prisma](https://skillicons.dev/icons?i=prisma)](https://www.prisma.io/)
 [![Drizzle](https://go-skill-icons.vercel.app/api/icons?i=drizzle)](https://orm.drizzle.team/)
 
-
-
 <h4 aligh="left">🛠 Other</h4>
 
 [![Git](https://skillicons.dev/icons?i=git)](https://git-scm.com/)
@@ -89,7 +85,6 @@ Frontend Developer focused on building performant, intuitive web interfaces with
 [![Ubuntu](https://skillicons.dev/icons?i=ubuntu)](https://ubuntu.com/)
 [![Arch Linux](https://skillicons.dev/icons?i=arch)](https://archlinux.org/)
 [![Linux](https://skillicons.dev/icons?i=linux)](https://www.linux.org/)
-
 
 <h3>&nbsp;</h3>
 
@@ -112,7 +107,7 @@ Frontend Developer focused on building performant, intuitive web interfaces with
     <a href="https://github.com/ryo-ma/github-profile-trophy">
         <img src="https://github-profile-trophy.vercel.app/?username=sonwjnn&theme=dark_lover&row=1&column=7&margin-h=15&margin-w=5&no-bg=true" alt="TROPHY" width="84%" />
     </a>
-</h2> 
+</h2>
 
 <h3>&nbsp;</h3>
 
@@ -134,7 +129,7 @@ Frontend Developer focused on building performant, intuitive web interfaces with
   
 <h3 aligh="left"><img src="https://media.giphy.com/media/lGhBlBMIN2XsEteTN3/giphy.gif" width="60"> Contact with me :3</h2>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
-  
+
 
 <!-- https://icons8.com -->
 <div align="center">
@@ -148,4 +143,3 @@ Frontend Developer focused on building performant, intuitive web interfaces with
     <img src="https://img.icons8.com/bubbles/100/000000/apple-mail.png" alt="sonwjnn-email" />
   </a>
 </div>
-  
