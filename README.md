@@ -11,7 +11,7 @@
 <h3 aligh="left"><img src="https://media.giphy.com/media/mGcNjsfWAjY5AEZNw6/giphy.gif" width="50"> A little more about me...</h3>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-<img align="right" width=200px alt="Unicorn" src="https://media.tenor.com/XP4tw9P1yFoAAAAM/dedsec.gif"/>
+
 
 Frontend Developer focused on building performant, intuitive web interfaces with ReactJS and NextJS. I enjoy crafting clean code, solving real-world problems, and continuously learning new tools.
 
