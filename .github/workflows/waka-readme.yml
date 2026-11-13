@@ -1,0 +1,62 @@
+name: Update coding activity
+
+on:
+  schedule:
+    - cron: "17 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: waka-readme
+  cancel-in-progress: false
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      WAKAPI_API_KEY: ${{ secrets.WAKAPI_API_KEY }}
+      WAKAPI_API_URL: ${{ vars.WAKAPI_API_URL }}
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+    steps:
+      - name: Check Wakapi configuration
+        id: config
+        shell: bash
+        run: |
+          if [[ -n "$WAKAPI_API_KEY" && -n "$WAKAPI_API_URL" && -n "$GH_TOKEN" ]]; then
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Configure WAKAPI_API_URL as a repository variable and WAKAPI_API_KEY and GH_TOKEN as repository secrets."
+          fi
+
+      - name: Update profile coding activity
+        if: steps.config.outputs.configured == 'true'
+        # Pinned to the upstream master revision verified during setup.
+        uses: anmol098/waka-readme-stats@4db28e08bfd8bac570125799fe1cfdcb23a8c871
+        with:
+          WAKATIME_API_KEY: ${{ secrets.WAKAPI_API_KEY }}
+          WAKATIME_API_URL: ${{ vars.WAKAPI_API_URL }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          PUSH_TOKEN: ${{ github.token }}
+          SECTION_NAME: waka
+          SHOW_LANGUAGE: "True"
+          SHOW_EDITORS: "True"
+          SHOW_UPDATED_DATE: "True"
+          UPDATED_DATE_FORMAT: "%d %B %Y"
+          SHOW_OS: "False"
+          SHOW_PROJECTS: "False"
+          SHOW_TIMEZONE: "False"
+          SHOW_COMMIT: "False"
+          SHOW_DAYS_OF_WEEK: "False"
+          SHOW_LANGUAGE_PER_REPO: "False"
+          SHOW_SHORT_INFO: "False"
+          SHOW_LOC_CHART: "False"
+          SHOW_LINES_OF_CODE: "False"
+          SHOW_PROFILE_VIEWS: "False"
+          SHOW_TOTAL_CODE_TIME: "False"
+          SHOW_AI_CODE_TIME: "False"
+          SHOW_AI_CODING: "False"
+          COMMIT_MESSAGE: "docs: update coding activity"
