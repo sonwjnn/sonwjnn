@@ -21,7 +21,7 @@ Until the URL, Wakapi key, and GitHub token are configured, the workflow skips t
 
 The action reads profile data with `GH_TOKEN` and pushes README changes with the workflow's built-in `GITHUB_TOKEN` (`PUSH_TOKEN`), granted `contents: write`. Branch protection or repository policies may still prevent the push; check the Actions log if that happens.
 
-Only weekly languages, editors, and the last-updated date are enabled. Project names, operating system, timezone, GitHub summaries, badges, charts, and AI metrics are hidden to keep the profile concise. Change the `SHOW_*` inputs in `.github/workflows/waka-readme.yml` if needed.
+Enabled stats: commit activity by time of day and weekday, weekly languages and editors, operating system, timezone, languages by repository, and the last-updated date. Project names, GitHub short-info, profile-view badges, all-time totals, and charts stay hidden. The AI Coding panel from the example remains disabled: WakaReadme needs AI-specific aggregate fields (sessions, prompts, lines, tokens and cost) that Wakapi's WakaTime-compatible stats response does not provide, so enabling it would show an empty fallback rather than the pictured metrics. Change the `SHOW_*` inputs in `.github/workflows/waka-readme.yml` if needed.
 
 The generator calls the configured stats API base URL directly; keep `/api/compat/wakatime/v1/` and the trailing slash in `WAKAPI_API_URL`. For another Wakapi host, replace `wakapi.dev` with that hostname. The editor's heartbeat URL (`/api`) and the README action's stats URL are different.
 
