@@ -15,7 +15,7 @@ concurrency:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 360
     env:
       WAKAPI_API_KEY: ${{ secrets.WAKAPI_API_KEY }}
       WAKAPI_API_URL: ${{ vars.WAKAPI_API_URL }}
