@@ -38,6 +38,7 @@ jobs:
         uses: anmol098/waka-readme-stats@4db28e08bfd8bac570125799fe1cfdcb23a8c871
         with:
           WAKATIME_API_KEY: ${{ secrets.WAKAPI_API_KEY }}
+          # Use Wakapi's WakaTime-compatible stats route, not its heartbeat ingest URL.
           WAKATIME_API_URL: ${{ vars.WAKAPI_API_URL }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           PUSH_TOKEN: ${{ github.token }}

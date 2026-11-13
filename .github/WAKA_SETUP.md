@@ -11,7 +11,7 @@ The profile uses [anmol098/waka-readme-stats](https://github.com/anmol098/waka-r
    api_key = <your Wakapi API key>
    ```
    Keep the key private; do not put it in this repository. Start coding and wait until Wakapi shows activity before running the README workflow.
-2. In **Settings → Secrets and variables → Actions**, add the repository variable `WAKAPI_API_URL` with the value `https://wakapi.dev/api/`. Keep the trailing slash; the README action appends the stats path to this base URL.
+2. In **Settings → Secrets and variables → Actions**, set the repository variable `WAKAPI_API_URL` to `https://wakapi.dev/api/compat/wakatime/v1/`. This is the WakaTime-compatible stats API used by the README action; it differs from the editor heartbeat URL (`https://wakapi.dev/api`). Keep the trailing slash because the action appends `users/current/stats/...` to this URL.
 3. Add these repository secrets:
    - `WAKAPI_API_KEY`: an API key created in your Wakapi account. The workflow maps it to the input name expected by the stats generator.
    - `GH_TOKEN`: a GitHub personal access token. Upstream documents a classic PAT with `repo` and `user` scopes. These scopes are broad: use a dedicated token, set an expiration, and never commit it.
@@ -23,7 +23,7 @@ The action reads profile data with `GH_TOKEN` and pushes README changes with the
 
 Only weekly languages, editors, and the last-updated date are enabled. Project names, operating system, timezone, GitHub summaries, badges, charts, and AI metrics are hidden to keep the profile concise. Change the `SHOW_*` inputs in `.github/workflows/waka-readme.yml` if needed.
 
-The generator calls the configured API base URL directly; keep the trailing slash in `WAKAPI_API_URL`. For another Wakapi host, replace `https://wakapi.dev/api/` with the base URL documented by that instance.
+The generator calls the configured stats API base URL directly; keep `/api/compat/wakatime/v1/` and the trailing slash in `WAKAPI_API_URL`. For another Wakapi host, replace `wakapi.dev` with that hostname. The editor's heartbeat URL (`/api`) and the README action's stats URL are different.
 
 The action is pinned to a full upstream commit SHA for reproducibility. Review upstream changes before updating that SHA.
 
