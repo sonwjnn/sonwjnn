@@ -16,7 +16,23 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 ### Coding activity
 
 <!--START_SECTION:waka-->
-<!-- Updated automatically by WakaReadme once the repository secrets are configured. -->
+📊 **This Week I Spent My Time On** 
+
+```text
+💬 Programming Languages: 
+Typescript               8 hrs 51 mins       ███████████░░░░░░░░░░░░░░   44.87 % 
+Markdown                 4 hrs 23 mins       ██████░░░░░░░░░░░░░░░░░░░   22.25 % 
+TSX                      1 hrs 54 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   09.66 % 
+Unknown                  1 hrs 52 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   09.45 % 
+TOML                     1 hrs 14 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   06.23 % 
+
+🔥 Editors: 
+Orca                     19 hrs 15 mins      ████████████████████████░   97.61 % 
+Codex-vscode             0 hrs 28 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   02.39 % 
+```
+
+
+ Last Updated on 13 November 2026 UTC
 <!--END_SECTION:waka-->
 
 ### Get in touch
