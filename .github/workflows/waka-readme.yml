@@ -15,7 +15,7 @@ concurrency:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 45
     env:
       WAKAPI_API_KEY: ${{ secrets.WAKAPI_API_KEY }}
       WAKAPI_API_URL: ${{ vars.WAKAPI_API_URL }}
@@ -53,6 +53,7 @@ jobs:
           SHOW_COMMIT: "True"
           SHOW_DAYS_OF_WEEK: "True"
           SHOW_LANGUAGE_PER_REPO: "True"
+          MAX_REPOS: "0"
           SHOW_SHORT_INFO: "False"
           SHOW_LOC_CHART: "False"
           SHOW_LINES_OF_CODE: "False"
