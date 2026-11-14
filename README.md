@@ -79,7 +79,15 @@ Shell                    1 repo              ░░░░░░░░░░░�
 🤖 **AI Coding This Week**
 
 ```text
-AI usage data will appear after the next workflow run.
+AI coding time: not reported
+Lines changed: AI 13,098 · human 0
+Token usage: 7,893,106 input · 1,270,833 output
+AI sessions: 52 · Prompts: 150 prompt-bearing events
+
+Models:
+Gpt                            5,834 AI lines · 8,741,232 tokens
+Deepseek                       7,264 AI lines · 422,707 tokens
+Model not reported             0 AI lines · 0 tokens
 ```
 <!--END_SECTION:ai-coding-->
 
