@@ -3,8 +3,10 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
+from subprocess import CompletedProcess, TimeoutExpired
+from unittest.mock import patch
 
-from export_ai_providers import collect, recorded_cost, safe_label, update_provider_section
+from export_ai_providers import collect, fetch_month_commits, recorded_cost, safe_label, update_provider_section
 from wakapi_ai_stats import LOCAL_USAGE_DIVIDER, normalize_layout, render_providers, update_readme
 
 
@@ -122,6 +124,31 @@ class ExportProviderTests(unittest.TestCase):
         self.assertNotIn('Lines changed:', updated)
         self.assertEqual(update_provider_section(updated, snapshot), updated)
 
+    def test_github_commit_query_uses_exact_month_range_and_only_returns_count(self):
+        start = self.now.replace(day=1, hour=0)
+        for count in [0, 114]:
+            with self.subTest(count=count), patch('export_ai_providers.subprocess.run') as run:
+                run.return_value = CompletedProcess([], 0, str(count), '')
+                self.assertEqual(fetch_month_commits(start, self.now), count)
+                command = run.call_args.args[0]
+                self.assertEqual(command[:3], ['gh', 'api', 'graphql'])
+                self.assertIn('from=' + start.isoformat(), command)
+                self.assertIn('to=' + self.now.isoformat(), command)
+                self.assertIn('totalCommitContributions', command[4])
+                self.assertEqual(run.call_args.kwargs['timeout'], 60)
+
+    def test_github_commit_query_rejects_invalid_values_and_suppresses_errors(self):
+        for result in [CompletedProcess([], 1, 'private response', 'private error'),
+                       *[CompletedProcess([], 0, value, '') for value in
+                         ['null', 'true', '-1', '1.5', '"114"', 'not json']]]:
+            with self.subTest(result=result), patch('export_ai_providers.subprocess.run', return_value=result):
+                with self.assertRaises(RuntimeError) as error:
+                    fetch_month_commits(self.now, self.now)
+                self.assertNotIn('private', str(error.exception))
+        with patch('export_ai_providers.subprocess.run', side_effect=TimeoutExpired('gh', 60)):
+            with self.assertRaisesRegex(RuntimeError, 'details omitted'):
+                fetch_month_commits(self.now, self.now)
+
     def test_recorded_cost_rejects_invalid_values_but_preserves_zero(self):
         for value in [None, True, False, -1, float('nan'), float('inf'), '1.20', {}]:
             with self.subTest(value=value):
@@ -150,6 +177,14 @@ class ExportProviderTests(unittest.TestCase):
         self.assertNotIn('Partial recorded cost;', visible)
         self.assertNotIn('missing costs are not zero', visible)
         self.assertNotIn('partial: 1/2', visible)
+
+    def test_commit_display_preserves_zero_but_never_invents_missing_counts(self):
+        snapshot = collect(self.home, self.now)
+        for value in [None, True, -1, '114']:
+            snapshot['github_commits'] = value
+            self.assertNotIn('Commits:', render_providers(snapshot))
+        snapshot['github_commits'] = 0
+        self.assertIn('Commits: 0', render_providers(snapshot))
 
     def test_recorded_cost_sums_without_counting_duplicate_responses(self):
         rows = self.pi_rows()
@@ -223,6 +258,7 @@ class ExportProviderTests(unittest.TestCase):
     def test_rendering_preserves_other_sections_and_keeps_date_last(self):
         self.log(".pi/agent/sessions/a.jsonl", self.pi_rows())
         snapshot = collect(self.home, self.now)
+        snapshot['github_commits'] = 114
         readme = ("<!--START_SECTION:ai-coding-->🤖 **AI Coding This Month**\n\n"
                   "```text\n⏱ AI Coding Time: not reported\n✍️ Lines changed: AI 10 · human 0\n"
                   "🔤 999 Input Tokens\n🧠 50 AI Sessions\nWakapi models · share of AI lines\n"
@@ -232,7 +268,8 @@ class ExportProviderTests(unittest.TestCase):
                   "<!--START_SECTION:ai-providers-->old<!--END_SECTION:ai-providers-->\n\n"
                   " Last Updated on 13 November 2026 UTC\n\ncontact")
         result = normalize_layout(update_provider_section(readme, snapshot), "14 November 2026")
-        self.assertIn("✍️ Lines changed: 10", result)
+        self.assertIn("✍️ Lines changed: 10\nCommits: 114", result)
+        self.assertEqual(result.count('Commits: 114'), 1)
         self.assertNotIn('Local provider / model usage', result)
         self.assertIn("gpt-example", result)
         self.assertIn("Total: 175 tokens · $999.00 USD", result)
@@ -265,7 +302,8 @@ class ExportProviderTests(unittest.TestCase):
         target.write_text(result)
         update_readme(str(target), "🤖 **AI Coding This Month**\n\n```text\n✍️ Lines changed: AI 20 · human 1\n```\n")
         refreshed = target.read_text()
-        self.assertIn('✍️ Lines changed: 21', refreshed)
+        self.assertIn('✍️ Lines changed: 21\nCommits: 114', refreshed)
+        self.assertEqual(refreshed.count('Commits: 114'), 1)
         self.assertNotIn('AI 10 · human 0', refreshed)
         self.assertIn('Total: 175 tokens · $999.00 USD', refreshed)
         self.assertEqual(refreshed.count('```'), 2)

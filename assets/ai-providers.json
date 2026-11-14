@@ -1,9 +1,9 @@
 {
   "version": 2,
   "source": "local-session-logs",
-  "generated_at": "2026-11-14T12:16:30.605898+00:00",
+  "generated_at": "2026-11-14T14:04:36.391136+00:00",
   "start": "2026-11-01T00:00:00+00:00",
-  "end": "2026-11-14T12:16:30.605898+00:00",
+  "end": "2026-11-14T14:04:36.391136+00:00",
   "rows": [
     {
       "agent": "codex",
@@ -35,27 +35,41 @@
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.1-sol",
-      "input_tokens": 3674011,
-      "output_tokens": 456132,
-      "cache_read_tokens": 294059648,
+      "input_tokens": 3678461,
+      "output_tokens": 462707,
+      "cache_read_tokens": 297459328,
       "cache_write_tokens": 0,
-      "responses": 1936,
-      "cost_responses": 1936,
-      "cost_usd": 50.056674400000006,
+      "responses": 1962,
+      "cost_responses": 1962,
+      "cost_usd": 50.4712924,
       "sessions": 15
     },
     {
       "agent": "pi",
       "provider": "opencode-go",
       "model": "deepseek-v4.1-flash",
-      "input_tokens": 4131017,
-      "output_tokens": 921228,
-      "cache_read_tokens": 443561984,
+      "input_tokens": 4692975,
+      "output_tokens": 944343,
+      "cache_read_tokens": 448776832,
       "cache_write_tokens": 0,
-      "responses": 1776,
-      "cost_responses": 1776,
-      "cost_usd": 2.503075302,
-      "sessions": 9
+      "responses": 1822,
+      "cost_responses": 1822,
+      "cost_usd": 2.616882546,
+      "sessions": 10
+    },
+    {
+      "agent": "pi",
+      "provider": "opencode-go",
+      "model": "gpt-6-luna",
+      "input_tokens": 156,
+      "output_tokens": 12256,
+      "cache_read_tokens": 1141157,
+      "cache_write_tokens": 176259,
+      "responses": 52,
+      "cost_responses": 52,
+      "cost_usd": 0.039587545,
+      "sessions": 4
     }
-  ]
+  ],
+  "github_commits": 114
 }

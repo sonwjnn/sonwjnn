@@ -21,6 +21,7 @@ END_MARKER = "<!--END_SECTION:ai-coding-->"
 TIMEOUT_SECONDS = 20
 LOCAL_USAGE_DIVIDER = "Total: "
 LEGACY_USAGE_DIVIDER = "── Local provider / model usage · token share ──"
+COMMIT_PREFIX = "Commits: "
 
 
 def _parse_time(value: str) -> datetime:
@@ -316,6 +317,9 @@ def render_providers(snapshot: dict) -> str:
     """Render plain text for the shared AI block; keep local and Wakapi metrics distinct."""
     rows = snapshot.get("rows", [])
     lines = []
+    commits = snapshot.get('github_commits')
+    if type(commits) is int and commits >= 0:
+        lines.append(f'{COMMIT_PREFIX}{commits:,}')
     def total(row: dict) -> int:
         return sum(max(0, _as_int(row.get(key))) for key in (
             "input_tokens", "output_tokens", "cache_read_tokens", "cache_write_tokens"))
@@ -398,7 +402,11 @@ def combine_ai_usage(content: str, local_usage: str) -> str:
         line,
     ) for line in summary]
     base = heading.rstrip() + "\n\n```text\n" + "\n".join(summary)
-    usage = local_usage.rstrip()
+    usage_lines = local_usage.rstrip().splitlines()
+    commit_lines = [line for line in usage_lines if line.startswith(COMMIT_PREFIX)]
+    if commit_lines:
+        base = base.rstrip() + "\n" + commit_lines[0]
+    usage = "\n".join(line for line in usage_lines if not line.startswith(COMMIT_PREFIX))
     if "```" not in usage:  # Compatibility with previously exported plain-text blocks.
         usage += "\n```"
     return base.rstrip() + "\n\n" + usage + "\n"
@@ -450,7 +458,13 @@ def update_readme(path: str, content: str) -> bool:
             local = current.split(divider, 1)[1].rstrip()
             if local.endswith("```"):
                 local = local[:-3].rstrip()
-            content = combine_ai_usage(content, divider + local)
+            # The count comes from the trusted local export, not Wakapi heartbeats.
+            commit_line = next((line for line in current.splitlines()
+                                if line.startswith(COMMIT_PREFIX)), None)
+            usage = divider + local
+            if commit_line:
+                usage = commit_line + '\n' + usage
+            content = combine_ai_usage(content, usage)
     updated = normalize_layout(
         replace_section(original, content),
         datetime.now(timezone.utc).strftime("%d %B %Y"),

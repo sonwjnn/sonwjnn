@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export only aggregate provider/model usage; never export raw session records."""
+"""Export aggregate AI usage and GitHub commit counts; never export raw records."""
 from __future__ import annotations
 
 import argparse
@@ -10,6 +10,7 @@ import json
 import math
 from pathlib import Path
 import re
+import subprocess
 
 
 LABEL = re.compile(r"[A-Za-z0-9][A-Za-z0-9._:/+-]{0,119}")
@@ -177,6 +178,34 @@ def collect(home: Path, now: datetime) -> dict:
             "start": start.isoformat(), "end": now.isoformat(), "rows": rows}
 
 
+def fetch_month_commits(start: datetime, end: datetime) -> int:
+    """Fetch only GitHub's aggregate profile commit contributions for this range."""
+    query = (
+        'query($from: DateTime!, $to: DateTime!) {'
+        ' user(login: "sonwjnn") {'
+        ' contributionsCollection(from: $from, to: $to) { totalCommitContributions }'
+        ' } }'
+    )
+    try:
+        result = subprocess.run(
+            ['gh', 'api', 'graphql', '-f', f'query={query}',
+             '-f', f'from={start.isoformat()}', '-f', f'to={end.isoformat()}',
+             '--jq', '.data.user.contributionsCollection.totalCommitContributions'],
+            capture_output=True, text=True, timeout=60,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        raise RuntimeError('GitHub aggregate commit query failed; details omitted') from None
+    if result.returncode:
+        raise RuntimeError('GitHub aggregate commit query failed; details omitted')
+    try:
+        count = json.loads(result.stdout)
+    except (ValueError, TypeError):
+        raise RuntimeError('GitHub returned an invalid aggregate commit count') from None
+    if type(count) is not int or count < 0:
+        raise RuntimeError('GitHub returned an invalid aggregate commit count')
+    return count
+
+
 def update_provider_section(readme: str, snapshot: dict) -> str:
     # Share one visual block without mixing the two sources' metrics.
     from wakapi_ai_stats import (
@@ -204,6 +233,9 @@ def main() -> None:
     parser.add_argument("--readme", default="README.md")
     args = parser.parse_args()
     snapshot = collect(Path.home(), datetime.now(timezone.utc))
+    snapshot['github_commits'] = fetch_month_commits(
+        datetime.fromisoformat(snapshot['start']), datetime.fromisoformat(snapshot['end']),
+    )
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(snapshot, indent=2) + "\n", encoding="utf-8")
