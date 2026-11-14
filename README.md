@@ -78,14 +78,16 @@ Shell                    1 repo              ░░░░░░░░░░░�
 ```text
 ⏱ AI Coding Time: not reported
 
-✍️ Lines changed: AI 13,098 · human 0
+✍️ Lines changed: AI 14,129 · human 0
 
-🔤 7,893,106 Input Tokens, 1,270,833 Output Tokens
+🔤 8,112,587 Input Tokens, 1,332,880 Output Tokens
 
-🧠 52 AI Sessions · 150 prompt-bearing events
+🧠 54 AI Sessions · 163 prompt-bearing events
 
-Deepseek                     7,264 lines  ██████████████░░░░░░░░░░░   55.46 %
-Gpt                          5,834 lines  ███████████░░░░░░░░░░░░░░   44.54 %
+deepseek/4.1-flash           7,722 lines  ██████████████░░░░░░░░░░░   54.65 %
+gpt/6-luna                   4,573 lines  ████████░░░░░░░░░░░░░░░░░   32.37 %
+gpt/6.1-sol                  1,785 lines  ███░░░░░░░░░░░░░░░░░░░░░░   12.63 %
+gpt/6-luna-xhigh                49 lines  ░░░░░░░░░░░░░░░░░░░░░░░░░    0.35 %
 ```
 <!--END_SECTION:ai-coding-->
 
