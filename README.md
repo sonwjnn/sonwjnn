@@ -15,6 +15,24 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 
 ### Coding activity
 
+<!--START_SECTION:ai-coding-->
+🤖 **AI Coding This Week**
+
+```text
+✍️ Lines changed: 14,129
+
+Total: 2.15B tokens · $58.11* USD
+
+gpt-6-luna [pi]                  1.52B  ███████████░░░░  70.8%    $21.01
+deepseek-v4.1-flash [pi]       419.26M  ███░░░░░░░░░░░░  19.5%     $2.32
+gpt-6.1-sol [pi]               198.56M  █░░░░░░░░░░░░░░   9.3%    $34.78
+gpt-6-luna [codex]               8.36M  ░░░░░░░░░░░░░░░   0.4%       N/A
+```
+<!--END_SECTION:ai-coding-->
+
+<!--START_SECTION:ai-providers-->
+<!--END_SECTION:ai-providers-->
+
 <!--START_SECTION:waka-->
 📊 **This Week I Spent My Time On** 
 
@@ -50,26 +68,6 @@ Shell                    1 repo              ░░░░░░░░░░░�
 
 
 <!--END_SECTION:waka-->
-
-<!--START_SECTION:ai-coding-->
-🤖 **AI Coding This Week**
-
-```text
-✍️ Lines changed: 14,129
-
-Total: 2.15B tokens · $58.11* USD
-
-gpt-6-luna [pi]                  1.52B  ███████████░░░░  70.8%    $21.01
-deepseek-v4.1-flash [pi]       419.26M  ███░░░░░░░░░░░░  19.5%     $2.32
-gpt-6.1-sol [pi]               198.56M  █░░░░░░░░░░░░░░   9.3%    $34.78
-gpt-6-luna [codex]               8.36M  ░░░░░░░░░░░░░░░   0.4%       N/A
-
-* Partial recorded cost; missing costs are not zero.
-```
-<!--END_SECTION:ai-coding-->
-
-<!--START_SECTION:ai-providers-->
-<!--END_SECTION:ai-providers-->
 
  Last Updated on 14 November 2026 UTC
 

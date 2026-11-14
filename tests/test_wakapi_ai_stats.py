@@ -132,6 +132,24 @@ class WakapiAiStatsTests(unittest.TestCase):
         self.assertLess(result.index("Last Updated"), result.index("### Get in touch"))
         self.assertEqual(normalize_layout(result, "14 November 2026"), result)
 
+    def test_ai_section_moves_above_weekly_stats_and_date_stays_below_both(self) -> None:
+        ai = ('<!--START_SECTION:ai-coding-->\nAI summary\n<!--END_SECTION:ai-coding-->\n\n'
+              '<!--START_SECTION:ai-providers-->\n<!--END_SECTION:ai-providers-->')
+        waka = ('<!--START_SECTION:waka-->\nThis Week I Spent My Time On\n'
+                '```text\nPython 5 hrs\n```\n<!--END_SECTION:waka-->')
+        readme = 'Intro\n\n### Coding activity\n\n' + waka + '\n\n' + ai + '\n\nContact\n'
+        updated = normalize_layout(readme, '14 November 2026')
+        self.assertTrue(updated.startswith('Intro\n\n### Coding activity\n\n'))
+        self.assertIn(ai, updated)
+        self.assertIn(waka, updated)
+        self.assertLess(updated.index(ai), updated.index(waka))
+        self.assertLess(updated.index('<!--END_SECTION:waka-->'), updated.index('Last Updated'))
+        self.assertLess(updated.index('Last Updated'), updated.index('Contact'))
+        for marker in ['ai-coding', 'ai-providers', 'waka']:
+            self.assertEqual(updated.count(f'<!--START_SECTION:{marker}-->'), 1)
+            self.assertEqual(updated.count(f'<!--END_SECTION:{marker}-->'), 1)
+        self.assertEqual(normalize_layout(updated, '14 November 2026'), updated)
+
     def test_layout_removes_commit_schedule_sections_but_preserves_other_stats(self) -> None:
         for chronotype in ["**I'm an Early 🐤**", "**I'm a Night 🦉**"]:
             with self.subTest(chronotype=chronotype):

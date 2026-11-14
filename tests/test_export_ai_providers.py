@@ -112,7 +112,8 @@ class ExportProviderTests(unittest.TestCase):
         self.assertIn('Total: 350 tokens · $999.00* USD', render_providers(snapshot))
         visible = render_providers(snapshot).split('```', 1)[0]
         self.assertIn('Total: 350 tokens · $999.00* USD', visible)
-        self.assertIn('* Partial recorded cost', visible)
+        self.assertNotIn('Partial recorded cost;', visible)
+        self.assertNotIn('missing costs are not zero', visible)
         self.assertNotIn('partial: 1/2', visible)
 
     def test_recorded_cost_sums_without_counting_duplicate_responses(self):

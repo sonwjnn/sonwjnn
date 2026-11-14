@@ -367,8 +367,6 @@ def render_providers(snapshot: dict) -> str:
         lines.append("No local session usage exported for this period.")
     if len(ordered) > 12:
         lines.append(f"Showing 12 of {len(ordered)} provider/model rows.")
-    if covered and covered < responses:
-        lines.extend(["", "* Partial recorded cost; missing costs are not zero."])
     lines.append("```")
     return "\n".join(lines)
 
@@ -402,7 +400,7 @@ def combine_ai_usage(content: str, local_usage: str) -> str:
 
 
 def normalize_layout(readme: str, updated_date: str) -> str:
-    """Keep one AI heading and put the refresh date after both generated blocks."""
+    """Show AI before weekly stats and keep the date below all generated blocks."""
     readme = readme.replace("### AI coding activity\n\n", "")
     # Upstream may regenerate these sections; strip them in the existing postprocessor.
     readme = re.sub(
@@ -411,9 +409,22 @@ def normalize_layout(readme: str, updated_date: str) -> str:
         "", readme, flags=re.MULTILINE | re.DOTALL,
     )
     readme = re.sub(r"\n+[ \t]*Last Updated on [^\n]+\n*", "\n\n", readme)
-    footer_marker = (
-        "<!--END_SECTION:ai-providers-->"
-        if "<!--END_SECTION:ai-providers-->" in readme else END_MARKER
+    # Relocate the complete AI section (including its compatibility markers),
+    # rather than copying it, so both generators continue to find one marker pair.
+    waka_start = "<!--START_SECTION:waka-->"
+    ai_block = re.search(
+        r"<!--START_SECTION:ai-coding-->.*?<!--END_SECTION:ai-coding-->"
+        r"(?:\s*<!--START_SECTION:ai-providers-->.*?<!--END_SECTION:ai-providers-->)?",
+        readme, flags=re.DOTALL,
+    )
+    if ai_block and waka_start in readme and readme.index(waka_start) < ai_block.start():
+        block = ai_block.group()
+        readme = readme[:ai_block.start()].rstrip() + "\n\n" + readme[ai_block.end():].lstrip()
+        position = readme.index(waka_start)
+        readme = readme[:position] + block + "\n\n" + readme[position:]
+    footer_marker = max(
+        (END_MARKER, "<!--END_SECTION:ai-providers-->", "<!--END_SECTION:waka-->"),
+        key=readme.rfind,
     )
     return readme.replace(
         footer_marker,
