@@ -34,24 +34,45 @@ gpt-6-luna [codex]               8.36M  ░░░░░░░░░░░░░�
 <!--END_SECTION:ai-providers-->
 
 <!--START_SECTION:waka-->
+**I'm an Early 🐤** 
+
+```text
+🌞 Morning                50528 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.86 % 
+🌆 Daytime                174340 commits      █████████████░░░░░░░░░░░░   51.28 % 
+🌃 Evening                88395 commits       ██████░░░░░░░░░░░░░░░░░░░   26.00 % 
+🌙 Night                  26741 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.86 % 
+```
+📅 **I'm Most Productive on Wednesday** 
+
+```text
+Monday                   55288 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.26 % 
+Tuesday                  54689 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.08 % 
+Wednesday                62636 commits       █████░░░░░░░░░░░░░░░░░░░░   18.42 % 
+Thursday                 59693 commits       ████░░░░░░░░░░░░░░░░░░░░░   17.56 % 
+Friday                   50021 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.71 % 
+Saturday                 26289 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.73 % 
+Sunday                   31388 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   09.23 % 
+```
+
+
 📊 **This Week I Spent My Time On** 
 
 ```text
 🕑︎ Time Zone: Asia/Saigon
 
 💬 Programming Languages: 
-Typescript               10 hrs 12 mins      ███████████░░░░░░░░░░░░░░   44.10 % 
-Markdown                 5 hrs 18 mins       ██████░░░░░░░░░░░░░░░░░░░   22.92 % 
-Unknown                  2 hrs 33 mins       ███░░░░░░░░░░░░░░░░░░░░░░   11.06 % 
-TSX                      1 hrs 54 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   08.24 % 
-TOML                     1 hrs 14 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   05.31 % 
+Typescript               11 hrs 25 mins      ███████████░░░░░░░░░░░░░░   44.36 % 
+Markdown                 6 hrs 1 mins        ██████░░░░░░░░░░░░░░░░░░░   23.42 % 
+Unknown                  2 hrs 45 mins       ███░░░░░░░░░░░░░░░░░░░░░░   10.66 % 
+TSX                      1 hrs 57 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   07.61 % 
+TOML                     1 hrs 14 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   04.77 % 
 
 🔥 Editors: 
-Orca                     22 hrs 40 mins      ████████████████████████░   97.96 % 
-Codex-vscode             0 hrs 28 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   02.04 % 
+Orca                     25 hrs 15 mins      █████████████████████████   98.17 % 
+Codex-vscode             0 hrs 28 mins       ░░░░░░░░░░░░░░░░░░░░░░░░░   01.83 % 
 
 💻 Operating System: 
-Macos                    23 hrs 9 mins       █████████████████████████   100.00 % 
+Macos                    25 hrs 43 mins      █████████████████████████   100.00 % 
 ```
 
 **I Mostly Code in TypeScript** 
