@@ -88,25 +88,35 @@ deepseek/4.1-flash           7,722 lines  ████████████�
 gpt/6-luna                   4,573 lines  ████████░░░░░░░░░░░░░░░░░   32.37 %
 gpt/6.1-sol                  1,785 lines  ███░░░░░░░░░░░░░░░░░░░░░░   12.63 %
 gpt/6-luna-xhigh                49 lines  ░░░░░░░░░░░░░░░░░░░░░░░░░    0.35 %
+
+── Local provider / model usage · token share ──
+
+🔤 40,148,251 Input Tokens · 6,985,001 Output Tokens
+💾 2,098,484,736 Cache Read · 0 Cache Write
+🧠 14,260 responses · 2,145,617,988 tokens (including cache)
+💵 Recorded cost (USD): $58.1125 (partial: 14119/14260)
+
+gpt-6-luna                 1,519,440,097 tokens  ██████████████████░░░░░░░   70.82%
+  openai-codex / pi · 93 sessions · USD $21.0066
+deepseek-v4.1-flash          419,257,203 tokens  █████░░░░░░░░░░░░░░░░░░░░   19.54%
+  opencode-go / pi · 8 sessions · USD $2.3238
+gpt-6.1-sol                  198,560,111 tokens  ██░░░░░░░░░░░░░░░░░░░░░░░    9.25%
+  openai-codex / pi · 10 sessions · USD $34.7820
+gpt-6-luna                     8,360,577 tokens  ░░░░░░░░░░░░░░░░░░░░░░░░░    0.39%
+  openai / codex · 5 sessions · USD N/A
+
+Local logs: 07 Nov 2026 10:43 UTC – 14 Nov 2026 10:43 UTC.
+
+Separate from Wakapi lines/time above; do not add the two token sources.
+Token share includes cache and all models, not code contribution.
+Providers are recorded labels, not inferred billing routes.
+Cost: tool-recorded USD estimate (Pi only), not an invoice.
+Codex/Claude: N/A. Partial = covered responses; missing is not zero.
+Sessions are per model and may overlap.
 ```
 <!--END_SECTION:ai-coding-->
 
 <!--START_SECTION:ai-providers-->
-**Provider / Model**
-
-7-day usage: **2,137,958,288 tokens** · **14,199 responses** · Recorded cost (USD): **$57.7476 (partial: 14058/14199)**
-
-| Provider | Model | Agent | Input | Output | Cache read | Cache write | Tokens % | Sessions | Cost (USD) |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| openai-codex | gpt-6-luna | pi | 33,185,187 | 5,766,462 | 1,480,488,448 | 0 | 71.1% | 93 | $21.0066 |
-| opencode-go | deepseek-v4.1-flash | pi | 3,872,483 | 817,699 | 409,305,600 | 0 | 19.4% | 8 | $2.2994 |
-| openai-codex | gpt-6.1-sol | pi | 2,519,803 | 286,253 | 193,355,776 | 0 | 9.2% | 10 | $34.4416 |
-| openai | gpt-6-luna | codex | 539,834 | 96,839 | 7,723,904 | 0 | 0.4% | 5 | N/A |
-
-Local logs: 07 Nov 2026 10:35 UTC – 14 Nov 2026 10:35 UTC.
-
-Total tokens = input + output + cache read + cache write. Separate from Wakapi's lines/time above; providers are log labels, not inferred billing routes. Unknown providers stay unknown.
-Cost is the tool-recorded USD estimate, not an invoice; no price-table estimates. Currently available from Pi usage.cost.total only; Codex/Claude costs are N/A. Partial costs cover only the stated responses; missing costs are not zero. Token shares include all rows and cache tokens, not code contribution. Sessions are per row and may overlap across models.
 <!--END_SECTION:ai-providers-->
 
  Last Updated on 14 November 2026 UTC

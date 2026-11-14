@@ -5,7 +5,7 @@ from tempfile import TemporaryDirectory
 import unittest
 
 from export_ai_providers import collect, recorded_cost, safe_label, update_provider_section
-from wakapi_ai_stats import normalize_layout, render_providers
+from wakapi_ai_stats import LOCAL_USAGE_DIVIDER, normalize_layout, render_providers, update_readme
 
 
 class ExportProviderTests(unittest.TestCase):
@@ -129,8 +129,8 @@ class ExportProviderTests(unittest.TestCase):
         snapshot = collect(self.home, self.now)
         self.assertIn('No local session usage', render_providers(snapshot))
         snapshot['rows'] = [{'provider': 'p', 'model': 'm', 'agent': 'pi'}]
-        self.assertIn('0.0%', render_providers(snapshot))
-        self.assertIn('Recorded cost (USD): **N/A**', render_providers(snapshot))
+        self.assertIn('0.00%', render_providers(snapshot))
+        self.assertIn('Recorded cost (USD): N/A', render_providers(snapshot))
 
     def test_missing_cost_is_null_and_rendered_na(self):
         rows = self.pi_rows()
@@ -139,7 +139,7 @@ class ExportProviderTests(unittest.TestCase):
         snapshot = collect(self.home, self.now)
         self.assertIsNone(snapshot['rows'][0]['cost_usd'])
         self.assertEqual(snapshot['rows'][0]['cost_responses'], 0)
-        self.assertIn('Recorded cost (USD): **N/A**', render_providers(snapshot))
+        self.assertIn('Recorded cost (USD): N/A', render_providers(snapshot))
 
     def test_zero_cost_and_legacy_snapshots(self):
         self.log('.pi/agent/sessions/a.jsonl', self.pi_rows())
@@ -148,7 +148,7 @@ class ExportProviderTests(unittest.TestCase):
         self.assertIn('$0.0000', render_providers(snapshot))
         del snapshot['rows'][0]['cost_usd']
         del snapshot['rows'][0]['cost_responses']
-        self.assertIn('Recorded cost (USD): **N/A**', render_providers(snapshot))
+        self.assertIn('Recorded cost (USD): N/A', render_providers(snapshot))
 
     def test_share_denominator_includes_hidden_rows(self):
         snapshot = {'start': self.when, 'end': self.now.isoformat(), 'rows': [
@@ -156,9 +156,9 @@ class ExportProviderTests(unittest.TestCase):
              'responses': 1, 'sessions': 1} for i in range(13)]}
         rendered = render_providers(snapshot)
         self.assertIn('130 tokens', rendered)
-        self.assertIn('7.7%', rendered)
+        self.assertIn('7.69%', rendered)
         self.assertIn('Showing 12 of 13', rendered)
-        self.assertNotIn('| m12 |', rendered)
+        self.assertNotIn('m12 ', rendered)
 
     def test_safe_labels_reject_urls_credentials_and_markdown(self):
         for value in ["https://gateway/api?key=secret", "sk-secret", "waka_secret", "bad|row", None]:
@@ -167,12 +167,34 @@ class ExportProviderTests(unittest.TestCase):
     def test_rendering_preserves_other_sections_and_keeps_date_last(self):
         self.log(".pi/agent/sessions/a.jsonl", self.pi_rows())
         snapshot = collect(self.home, self.now)
-        readme = ("<!--START_SECTION:ai-coding-->Wakapi lines<!--END_SECTION:ai-coding-->\n\n"
+        readme = ("<!--START_SECTION:ai-coding-->🤖 **AI Coding This Week**\n\n"
+                  "```text\nWakapi lines\n```\n<!--END_SECTION:ai-coding-->\n\n"
                   "<!--START_SECTION:ai-providers-->old<!--END_SECTION:ai-providers-->\n\n"
                   " Last Updated on 13 November 2026 UTC\n\ncontact")
         result = normalize_layout(update_provider_section(readme, snapshot), "14 November 2026")
         self.assertIn("Wakapi lines", result)
-        self.assertIn("openai-codex | gpt-example | pi | 100 | 20 | 50 | 5 | 100.0% | 1 | $999.0000", result)
+        self.assertIn("gpt-example", result)
+        self.assertIn("openai-codex / pi · 1 sessions · USD $999.0000", result)
+        self.assertIn("100.00%", result)
+        self.assertIn("█" * 25, result)
+        self.assertIn("100 Input Tokens · 20 Output Tokens", result)
+        self.assertIn("50 Cache Read · 5 Cache Write", result)
+        self.assertNotIn("| Provider |", result)
+        self.assertEqual(result.count("```"), 2)
+        self.assertEqual(result.count("AI Coding This Week"), 1)
+        self.assertEqual(result.count(LOCAL_USAGE_DIVIDER), 1)
+        self.assertLess(result.index(LOCAL_USAGE_DIVIDER), result.index("<!--END_SECTION:ai-coding-->"))
+        self.assertIn("<!--START_SECTION:ai-providers-->\n<!--END_SECTION:ai-providers-->", result)
+        target = self.home / 'README.md'
+        target.write_text(result)
+        update_readme(str(target), "🤖 **AI Coding This Week**\n\n```text\nNew Wakapi lines\n```\n")
+        refreshed = target.read_text()
+        self.assertIn('New Wakapi lines', refreshed)
+        self.assertNotIn('\\nWakapi lines', refreshed)
+        self.assertIn('USD $999.0000', refreshed)
+        self.assertEqual(refreshed.count('```'), 2)
+        self.assertEqual(refreshed.count(LOCAL_USAGE_DIVIDER), 1)
+        self.assertEqual(update_provider_section(refreshed, snapshot), refreshed)
         self.assertGreater(result.index("Last Updated"), result.index("END_SECTION:ai-providers"))
         self.assertEqual(result.count("Last Updated"), 1)
         self.assertEqual(update_provider_section(result, snapshot), result)

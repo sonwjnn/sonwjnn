@@ -1,9 +1,9 @@
 {
   "version": 2,
   "source": "local-session-logs",
-  "generated_at": "2026-11-14T10:35:11.014895+00:00",
-  "start": "2026-11-07T10:35:11.014895+00:00",
-  "end": "2026-11-14T10:35:11.014895+00:00",
+  "generated_at": "2026-11-14T10:43:06.132883+00:00",
+  "start": "2026-11-07T10:43:06.132883+00:00",
+  "end": "2026-11-14T10:43:06.132883+00:00",
   "rows": [
     {
       "agent": "codex",
@@ -35,26 +35,26 @@
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.1-sol",
-      "input_tokens": 2519803,
-      "output_tokens": 286253,
-      "cache_read_tokens": 193355776,
+      "input_tokens": 2533766,
+      "output_tokens": 293737,
+      "cache_read_tokens": 195732608,
       "cache_write_tokens": 0,
-      "responses": 1195,
-      "cost_responses": 1195,
-      "cost_usd": 34.4415962,
+      "responses": 1229,
+      "cost_responses": 1229,
+      "cost_usd": 34.7820454,
       "sessions": 10
     },
     {
       "agent": "pi",
       "provider": "opencode-go",
       "model": "deepseek-v4.1-flash",
-      "input_tokens": 3872483,
-      "output_tokens": 817699,
-      "cache_read_tokens": 409305600,
+      "input_tokens": 3889464,
+      "output_tokens": 827963,
+      "cache_read_tokens": 414539776,
       "cache_write_tokens": 0,
-      "responses": 1551,
-      "cost_responses": 1551,
-      "cost_usd": 2.29940865,
+      "responses": 1578,
+      "cost_responses": 1578,
+      "cost_usd": 2.323816728,
       "sessions": 8
     }
   ]

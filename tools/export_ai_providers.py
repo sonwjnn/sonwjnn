@@ -176,8 +176,10 @@ def collect(home: Path, now: datetime) -> dict:
 
 
 def update_provider_section(readme: str, snapshot: dict) -> str:
-    # Shared rendering with the remote Wakapi generator, but no private log parsing there.
-    from wakapi_ai_stats import render_providers
+    # Share one visual block without mixing the two sources' metrics.
+    from wakapi_ai_stats import (
+        START_MARKER, END_MARKER, combine_ai_usage, render_providers, replace_section,
+    )
     start_marker = "<!--START_SECTION:ai-providers-->"
     end_marker = "<!--END_SECTION:ai-providers-->"
     if readme.count(start_marker) != 1 or readme.count(end_marker) != 1:
@@ -186,7 +188,12 @@ def update_provider_section(readme: str, snapshot: dict) -> str:
     end = readme.index(end_marker)
     if end < start:
         raise ValueError("Provider section markers are out of order")
-    return readme[:start] + "\n" + render_providers(snapshot) + "\n" + readme[end:]
+    # Retain the legacy marker pair, empty, so existing automation stays compatible.
+    readme = readme[:start] + "\n" + readme[end:]
+    if readme.count(START_MARKER) != 1 or readme.count(END_MARKER) != 1:
+        raise ValueError("README must contain exactly one AI coding marker pair")
+    content = readme.split(START_MARKER, 1)[1].split(END_MARKER, 1)[0]
+    return replace_section(readme, combine_ai_usage(content, render_providers(snapshot)))
 
 
 def main() -> None:

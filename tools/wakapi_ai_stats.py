@@ -19,6 +19,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 START_MARKER = "<!--START_SECTION:ai-coding-->"
 END_MARKER = "<!--END_SECTION:ai-coding-->"
 TIMEOUT_SECONDS = 20
+LOCAL_USAGE_DIVIDER = "── Local provider / model usage · token share ──"
 
 
 def _parse_time(value: str) -> datetime:
@@ -242,7 +243,7 @@ def _model_label(value: str) -> str:
 
 
 def render(summary: dict) -> str:
-    lines = ["🤖 **AI Coding This Week**", "", "```text"]
+    lines = ["🤖 **AI Coding This Week**", "", "```text", "Wakapi telemetry", ""]
     if summary["ai_event_count"] == 0 and not (summary["ai_seconds"] or 0):
         lines.append("No AI coding telemetry was returned by Wakapi for this week.")
     else:
@@ -281,7 +282,7 @@ def render(summary: dict) -> str:
             )
             if model_rows:
                 total_lines = sum(max(0, row["ai_lines"]) for _, row in model_rows)
-                lines.append("")
+                lines.append("\nWakapi models · share of AI lines")
                 for model, values in model_rows[:5]:
                     percent = max(0, values["ai_lines"]) / total_lines * 100 if total_lines else 0
                     filled = round(percent / 100 * 25)
@@ -310,9 +311,9 @@ def replace_section(readme: str, content: str) -> str:
 
 
 def render_providers(snapshot: dict) -> str:
-    """Display a separate local-log table; never attribute Wakapi lines to providers."""
+    """Render plain text for the shared AI block; keep local and Wakapi metrics distinct."""
     rows = snapshot.get("rows", [])
-    lines = ["**Provider / Model**", ""]
+    lines = [LOCAL_USAGE_DIVIDER, ""]
     def total(row: dict) -> int:
         return sum(max(0, _as_int(row.get(key))) for key in (
             "input_tokens", "output_tokens", "cache_read_tokens", "cache_write_tokens"))
@@ -338,40 +339,52 @@ def render_providers(snapshot: dict) -> str:
     costs = [cost_info(row) for row in ordered]
     covered = sum(count for _, count in costs)
     cost = sum(value for value, _ in costs if value is not None) if covered else None
+    input_tokens = sum(max(0, _as_int(row.get("input_tokens"))) for row in ordered)
+    output_tokens = sum(max(0, _as_int(row.get("output_tokens"))) for row in ordered)
+    cache_read = sum(max(0, _as_int(row.get("cache_read_tokens"))) for row in ordered)
+    cache_write = sum(max(0, _as_int(row.get("cache_write_tokens"))) for row in ordered)
     lines.extend([
-        f"7-day usage: **{all_tokens:,} tokens** · **{responses:,} responses** · "
-        f"Recorded cost (USD): **{cost_text(cost, covered, responses)}**", "",
-        "| Provider | Model | Agent | Input | Output | Cache read | Cache write | Tokens % | Sessions | Cost (USD) |",
-        "| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+        f"🔤 {input_tokens:,} Input Tokens · {output_tokens:,} Output Tokens",
+        f"💾 {cache_read:,} Cache Read · {cache_write:,} Cache Write",
+        f"🧠 {responses:,} responses · {all_tokens:,} tokens (including cache)",
+        f"💵 Recorded cost (USD): {cost_text(cost, covered, responses)}", "",
     ])
     for row in ordered[:12]:
-        lines.append(
-            f"| {_model_label(str(row.get('provider', 'unknown')))} "
-            f"| {_model_label(str(row.get('model', 'unknown')))} "
-            f"| {_model_label(str(row.get('agent', 'unknown')))} "
-            f"| {max(0, _as_int(row.get('input_tokens'))):,} "
-            f"| {max(0, _as_int(row.get('output_tokens'))):,} "
-            f"| {max(0, _as_int(row.get('cache_read_tokens'))):,} "
-            f"| {max(0, _as_int(row.get('cache_write_tokens'))):,} "
-            f"| {(total(row) / all_tokens * 100 if all_tokens else 0):.1f}% "
-            f"| {max(0, _as_int(row.get('sessions'))):,} "
-            f"| {cost_text(*cost_info(row), max(0, _as_int(row.get('responses'))))} |"
-        )
+        label = _model_label(str(row.get('model', 'unknown')))
+        provider = _model_label(str(row.get('provider', 'unknown')))
+        agent = _model_label(str(row.get('agent', 'unknown')))
+        percent = total(row) / all_tokens * 100 if all_tokens else 0
+        filled = round(percent / 100 * 25)
+        bar = "█" * filled + "░" * (25 - filled)
+        lines.extend([
+            f"{label:<24} {total(row):>15,} tokens  {bar}  {percent:6.2f}%",
+            f"  {provider} / {agent} · {max(0, _as_int(row.get('sessions'))):,} sessions · "
+            f"USD {cost_text(*cost_info(row), max(0, _as_int(row.get('responses'))))}",
+        ])
     if not ordered:
-        lines = ["**Provider / Model**", "", "No local session usage exported for this period."]
+        lines = [LOCAL_USAGE_DIVIDER, "", "No local session usage exported for this period."]
     start = _parse_time(snapshot["start"]).strftime("%d %b %Y %H:%M UTC")
     end = _parse_time(snapshot["end"]).strftime("%d %b %Y %H:%M UTC")
     lines.extend(["", f"Local logs: {start} – {end}.", "",
-                  "Total tokens = input + output + cache read + cache write. Separate from Wakapi's lines/time above; "
-                  "providers are log labels, not inferred billing routes. Unknown providers stay unknown.",
-                  "Cost is the tool-recorded USD estimate, not an invoice; no price-table estimates. "
-                  "Currently available from Pi usage.cost.total only; Codex/Claude costs are N/A. "
-                  "Partial costs cover only the stated responses; missing costs are not zero. "
-                  "Token shares include all rows and cache tokens, not code contribution. "
-                  "Sessions are per row and may overlap across models."])
+                  "Separate from Wakapi lines/time above; do not add the two token sources.",
+                  "Token share includes cache and all models, not code contribution.",
+                  "Providers are recorded labels, not inferred billing routes.",
+                  "Cost: tool-recorded USD estimate (Pi only), not an invoice.",
+                  "Codex/Claude: N/A. Partial = covered responses; missing is not zero.",
+                  "Sessions are per model and may overlap."])
     if len(ordered) > 12:
         lines.append(f"Showing 12 of {len(ordered)} provider/model rows.")
     return "\n".join(lines)
+
+
+def combine_ai_usage(content: str, local_usage: str) -> str:
+    """Keep both sources inside one text fence, replacing an earlier local block."""
+    base = content.split(LOCAL_USAGE_DIVIDER, 1)[0].strip()
+    if base.endswith("```"):
+        base = base[:-3].rstrip()
+    if "```text" not in base:
+        raise ValueError("AI coding content must contain a text code block")
+    return base + "\n\n" + local_usage.rstrip() + "\n```\n"
 
 
 def normalize_layout(readme: str, updated_date: str) -> str:
@@ -392,6 +405,14 @@ def normalize_layout(readme: str, updated_date: str) -> str:
 def update_readme(path: str, content: str) -> bool:
     with open(path, encoding="utf-8") as readme_file:
         original = readme_file.read()
+    # A Wakapi refresh must retain the already-exported local aggregates.
+    if original.count(START_MARKER) == 1 and original.count(END_MARKER) == 1:
+        current = original.split(START_MARKER, 1)[1].split(END_MARKER, 1)[0]
+        if LOCAL_USAGE_DIVIDER in current:
+            local = current.split(LOCAL_USAGE_DIVIDER, 1)[1].rstrip()
+            if local.endswith("```"):
+                local = local[:-3].rstrip()
+            content = combine_ai_usage(content, LOCAL_USAGE_DIVIDER + local)
     updated = normalize_layout(
         replace_section(original, content),
         datetime.now(timezone.utc).strftime("%d %B %Y"),
