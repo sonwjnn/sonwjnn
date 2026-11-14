@@ -19,7 +19,8 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 START_MARKER = "<!--START_SECTION:ai-coding-->"
 END_MARKER = "<!--END_SECTION:ai-coding-->"
 TIMEOUT_SECONDS = 20
-LOCAL_USAGE_DIVIDER = "── Local provider / model usage · token share ──"
+LOCAL_USAGE_DIVIDER = "Total: "
+LEGACY_USAGE_DIVIDER = "── Local provider / model usage · token share ──"
 
 
 def _parse_time(value: str) -> datetime:
@@ -256,7 +257,7 @@ def render(summary: dict) -> str:
         if summary["ai_event_count"]:
             lines.append(
                 "\n✍️ Lines changed: "
-                f"AI {summary['ai_lines']:,} · human {summary['human_lines']:,}"
+                f"{summary['ai_lines'] + summary['human_lines']:,}"
             )
             lines.append(
                 "\n🔤 "
@@ -313,7 +314,7 @@ def replace_section(readme: str, content: str) -> str:
 def render_providers(snapshot: dict) -> str:
     """Render plain text for the shared AI block; keep local and Wakapi metrics distinct."""
     rows = snapshot.get("rows", [])
-    lines = [LOCAL_USAGE_DIVIDER, ""]
+    lines = []
     def total(row: dict) -> int:
         return sum(max(0, _as_int(row.get(key))) for key in (
             "input_tokens", "output_tokens", "cache_read_tokens", "cache_write_tokens"))
@@ -346,8 +347,8 @@ def render_providers(snapshot: dict) -> str:
         return amount + ("*" if covered < count else "")
 
     lines.extend([
-        f"Tokens {compact_number(all_tokens)} (incl. cache) · "
-        f"Recorded cost {compact_cost(cost, covered, responses)} USD", "",
+        f"{LOCAL_USAGE_DIVIDER}{compact_number(all_tokens)} tokens · "
+        f"{compact_cost(cost, covered, responses)} USD", "",
     ])
     for row in ordered[:12]:
         label = _model_label(str(row.get('model', 'unknown')))
@@ -363,7 +364,7 @@ def render_providers(snapshot: dict) -> str:
             f"{name:<30} {compact_number(total(row)):>7}  {bar} {percent:5.1f}% {amount:>9}"
         )
     if not ordered:
-        lines = [LOCAL_USAGE_DIVIDER, "", "No local session usage exported for this period."]
+        lines.append("No local session usage exported for this period.")
     if len(ordered) > 12:
         lines.append(f"Showing 12 of {len(ordered)} provider/model rows.")
     if covered and covered < responses:
@@ -374,7 +375,10 @@ def render_providers(snapshot: dict) -> str:
 
 def combine_ai_usage(content: str, local_usage: str) -> str:
     """Keep both sources inside one text fence, replacing an earlier local block."""
-    base = content.split(LOCAL_USAGE_DIVIDER, 1)[0].strip()
+    base = content
+    for divider in (LOCAL_USAGE_DIVIDER, LEGACY_USAGE_DIVIDER):
+        base = base.split(divider, 1)[0]
+    base = base.strip()
     if base.endswith("```"):
         base = base[:-3].rstrip()
     if "```text" not in base:
@@ -384,6 +388,12 @@ def combine_ai_usage(content: str, local_usage: str) -> str:
     # Avoid two token totals, two model charts, and unavailable-time placeholders.
     summary = [line for line in body.splitlines()
                if line.startswith("✍") or (line.startswith("⏱") and "not reported" not in line)]
+    # Migrate already-published line counts without fetching fresh telemetry.
+    summary = [re.sub(
+        r"AI ([\d,]+) · human ([\d,]+)",
+        lambda match: f"{int(match[1].replace(',', '')) + int(match[2].replace(',', '')):,}",
+        line,
+    ) for line in summary]
     base = heading.rstrip() + "\n\n```text\n" + "\n".join(summary)
     usage = local_usage.rstrip()
     if "```" not in usage:  # Compatibility with previously exported plain-text blocks.
@@ -394,6 +404,12 @@ def combine_ai_usage(content: str, local_usage: str) -> str:
 def normalize_layout(readme: str, updated_date: str) -> str:
     """Keep one AI heading and put the refresh date after both generated blocks."""
     readme = readme.replace("### AI coding activity\n\n", "")
+    # Upstream may regenerate these sections; strip them in the existing postprocessor.
+    readme = re.sub(
+        r"^[^\n]*\*\*I'm (?:an Early[^\n]*|a Night[^\n]*|Most Productive on [^\n]*)"
+        r"\*\*[ \t]*\n\s*```text\n.*?\n```[ \t]*\n*",
+        "", readme, flags=re.MULTILINE | re.DOTALL,
+    )
     readme = re.sub(r"\n+[ \t]*Last Updated on [^\n]+\n*", "\n\n", readme)
     footer_marker = (
         "<!--END_SECTION:ai-providers-->"
@@ -403,7 +419,7 @@ def normalize_layout(readme: str, updated_date: str) -> str:
         footer_marker,
         f"{footer_marker}\n\n Last Updated on {updated_date} UTC",
         1,
-    )
+    ).rstrip() + "\n"
 
 
 def update_readme(path: str, content: str) -> bool:
@@ -412,11 +428,13 @@ def update_readme(path: str, content: str) -> bool:
     # A Wakapi refresh must retain the already-exported local aggregates.
     if original.count(START_MARKER) == 1 and original.count(END_MARKER) == 1:
         current = original.split(START_MARKER, 1)[1].split(END_MARKER, 1)[0]
-        if LOCAL_USAGE_DIVIDER in current:
-            local = current.split(LOCAL_USAGE_DIVIDER, 1)[1].rstrip()
+        divider = next((marker for marker in (LOCAL_USAGE_DIVIDER, LEGACY_USAGE_DIVIDER)
+                        if marker in current), None)
+        if divider is not None:
+            local = current.split(divider, 1)[1].rstrip()
             if local.endswith("```"):
                 local = local[:-3].rstrip()
-            content = combine_ai_usage(content, LOCAL_USAGE_DIVIDER + local)
+            content = combine_ai_usage(content, divider + local)
     updated = normalize_layout(
         replace_section(original, content),
         datetime.now(timezone.utc).strftime("%d %B %Y"),

@@ -111,7 +111,8 @@ class WakapiAiStatsTests(unittest.TestCase):
 
         self.assertIn("AI Coding This Week", output)
         self.assertIn("⏱ AI Coding Time: 2 hrs 0 mins (25.00%)", output)
-        self.assertIn("AI 15 · human 5", output)
+        self.assertIn("✍️ Lines changed: 20", output)
+        self.assertNotIn("AI 15 · human 5", output)
         self.assertIn("1,500 Input Tokens, 600 Output Tokens", output)
         self.assertIn("█████████████████████████  100.00 %", output)
         self.assertIn("15 lines", output)
@@ -130,6 +131,29 @@ class WakapiAiStatsTests(unittest.TestCase):
         self.assertLess(result.index("<!--END_SECTION:ai-coding-->"), result.index("Last Updated"))
         self.assertLess(result.index("Last Updated"), result.index("### Get in touch"))
         self.assertEqual(normalize_layout(result, "14 November 2026"), result)
+
+    def test_layout_removes_commit_schedule_sections_but_preserves_other_stats(self) -> None:
+        for chronotype in ["**I'm an Early 🐤**", "**I'm a Night 🦉**"]:
+            with self.subTest(chronotype=chronotype):
+                readme = (
+                    "<!--START_SECTION:waka-->\n" + chronotype + " \n\n"
+                    "```text\n🌞 Morning 100 commits\n🌙 Night 50 commits\n```\n"
+                    "📅 **I'm Most Productive on Wednesday** \n\n"
+                    "```text\nMonday 100 commits\nWednesday 200 commits\n```\n\n"
+                    "**This Week I Spent My Time On**\n\n```text\nPython 5 hrs\n```\n"
+                    "<!--END_SECTION:waka-->\n"
+                    "<!--START_SECTION:ai-coding-->AI content<!--END_SECTION:ai-coding-->\n"
+                )
+                updated = normalize_layout(readme, "14 November 2026")
+                self.assertNotIn("I'm an Early", updated)
+                self.assertNotIn("I'm a Night", updated)
+                self.assertNotIn("Most Productive", updated)
+                self.assertNotIn("Morning 100", updated)
+                self.assertNotIn("Wednesday 200", updated)
+                self.assertIn("Python 5 hrs", updated)
+                self.assertIn("<!--START_SECTION:waka-->", updated)
+                self.assertIn("<!--END_SECTION:waka-->", updated)
+                self.assertEqual(normalize_layout(updated, "14 November 2026"), updated)
 
     def test_empty_models_are_hidden_and_bars_use_line_share(self) -> None:
         result = aggregate(self.stats, self.heartbeats, self.start, self.end)

@@ -16,27 +16,6 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 ### Coding activity
 
 <!--START_SECTION:waka-->
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning                50415 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.88 % 
-🌆 Daytime                173873 commits      █████████████░░░░░░░░░░░░   51.31 % 
-🌃 Evening                88003 commits       ██████░░░░░░░░░░░░░░░░░░░   25.97 % 
-🌙 Night                  26582 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.84 % 
-```
-📅 **I'm Most Productive on Wednesday** 
-
-```text
-Monday                   55133 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.27 % 
-Tuesday                  54558 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.10 % 
-Wednesday                62530 commits       █████░░░░░░░░░░░░░░░░░░░░   18.45 % 
-Thursday                 59588 commits       ████░░░░░░░░░░░░░░░░░░░░░   17.58 % 
-Friday                   49843 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.71 % 
-Saturday                 26073 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.69 % 
-Sunday                   31148 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   09.19 % 
-```
-
-
 📊 **This Week I Spent My Time On** 
 
 ```text
@@ -76,11 +55,9 @@ Shell                    1 repo              ░░░░░░░░░░░�
 🤖 **AI Coding This Week**
 
 ```text
-✍️ Lines changed: AI 14,129 · human 0
+✍️ Lines changed: 14,129
 
-── Local provider / model usage · token share ──
-
-Tokens 2.15B (incl. cache) · Recorded cost $58.11* USD
+Total: 2.15B tokens · $58.11* USD
 
 gpt-6-luna [pi]                  1.52B  ███████████░░░░  70.8%    $21.01
 deepseek-v4.1-flash [pi]       419.26M  ███░░░░░░░░░░░░  19.5%     $2.32
