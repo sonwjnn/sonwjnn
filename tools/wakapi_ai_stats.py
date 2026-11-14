@@ -400,18 +400,21 @@ def render_providers(snapshot: dict) -> str:
         f"{LOCAL_USAGE_DIVIDER}{compact_number(all_tokens)} tokens · "
         f"{compact_cost(cost, covered, responses)}", "",
     ])
-    for row in ordered[:12]:
-        label = _model_label(str(row.get('model', 'unknown')))
+    def row_label(row: dict) -> str:
+        provider = _model_label(str(row.get('provider', 'unknown')))
+        model = _model_label(str(row.get('model', 'unknown')))
         agent = _model_label(str(row.get('agent', 'unknown')))
-        name = f"{label} [{agent}]"
-        if len(name) > 30:
-            name = name[:29] + "…"
+        return f"{provider}/{model} [{agent}]"
+
+    name_width = max([30] + [len(row_label(row)) for row in ordered[:12]])
+    for row in ordered[:12]:
+        name = row_label(row)
         percent = total(row) / all_tokens * 100 if all_tokens else 0
         filled = round(percent / 100 * 15)
         bar = "█" * filled + "░" * (15 - filled)
         amount = compact_cost(*cost_info(row), max(0, _as_int(row.get('responses'))))
         lines.append(
-            f"{name:<30} {compact_number(total(row)):>7}  {bar} {percent:5.1f}% {amount:>9}"
+            f"{name:<{name_width}} {compact_number(total(row)):>7}  {bar} {percent:5.1f}% {amount:>9}"
         )
     if not ordered:
         lines.append("No local session usage exported for this period.")

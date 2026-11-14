@@ -35,6 +35,18 @@ class ReadmeContracts(unittest.TestCase):
                          '<!--START_SECTION:ai-providers-->legacy<!--END_SECTION:ai-providers-->\n\n'
                          'unowned-suffix\n')
 
+    def test_chart_labels_distinguish_providers_for_the_same_model_and_agent(self):
+        snapshot = copy.deepcopy(self.snapshot)
+        snapshot['rows'][0].update(provider='openai-codex', model='gpt-6-luna')
+        second = dict(snapshot['rows'][0], provider='opencode-go')
+        snapshot['rows'].append(second)
+        output = render_providers(snapshot)
+        self.assertIn('openai-codex/gpt-6-luna [pi]', output)
+        self.assertIn('opencode-go/gpt-6-luna [pi]', output)
+        # Long labels must not lose the provider/model identity to truncation.
+        snapshot['rows'][0]['model'] = 'gpt-6-luna-long-model-version'
+        self.assertIn('openai-codex/gpt-6-luna-long-model-version [pi]', render_providers(snapshot))
+
     def section(self, readme, name):
         return readme.split(f'<!--START_SECTION:{name}-->', 1)[1].split(f'<!--END_SECTION:{name}-->', 1)[0]
 
