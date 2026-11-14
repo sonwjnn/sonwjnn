@@ -87,29 +87,8 @@ deepseek-v4.1-flash [pi]       419.26M  ███░░░░░░░░░░�
 gpt-6.1-sol [pi]               198.56M  █░░░░░░░░░░░░░░   9.3%    $34.78
 gpt-6-luna [codex]               8.36M  ░░░░░░░░░░░░░░░   0.4%       N/A
 
-* Partial recorded cost; see details below.
+* Partial recorded cost; missing costs are not zero.
 ```
-
-<details>
-<summary>Sources & usage details</summary>
-
-Local usage: 07 Nov 2026 10:43 UTC – 14 Nov 2026 10:43 UTC.
-
-- 2,145,617,988 tokens · 14,260 responses.
-- 40,148,251 Input Tokens · 6,985,001 Output Tokens.
-- 2,098,484,736 Cache Read · 0 Cache Write.
-- Recorded cost (USD): $58.1125 (partial: 14119/14260).
-- Separate from Wakapi lines/time above; the sources are not additive.
-- Bars show token share including cache, not code contribution.
-- Cost is the tool-recorded estimate (Pi only), not an invoice. Missing costs are N/A, not zero; * means partial coverage.
-- Provider labels are not billing routes; sessions can overlap across models.
-
-- gpt-6-luna (openai-codex / pi): 93 sessions; USD $21.0066.
-- deepseek-v4.1-flash (opencode-go / pi): 8 sessions; USD $2.3238.
-- gpt-6.1-sol (openai-codex / pi): 10 sessions; USD $34.7820.
-- gpt-6-luna (openai / codex): 5 sessions; USD N/A.
-
-</details>
 <!--END_SECTION:ai-coding-->
 
 <!--START_SECTION:ai-providers-->
