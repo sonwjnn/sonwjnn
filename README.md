@@ -19,7 +19,7 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 🤖 **AI Coding This Month**
 
 ```text
-✍️ Lines changed: 15,157
+Lines changed: 15,157
 Commits: 114
 
 Total: 3.94B tokens · $98.66* USD
@@ -36,27 +36,13 @@ gpt-6-luna [pi]                  1.33M  ░░░░░░░░░░░░░�
 <!--END_SECTION:ai-providers-->
 
 <!--START_SECTION:waka-->
-📊 **This Week I Spent My Time On** 
+📊 **This Month I Spent My Time On**
 
 ```text
-🕑︎ Time Zone: Asia/Saigon
-
-💬 Programming Languages: 
-Typescript               11 hrs 26 mins      ███████████░░░░░░░░░░░░░░   43.88 % 
-Markdown                 6 hrs 4 mins        ██████░░░░░░░░░░░░░░░░░░░   23.27 % 
-Unknown                  2 hrs 45 mins       ███░░░░░░░░░░░░░░░░░░░░░░   10.52 % 
-TSX                      2 hrs 5 mins        ██░░░░░░░░░░░░░░░░░░░░░░░   08.01 % 
-TOML                     1 hrs 14 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   04.71 % 
-
-🔥 Editors: 
-Orca                     25 hrs 36 mins      █████████████████████████   98.19 % 
-Codex-vscode             0 hrs 28 mins       ░░░░░░░░░░░░░░░░░░░░░░░░░   01.81 % 
-
-💻 Operating System: 
-Macos                    26 hrs 4 mins       █████████████████████████   100.00 % 
+Monthly coding statistics pending refresh.
 ```
 
-**I Mostly Code in TypeScript** 
+💻 **I Mostly Code in TypeScript** 
 
 ```text
 TypeScript               65 repos            ████████████████████░░░░░   78.31 % 

@@ -258,7 +258,7 @@ def render(summary: dict) -> str:
 
         if summary["ai_event_count"]:
             lines.append(
-                "\n✍️ Lines changed: "
+                "\nLines changed: "
                 f"{summary['ai_lines'] + summary['human_lines']:,}"
             )
             lines.append(
@@ -301,6 +301,51 @@ def render(summary: dict) -> str:
 
     lines.extend(["```", ""])
     return "\n".join(lines)
+
+
+def render_coding_month(stats: dict) -> str:
+    """Render coding durations from the same calendar-month stats as AI activity."""
+    lines = ['📊 **This Month I Spent My Time On**', '', '```text',
+             f"Time Zone: {_model_label(str(stats.get('timezone') or 'UTC'))}"]
+    for key, label in [('languages', 'Programming Languages'), ('editors', 'Editors'),
+                       ('operating_systems', 'Operating System')]:
+        lines.extend(['', label + ':'])
+        entries = stats.get(key, [])
+        if not isinstance(entries, list):
+            raise ValueError('Wakapi monthly coding entries must be a list')
+        entries = [entry for entry in entries if isinstance(entry, dict)]
+        entries.sort(key=lambda entry: _as_float(entry.get('total_seconds')), reverse=True)
+        if not entries:
+            lines.append('No activity this month.')
+        for entry in entries[:5]:
+            seconds = _as_float(entry.get('total_seconds'))
+            percent = _as_float(entry.get('percent'))
+            if not math.isfinite(seconds) or not math.isfinite(percent):
+                raise ValueError('Wakapi monthly coding values must be finite')
+            percent = min(100, max(0, percent))
+            filled = round(percent / 100 * 25)
+            bar = '█' * filled + '░' * (25 - filled)
+            name = _model_label(str(entry.get('name', 'unknown')))
+            lines.append(f'{name:<24} {_duration(max(0, seconds)):<20} {bar} {percent:6.2f} %')
+    lines.extend(['```', ''])
+    return '\n'.join(lines)
+
+
+def replace_coding_month(readme: str, content: str) -> str:
+    """Replace only coding-time stats, never the repository language breakdown."""
+    start_marker, end_marker = '<!--START_SECTION:waka-->', '<!--END_SECTION:waka-->'
+    if readme.count(start_marker) != 1 or readme.count(end_marker) != 1:
+        raise ValueError('README must contain exactly one waka marker pair')
+    start = readme.index(start_marker) + len(start_marker)
+    end = readme.index(end_marker)
+    if end < start:
+        raise ValueError('README waka markers are out of order')
+    section = readme[start:end]
+    pattern = r'[^\n]*\*\*This (?:Week|Month) I Spen[dt] My Time On\*\*[^\n]*\n\s*```text\n.*?\n```'
+    section, count = re.subn(pattern, lambda _: content.rstrip(), section, flags=re.DOTALL)
+    if count != 1:
+        raise ValueError('README must contain exactly one coding-time stats block')
+    return readme[:start] + section + readme[end:]
 
 
 def replace_section(readme: str, content: str) -> str:
@@ -394,7 +439,9 @@ def combine_ai_usage(content: str, local_usage: str) -> str:
     # With local usage present, keep only Wakapi's distinct line/time metrics.
     # Avoid two token totals, two model charts, and unavailable-time placeholders.
     summary = [line for line in body.splitlines()
-               if line.startswith("✍") or (line.startswith("⏱") and "not reported" not in line)]
+               if line.startswith(("✍", "Lines changed:"))
+               or (line.startswith("⏱") and "not reported" not in line)]
+    summary = [re.sub(r'^✍\ufe0f?\s*', '', line) for line in summary]
     # Migrate already-published line counts without fetching fresh telemetry.
     summary = [re.sub(
         r"AI ([\d,]+) · human ([\d,]+)",
@@ -415,6 +462,9 @@ def combine_ai_usage(content: str, local_usage: str) -> str:
 def normalize_layout(readme: str, updated_date: str) -> str:
     """Show AI before weekly stats and keep the date below all generated blocks."""
     readme = readme.replace("### AI coding activity\n\n", "")
+    readme = re.sub(r'(?m)^\*\*(I Mostly Code in [^\n]+)\*\*', r'💻 **\1**', readme)
+    for label in ('Time Zone', 'Programming Languages', 'Editors', 'Operating System'):
+        readme = re.sub(r'(?m)^[^\w\n]*(' + re.escape(label) + r':)', r'\1', readme)
     # Upstream may regenerate these sections; strip them in the existing postprocessor.
     readme = re.sub(
         r"^[^\n]*\*\*I'm (?:an Early[^\n]*|a Night[^\n]*|Most Productive on [^\n]*)"
@@ -446,7 +496,7 @@ def normalize_layout(readme: str, updated_date: str) -> str:
     ).rstrip() + "\n"
 
 
-def update_readme(path: str, content: str) -> bool:
+def update_readme(path: str, content: str, coding_content: str | None = None) -> bool:
     with open(path, encoding="utf-8") as readme_file:
         original = readme_file.read()
     # A Wakapi refresh must retain the already-exported local aggregates.
@@ -465,8 +515,11 @@ def update_readme(path: str, content: str) -> bool:
             if commit_line:
                 usage = commit_line + '\n' + usage
             content = combine_ai_usage(content, usage)
+    updated = replace_section(original, content)
+    if coding_content is not None:
+        updated = replace_coding_month(updated, coding_content)
     updated = normalize_layout(
-        replace_section(original, content),
+        updated,
         datetime.now(timezone.utc).strftime("%d %B %Y"),
     )
     if updated == original:
@@ -488,7 +541,7 @@ def main() -> int:
         stats, heartbeats, start, end = _fetch_month(api_base, api_key)
         summary = aggregate(stats, heartbeats, start, end)
         content = render(summary)
-        changed = update_readme("README.md", content)
+        changed = update_readme("README.md", content, render_coding_month(stats))
     except (ValueError, RuntimeError) as error:
         # Deliberately omit response bodies, request headers, and credentials.
         print(f"AI stats update failed: {error}", file=sys.stderr)
