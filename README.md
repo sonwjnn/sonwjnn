@@ -15,6 +15,7 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
   "devOps": ["Docker", "GitHub Actions", "Nginx"],
   "other": [ "Vim", "Neovim", "Postman", "Linux" ],
   "currently": "Going deeper on system design & distributed architecture",
+  "openTo": ["Full-time remote", "Freelance", "Open source", "Pro bono consulting"]
 }
 ```
 
