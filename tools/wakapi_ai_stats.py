@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import base64
 import json
+import math
 import os
 import re
 import sys
@@ -311,27 +312,63 @@ def replace_section(readme: str, content: str) -> str:
 def render_providers(snapshot: dict) -> str:
     """Display a separate local-log table; never attribute Wakapi lines to providers."""
     rows = snapshot.get("rows", [])
-    lines = ["**Provider / Model**", "",
-             "| Provider | Model | Agent | Tokens¹ | Sessions |",
-             "| --- | --- | --- | ---: | ---: |"]
+    lines = ["**Provider / Model**", ""]
     def total(row: dict) -> int:
         return sum(max(0, _as_int(row.get(key))) for key in (
             "input_tokens", "output_tokens", "cache_read_tokens", "cache_write_tokens"))
     ordered = sorted((row for row in rows if isinstance(row, dict)), key=total, reverse=True)
+    all_tokens = sum(total(row) for row in ordered)
+    responses = sum(max(0, _as_int(row.get("responses"))) for row in ordered)
+
+    def cost_info(row: dict) -> tuple[float | None, int]:
+        value = row.get("cost_usd")
+        covered = max(0, _as_int(row.get("cost_responses")))
+        count = max(0, _as_int(row.get("responses")))
+        if (not isinstance(value, (int, float)) or isinstance(value, bool)
+                or not math.isfinite(value) or value < 0 or not 0 < covered <= count):
+            return None, 0
+        return float(value), covered
+
+    def cost_text(value: float | None, covered: int, count: int) -> str:
+        if value is None:
+            return "N/A"
+        amount = f"${value:,.4f}" if value == 0 or value >= 0.0001 else "<$0.0001"
+        return amount if covered == count else f"{amount} (partial: {covered}/{count})"
+
+    costs = [cost_info(row) for row in ordered]
+    covered = sum(count for _, count in costs)
+    cost = sum(value for value, _ in costs if value is not None) if covered else None
+    lines.extend([
+        f"7-day usage: **{all_tokens:,} tokens** · **{responses:,} responses** · "
+        f"Recorded cost (USD): **{cost_text(cost, covered, responses)}**", "",
+        "| Provider | Model | Agent | Input | Output | Cache read | Cache write | Tokens % | Sessions | Cost (USD) |",
+        "| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+    ])
     for row in ordered[:12]:
         lines.append(
             f"| {_model_label(str(row.get('provider', 'unknown')))} "
             f"| {_model_label(str(row.get('model', 'unknown')))} "
             f"| {_model_label(str(row.get('agent', 'unknown')))} "
-            f"| {total(row):,} | {max(0, _as_int(row.get('sessions'))):,} |"
+            f"| {max(0, _as_int(row.get('input_tokens'))):,} "
+            f"| {max(0, _as_int(row.get('output_tokens'))):,} "
+            f"| {max(0, _as_int(row.get('cache_read_tokens'))):,} "
+            f"| {max(0, _as_int(row.get('cache_write_tokens'))):,} "
+            f"| {(total(row) / all_tokens * 100 if all_tokens else 0):.1f}% "
+            f"| {max(0, _as_int(row.get('sessions'))):,} "
+            f"| {cost_text(*cost_info(row), max(0, _as_int(row.get('responses'))))} |"
         )
     if not ordered:
         lines = ["**Provider / Model**", "", "No local session usage exported for this period."]
     start = _parse_time(snapshot["start"]).strftime("%d %b %Y %H:%M UTC")
     end = _parse_time(snapshot["end"]).strftime("%d %b %Y %H:%M UTC")
     lines.extend(["", f"Local logs: {start} – {end}.", "",
-                  "¹ Input + output + cache tokens. Separate from Wakapi's lines/time above; "
-                  "providers are log labels, not inferred billing routes. Unknown providers stay unknown."])
+                  "Total tokens = input + output + cache read + cache write. Separate from Wakapi's lines/time above; "
+                  "providers are log labels, not inferred billing routes. Unknown providers stay unknown.",
+                  "Cost is the tool-recorded USD estimate, not an invoice; no price-table estimates. "
+                  "Currently available from Pi usage.cost.total only; Codex/Claude costs are N/A. "
+                  "Partial costs cover only the stated responses; missing costs are not zero. "
+                  "Token shares include all rows and cache tokens, not code contribution. "
+                  "Sessions are per row and may overlap across models."])
     if len(ordered) > 12:
         lines.append(f"Showing 12 of {len(ordered)} provider/model rows.")
     return "\n".join(lines)

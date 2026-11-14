@@ -4,7 +4,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
 
-from export_ai_providers import collect, safe_label, update_provider_section
+from export_ai_providers import collect, recorded_cost, safe_label, update_provider_section
 from wakapi_ai_stats import normalize_layout, render_providers
 
 
@@ -40,10 +40,11 @@ class ExportProviderTests(unittest.TestCase):
             "agent": "pi", "provider": "openai-codex", "model": "gpt-example",
             "input_tokens": 100, "output_tokens": 20, "cache_read_tokens": 50,
             "cache_write_tokens": 5, "responses": 1, "sessions": 1,
+            "cost_usd": 999.0, "cost_responses": 1,
         }])
         exported = json.dumps(snapshot)
         for secret in ["private-session", "private-record", "private-response", "private-project",
-                       "PRIVATE CONVERSATION", "sk-secret", "cost", str(self.home)]:
+                       "PRIVATE CONVERSATION", "sk-secret", str(self.home)]:
             self.assertNotIn(secret, exported)
 
     def test_codex_uses_response_delta_not_cumulative_totals(self):
@@ -64,6 +65,8 @@ class ExportProviderTests(unittest.TestCase):
         self.assertEqual(row["cache_read_tokens"], 90)
         self.assertEqual(row["output_tokens"], 30)
         self.assertEqual(row["sessions"], 1)
+        self.assertIsNone(row["cost_usd"])
+        self.assertEqual(row["cost_responses"], 0)
 
     def test_claude_does_not_infer_provider_from_model(self):
         self.log(".claude/projects/a.jsonl", [
@@ -76,12 +79,86 @@ class ExportProviderTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["provider"], "unknown")
         self.assertEqual(rows[0]["input_tokens"], 10)
+        self.assertIsNone(rows[0]["cost_usd"])
 
     def test_old_and_empty_usage_records_are_excluded(self):
         rows = self.pi_rows()
         rows[1]["timestamp"] = "2026-10-01T00:00:00Z"
         self.log(".pi/agent/sessions/old.jsonl", rows)
         self.assertEqual(collect(self.home, self.now)["rows"], [])
+
+    def test_recorded_cost_rejects_invalid_values_but_preserves_zero(self):
+        for value in [None, True, False, -1, float('nan'), float('inf'), '1.20', {}]:
+            with self.subTest(value=value):
+                self.assertIsNone(recorded_cost({'cost': {'total': value}}))
+        self.assertIsNone(recorded_cost({'cost': 12}))
+        self.assertIsNone(recorded_cost({}))
+        self.assertEqual(recorded_cost({'cost': {'total': 0}}), 0.0)
+        self.assertEqual(recorded_cost({'cost': {'total': 0.12}}), 0.12)
+
+    def test_partial_costs_keep_coverage_and_missing_is_not_zero(self):
+        rows = self.pi_rows()
+        second = json.loads(json.dumps(rows[1]))
+        second['id'] = 'second'
+        second['message']['responseId'] = 'second-response'
+        del second['message']['usage']['cost']
+        rows.append(second)
+        self.log('.pi/agent/sessions/a.jsonl', rows)
+        snapshot = collect(self.home, self.now)
+        row = snapshot['rows'][0]
+        self.assertEqual(row['cost_usd'], 999)
+        self.assertEqual(row['cost_responses'], 1)
+        self.assertEqual(row['responses'], 2)
+        self.assertIn('$999.0000 (partial: 1/2)', render_providers(snapshot))
+        self.assertIn('350 tokens', render_providers(snapshot))
+
+    def test_recorded_cost_sums_without_counting_duplicate_responses(self):
+        rows = self.pi_rows()
+        rows[1]['message']['usage']['cost']['total'] = 0.1
+        second = json.loads(json.dumps(rows[1]))
+        second['message']['responseId'] = 'second-response'
+        second['message']['usage']['cost']['total'] = 0.2
+        rows.extend([second, second])
+        self.log('.pi/agent/sessions/a.jsonl', rows)
+        row = collect(self.home, self.now)['rows'][0]
+        self.assertEqual(row['cost_usd'], 0.3)
+        self.assertEqual(row['cost_responses'], 2)
+        self.assertEqual(row['responses'], 2)
+
+    def test_empty_snapshot_and_zero_token_share(self):
+        snapshot = collect(self.home, self.now)
+        self.assertIn('No local session usage', render_providers(snapshot))
+        snapshot['rows'] = [{'provider': 'p', 'model': 'm', 'agent': 'pi'}]
+        self.assertIn('0.0%', render_providers(snapshot))
+        self.assertIn('Recorded cost (USD): **N/A**', render_providers(snapshot))
+
+    def test_missing_cost_is_null_and_rendered_na(self):
+        rows = self.pi_rows()
+        del rows[1]['message']['usage']['cost']
+        self.log('.pi/agent/sessions/a.jsonl', rows)
+        snapshot = collect(self.home, self.now)
+        self.assertIsNone(snapshot['rows'][0]['cost_usd'])
+        self.assertEqual(snapshot['rows'][0]['cost_responses'], 0)
+        self.assertIn('Recorded cost (USD): **N/A**', render_providers(snapshot))
+
+    def test_zero_cost_and_legacy_snapshots(self):
+        self.log('.pi/agent/sessions/a.jsonl', self.pi_rows())
+        snapshot = collect(self.home, self.now)
+        snapshot['rows'][0]['cost_usd'] = 0
+        self.assertIn('$0.0000', render_providers(snapshot))
+        del snapshot['rows'][0]['cost_usd']
+        del snapshot['rows'][0]['cost_responses']
+        self.assertIn('Recorded cost (USD): **N/A**', render_providers(snapshot))
+
+    def test_share_denominator_includes_hidden_rows(self):
+        snapshot = {'start': self.when, 'end': self.now.isoformat(), 'rows': [
+            {'provider': 'p', 'model': f'm{i}', 'agent': 'pi', 'input_tokens': 10,
+             'responses': 1, 'sessions': 1} for i in range(13)]}
+        rendered = render_providers(snapshot)
+        self.assertIn('130 tokens', rendered)
+        self.assertIn('7.7%', rendered)
+        self.assertIn('Showing 12 of 13', rendered)
+        self.assertNotIn('| m12 |', rendered)
 
     def test_safe_labels_reject_urls_credentials_and_markdown(self):
         for value in ["https://gateway/api?key=secret", "sk-secret", "waka_secret", "bad|row", None]:
@@ -95,7 +172,7 @@ class ExportProviderTests(unittest.TestCase):
                   " Last Updated on 13 November 2026 UTC\n\ncontact")
         result = normalize_layout(update_provider_section(readme, snapshot), "14 November 2026")
         self.assertIn("Wakapi lines", result)
-        self.assertIn("openai-codex | gpt-example | pi | 175 | 1", result)
+        self.assertIn("openai-codex | gpt-example | pi | 100 | 20 | 50 | 5 | 100.0% | 1 | $999.0000", result)
         self.assertGreater(result.index("Last Updated"), result.index("END_SECTION:ai-providers"))
         self.assertEqual(result.count("Last Updated"), 1)
         self.assertEqual(update_provider_section(result, snapshot), result)

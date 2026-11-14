@@ -5,7 +5,9 @@ from __future__ import annotations
 import argparse
 from collections import defaultdict
 from datetime import datetime, timedelta, timezone
+from decimal import Decimal
 import json
+import math
 from pathlib import Path
 import re
 
@@ -32,6 +34,16 @@ def timestamp(value: object) -> datetime | None:
 
 def number(value: object) -> int:
     return max(0, int(value)) if isinstance(value, (int, float)) and value >= 0 else 0
+
+
+def recorded_cost(usage: dict) -> float | None:
+    """Pi's recorded USD estimate, not a bill or an inferred token price."""
+    cost = usage.get("cost")
+    value = cost.get("total") if isinstance(cost, dict) else None
+    if (isinstance(value, (int, float)) and not isinstance(value, bool)
+            and math.isfinite(value) and value >= 0):
+        return float(value)
+    return None
 
 
 def records(path: Path):
@@ -71,6 +83,7 @@ def events(path: Path, agent: str):
                 "input": number(usage.get("input")), "output": number(usage.get("output")),
                 "cache_read": number(usage.get("cacheRead")),
                 "cache_write": number(usage.get("cacheWrite")),
+                "cost_usd": recorded_cost(usage),
             }
         elif agent == "codex":
             payload = item.get("payload")
@@ -123,6 +136,7 @@ def collect(home: Path, now: datetime) -> dict:
     groups = defaultdict(lambda: {
         "input_tokens": 0, "output_tokens": 0, "cache_read_tokens": 0,
         "cache_write_tokens": 0, "responses": 0, "session_ids": set(),
+        "cost_usd": Decimal(0), "cost_responses": 0,
     })
     seen = set()
     sources = {"pi": ".pi/agent/sessions", "codex": ".codex/sessions", "claude": ".claude/projects"}
@@ -146,14 +160,18 @@ def collect(home: Path, now: datetime) -> dict:
                 for source, target in [("input", "input_tokens"), ("output", "output_tokens"),
                                        ("cache_read", "cache_read_tokens"), ("cache_write", "cache_write_tokens")]:
                     group[target] += event[source]
+                if event.get("cost_usd") is not None:
+                    group["cost_usd"] += Decimal(str(event["cost_usd"]))
+                    group["cost_responses"] += 1
                 group["responses"] += 1
                 group["session_ids"].add(event["session"])
     rows = []
     for (agent, provider, model), group in sorted(groups.items()):
         rows.append({"agent": agent, "provider": provider, "model": model,
-                     **{k: v for k, v in group.items() if k != "session_ids"},
+                     **{k: v for k, v in group.items() if k not in ("session_ids", "cost_usd")},
+                     "cost_usd": float(group["cost_usd"]) if group["cost_responses"] else None,
                      "sessions": len(group["session_ids"])})
-    return {"version": 1, "source": "local-session-logs", "generated_at": now.isoformat(),
+    return {"version": 2, "source": "local-session-logs", "generated_at": now.isoformat(),
             "start": start.isoformat(), "end": now.isoformat(), "rows": rows}
 
 

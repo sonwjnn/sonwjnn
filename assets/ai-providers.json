@@ -1,9 +1,9 @@
 {
-  "version": 1,
+  "version": 2,
   "source": "local-session-logs",
-  "generated_at": "2026-11-14T10:17:00.998242+00:00",
-  "start": "2026-11-07T10:17:00.998242+00:00",
-  "end": "2026-11-14T10:17:00.998242+00:00",
+  "generated_at": "2026-11-14T10:35:11.014895+00:00",
+  "start": "2026-11-07T10:35:11.014895+00:00",
+  "end": "2026-11-14T10:35:11.014895+00:00",
   "rows": [
     {
       "agent": "codex",
@@ -14,39 +14,47 @@
       "cache_read_tokens": 7723904,
       "cache_write_tokens": 0,
       "responses": 141,
+      "cost_responses": 0,
+      "cost_usd": null,
       "sessions": 5
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6-luna",
-      "input_tokens": 33343700,
-      "output_tokens": 5772487,
-      "cache_read_tokens": 1487483776,
+      "input_tokens": 33185187,
+      "output_tokens": 5766462,
+      "cache_read_tokens": 1480488448,
       "cache_write_tokens": 0,
-      "responses": 11356,
-      "sessions": 94
+      "responses": 11312,
+      "cost_responses": 11312,
+      "cost_usd": 21.00663418,
+      "sessions": 93
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.1-sol",
-      "input_tokens": 2459873,
-      "output_tokens": 278101,
-      "cache_read_tokens": 190979584,
+      "input_tokens": 2519803,
+      "output_tokens": 286253,
+      "cache_read_tokens": 193355776,
       "cache_write_tokens": 0,
-      "responses": 1150,
-      "sessions": 9
+      "responses": 1195,
+      "cost_responses": 1195,
+      "cost_usd": 34.4415962,
+      "sessions": 10
     },
     {
       "agent": "pi",
       "provider": "opencode-go",
       "model": "deepseek-v4.1-flash",
-      "input_tokens": 3822278,
-      "output_tokens": 786260,
-      "cache_read_tokens": 401313024,
+      "input_tokens": 3872483,
+      "output_tokens": 817699,
+      "cache_read_tokens": 409305600,
       "cache_write_tokens": 0,
-      "responses": 1502,
+      "responses": 1551,
+      "cost_responses": 1551,
+      "cost_usd": 2.29940865,
       "sessions": 8
     }
   ]

@@ -92,16 +92,19 @@ Gpt                          5,834 lines  ███████████░�
 <!--START_SECTION:ai-providers-->
 **Provider / Model**
 
-| Provider | Model | Agent | Tokens¹ | Sessions |
-| --- | --- | --- | ---: | ---: |
-| openai-codex | gpt-6-luna | pi | 1,526,599,963 | 94 |
-| opencode-go | deepseek-v4.1-flash | pi | 405,921,562 | 8 |
-| openai-codex | gpt-6.1-sol | pi | 193,717,558 | 9 |
-| openai | gpt-6-luna | codex | 8,360,577 | 5 |
+7-day usage: **2,137,958,288 tokens** · **14,199 responses** · Recorded cost (USD): **$57.7476 (partial: 14058/14199)**
 
-Local logs: 07 Nov 2026 10:17 UTC – 14 Nov 2026 10:17 UTC.
+| Provider | Model | Agent | Input | Output | Cache read | Cache write | Tokens % | Sessions | Cost (USD) |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| openai-codex | gpt-6-luna | pi | 33,185,187 | 5,766,462 | 1,480,488,448 | 0 | 71.1% | 93 | $21.0066 |
+| opencode-go | deepseek-v4.1-flash | pi | 3,872,483 | 817,699 | 409,305,600 | 0 | 19.4% | 8 | $2.2994 |
+| openai-codex | gpt-6.1-sol | pi | 2,519,803 | 286,253 | 193,355,776 | 0 | 9.2% | 10 | $34.4416 |
+| openai | gpt-6-luna | codex | 539,834 | 96,839 | 7,723,904 | 0 | 0.4% | 5 | N/A |
 
-¹ Input + output + cache tokens. Separate from Wakapi's lines/time above; providers are log labels, not inferred billing routes. Unknown providers stay unknown.
+Local logs: 07 Nov 2026 10:35 UTC – 14 Nov 2026 10:35 UTC.
+
+Total tokens = input + output + cache read + cache write. Separate from Wakapi's lines/time above; providers are log labels, not inferred billing routes. Unknown providers stay unknown.
+Cost is the tool-recorded USD estimate, not an invoice; no price-table estimates. Currently available from Pi usage.cost.total only; Codex/Claude costs are N/A. Partial costs cover only the stated responses; missing costs are not zero. Token shares include all rows and cache tokens, not code contribution. Sessions are per row and may overlap across models.
 <!--END_SECTION:ai-providers-->
 
  Last Updated on 14 November 2026 UTC
