@@ -20,7 +20,7 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 
 ```text
 🌞 Morning                50415 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.88 % 
-🌆 Daytime                173871 commits      █████████████░░░░░░░░░░░░   51.31 % 
+🌆 Daytime                173873 commits      █████████████░░░░░░░░░░░░   51.31 % 
 🌃 Evening                88003 commits       ██████░░░░░░░░░░░░░░░░░░░   25.97 % 
 🌙 Night                  26582 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.84 % 
 ```
@@ -32,7 +32,7 @@ Tuesday                  54558 commits       ████░░░░░░░�
 Wednesday                62530 commits       █████░░░░░░░░░░░░░░░░░░░░   18.45 % 
 Thursday                 59588 commits       ████░░░░░░░░░░░░░░░░░░░░░   17.58 % 
 Friday                   49843 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.71 % 
-Saturday                 26071 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.69 % 
+Saturday                 26073 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.69 % 
 Sunday                   31148 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   09.19 % 
 ```
 
@@ -43,18 +43,18 @@ Sunday                   31148 commits       ██░░░░░░░░░�
 🕑︎ Time Zone: Asia/Saigon
 
 💬 Programming Languages: 
-Typescript               10 hrs 5 mins       ███████████░░░░░░░░░░░░░░   44.34 % 
-Markdown                 5 hrs 12 mins       ██████░░░░░░░░░░░░░░░░░░░   22.85 % 
-Unknown                  2 hrs 29 mins       ███░░░░░░░░░░░░░░░░░░░░░░   10.89 % 
-TSX                      1 hrs 54 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   08.37 % 
-TOML                     1 hrs 14 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   05.39 % 
+Typescript               10 hrs 12 mins      ███████████░░░░░░░░░░░░░░   44.10 % 
+Markdown                 5 hrs 18 mins       ██████░░░░░░░░░░░░░░░░░░░   22.92 % 
+Unknown                  2 hrs 33 mins       ███░░░░░░░░░░░░░░░░░░░░░░   11.06 % 
+TSX                      1 hrs 54 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   08.24 % 
+TOML                     1 hrs 14 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   05.31 % 
 
 🔥 Editors: 
-Orca                     22 hrs 17 mins      ████████████████████████░   97.93 % 
-Codex-vscode             0 hrs 28 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   02.07 % 
+Orca                     22 hrs 40 mins      ████████████████████████░   97.96 % 
+Codex-vscode             0 hrs 28 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   02.04 % 
 
 💻 Operating System: 
-Macos                    22 hrs 46 mins      █████████████████████████   100.00 % 
+Macos                    23 hrs 9 mins       █████████████████████████   100.00 % 
 ```
 
 **I Mostly Code in TypeScript** 
