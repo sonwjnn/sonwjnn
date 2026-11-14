@@ -24,7 +24,7 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 🤖 **AI Coding This Month**
 
 ```text
-Lines changed: 16,082
+Lines changed: 17,282
 Commits: 114
 
 Total: 3.94B tokens · $98.66
@@ -47,18 +47,18 @@ opencode-go/gpt-6-luna [pi]            1.33M  ░░░░░░░░░░░�
 Time Zone: Asia/Saigon
 
 Programming Languages:
-Typescript               11 hrs 28 mins       ███████████░░░░░░░░░░░░░░  42.11 %
-Markdown                 6 hrs 30 mins        ██████░░░░░░░░░░░░░░░░░░░  23.88 %
-Unknown                  3 hrs 10 mins        ███░░░░░░░░░░░░░░░░░░░░░░  11.64 %
-TSX                      2 hrs 5 mins         ██░░░░░░░░░░░░░░░░░░░░░░░   7.67 %
-TOML                     1 hrs 14 mins        █░░░░░░░░░░░░░░░░░░░░░░░░   4.51 %
+Typescript               11 hrs 45 mins       ██████████░░░░░░░░░░░░░░░  42.00 %
+Markdown                 6 hrs 50 mins        ██████░░░░░░░░░░░░░░░░░░░  24.46 %
+Unknown                  3 hrs 16 mins        ███░░░░░░░░░░░░░░░░░░░░░░  11.71 %
+TSX                      2 hrs 6 mins         ██░░░░░░░░░░░░░░░░░░░░░░░   7.51 %
+TOML                     1 hrs 14 mins        █░░░░░░░░░░░░░░░░░░░░░░░░   4.39 %
 
 Editors:
-Orca                     26 hrs 46 mins       █████████████████████████  98.27 %
-Codex-vscode             0 hrs 28 mins        ░░░░░░░░░░░░░░░░░░░░░░░░░   1.73 %
+Orca                     27 hrs 30 mins       █████████████████████████  98.31 %
+Codex-vscode             0 hrs 28 mins        ░░░░░░░░░░░░░░░░░░░░░░░░░   1.69 %
 
 Operating System:
-Macos                    27 hrs 14 mins       █████████████████████████ 100.00 %
+Macos                    27 hrs 58 mins       █████████████████████████ 100.00 %
 ```
 
 💻 **I Mostly Code in TypeScript** 
@@ -76,7 +76,7 @@ Shell                    1 repo              ░░░░░░░░░░░�
 
 <!--END_SECTION:waka-->
 
- Last Updated on 14/11/2026 15:14:52 UTC
+ Last Updated on 14/11/2026 15:51:19 UTC
 
 ### Get in touch
 
