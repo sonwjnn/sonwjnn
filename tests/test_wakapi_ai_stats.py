@@ -13,6 +13,7 @@ from wakapi_ai_stats import (
     render,
     replace_section,
     normalize_layout,
+    reported_model,
 )
 
 
@@ -58,6 +59,38 @@ class WakapiAiStatsTests(unittest.TestCase):
                 "ai_input_tokens": 999,
             },
         ]
+
+    def test_recovers_model_version_from_wakapi_raw_user_agent(self) -> None:
+        self.assertEqual(reported_model({
+            "ai_model": "Gpt",
+            "user_agent_id": "wakatime/1 (darwin) gpt/5.2 codex/1.0",
+        }), "gpt/5.2")
+        self.assertEqual(reported_model({
+            "ai_model": "Deepseek",
+            "user_agent_id": "wakatime/1 (darwin) deepseek/v3.2 pi/1.0",
+        }), "deepseek/v3.2")
+
+    def test_does_not_invent_model_version_or_provider(self) -> None:
+        for heartbeat in [
+            {"ai_model": "Gpt", "user_agent_id": "opaque-id"},
+            {"ai_model": "Gpt", "user_agent_id": "wakatime/1 codex/5.2"},
+            {"ai_model": "Gpt", "user_agent_id": "gpt/unknown"},
+        ]:
+            self.assertEqual(reported_model(heartbeat), "Gpt")
+        self.assertEqual(reported_model({"user_agent_id": "gpt/5.2"}), "")
+        self.assertEqual(reported_model({"ai_model": "openrouter/openai/gpt-5.2"}),
+                         "openrouter/openai/gpt-5.2")
+
+    def test_aggregation_separates_versions_in_same_model_family(self) -> None:
+        heartbeats = [dict(event) for event in self.heartbeats[:2]]
+        for version, event in zip(["4.5", "4.6"], heartbeats):
+            event["ai_model"] = "Sonnet"
+            event["user_agent_id"] = f"wakatime/1 sonnet/{version} claude-code/1"
+        result = aggregate(self.stats, heartbeats, self.start, self.end)
+        self.assertEqual(set(result["models"]), {"sonnet/4.5", "sonnet/4.6"})
+        self.assertEqual(result["models"]["sonnet/4.5"]["input_tokens"], 1000)
+        self.assertEqual(result["models"]["sonnet/4.6"]["input_tokens"], 500)
+        self.assertEqual(result["sessions"], 1)
 
     def test_aggregates_weekly_heartbeat_fields(self) -> None:
         result = aggregate(self.stats, self.heartbeats, self.start, self.end)

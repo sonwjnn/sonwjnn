@@ -145,6 +145,26 @@ def _category_ai_seconds(stats: dict) -> tuple[float | None, float | None]:
     return None, None
 
 
+def reported_model(heartbeat: dict) -> str:
+    """Recover the version Wakapi drops when parsing a model/version UA token.
+
+    Wakapi's compatibility API puts the raw user-agent string in user_agent_id.
+    Only match the reported model family; never mistake harness/runtime versions
+    for model versions or infer an API provider from a model brand.
+    """
+    model = str(heartbeat.get("ai_model") or "").strip()
+    if not model:
+        return ""
+    user_agent = str(heartbeat.get("user_agent") or heartbeat.get("user_agent_id") or "")
+    for token in user_agent.split():
+        family, separator, version = token.partition("/")
+        if (separator and family.casefold() == model.casefold()
+                and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._:+-]*", version)
+                and version.casefold() not in {"unknown", "none", "null"}):
+            return f"{family}/{version}"
+    return model
+
+
 def aggregate(stats: dict, heartbeats: list[dict], start: datetime, end: datetime) -> dict:
     """Aggregate raw AI heartbeat fields without inventing missing values."""
     ai_seconds, ai_percent = _category_ai_seconds(stats)
@@ -164,7 +184,7 @@ def aggregate(stats: dict, heartbeats: list[dict], start: datetime, end: datetim
         if not start.timestamp() <= timestamp < end.timestamp():
             continue
 
-        model = str(heartbeat.get("ai_model") or "").strip()
+        model = reported_model(heartbeat)
         session = str(heartbeat.get("ai_session") or "").strip()
         event_ai_lines = _as_int(heartbeat.get("ai_line_changes"))
         event_input = _as_int(heartbeat.get("ai_input_tokens"))
