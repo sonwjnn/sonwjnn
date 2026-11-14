@@ -242,7 +242,7 @@ def main() -> None:
     from wakapi_ai_stats import normalize_layout
     readme = Path(args.readme)
     updated = update_provider_section(readme.read_text(encoding="utf-8"), snapshot)
-    updated = normalize_layout(updated, datetime.now(timezone.utc).strftime("%d %B %Y"))
+    updated = normalize_layout(updated, datetime.now(timezone.utc).strftime("%d/%m/%Y %H:%M:%S"))
     readme.write_text(updated, encoding="utf-8")
     print(f"Exported {len(snapshot['rows'])} aggregate provider/model rows; no raw session data exported.")
 

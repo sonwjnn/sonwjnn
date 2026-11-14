@@ -22,7 +22,7 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 Lines changed: 15,157
 Commits: 114
 
-Total: 3.94B tokens · $98.66* USD
+Total: 3.94B tokens · $98.66
 
 gpt-6-luna [pi]                  3.18B  ████████████░░░  80.6%    $45.53
 deepseek-v4.1-flash [pi]       454.41M  ██░░░░░░░░░░░░░  11.5%     $2.62
@@ -57,7 +57,7 @@ Shell                    1 repo              ░░░░░░░░░░░�
 
 <!--END_SECTION:waka-->
 
- Last Updated on 14 November 2026 UTC
+ Last Updated on 14/11/2026 15:14:52 UTC
 
 ### Get in touch
 

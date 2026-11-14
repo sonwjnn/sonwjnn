@@ -394,11 +394,11 @@ def render_providers(snapshot: dict) -> str:
         if value is None:
             return "N/A"
         amount = f"${value:,.2f}" if value == 0 or value >= 0.01 else "<$0.01"
-        return amount + ("*" if covered < count else "")
+        return amount
 
     lines.extend([
         f"{LOCAL_USAGE_DIVIDER}{compact_number(all_tokens)} tokens · "
-        f"{compact_cost(cost, covered, responses)} USD", "",
+        f"{compact_cost(cost, covered, responses)}", "",
     ])
     for row in ordered[:12]:
         label = _model_label(str(row.get('model', 'unknown')))
@@ -520,7 +520,7 @@ def update_readme(path: str, content: str, coding_content: str | None = None) ->
         updated = replace_coding_month(updated, coding_content)
     updated = normalize_layout(
         updated,
-        datetime.now(timezone.utc).strftime("%d %B %Y"),
+        datetime.now(timezone.utc).strftime("%d/%m/%Y %H:%M:%S"),
     )
     if updated == original:
         return False
