@@ -76,44 +76,40 @@ Shell                    1 repo              ░░░░░░░░░░░�
 🤖 **AI Coding This Week**
 
 ```text
-⏱ AI Coding Time: not reported
-
 ✍️ Lines changed: AI 14,129 · human 0
-
-🔤 8,112,587 Input Tokens, 1,332,880 Output Tokens
-
-🧠 54 AI Sessions · 163 prompt-bearing events
-
-deepseek/4.1-flash           7,722 lines  ██████████████░░░░░░░░░░░   54.65 %
-gpt/6-luna                   4,573 lines  ████████░░░░░░░░░░░░░░░░░   32.37 %
-gpt/6.1-sol                  1,785 lines  ███░░░░░░░░░░░░░░░░░░░░░░   12.63 %
-gpt/6-luna-xhigh                49 lines  ░░░░░░░░░░░░░░░░░░░░░░░░░    0.35 %
 
 ── Local provider / model usage · token share ──
 
-🔤 40,148,251 Input Tokens · 6,985,001 Output Tokens
-💾 2,098,484,736 Cache Read · 0 Cache Write
-🧠 14,260 responses · 2,145,617,988 tokens (including cache)
-💵 Recorded cost (USD): $58.1125 (partial: 14119/14260)
+Tokens 2.15B (incl. cache) · Recorded cost $58.11* USD
 
-gpt-6-luna                 1,519,440,097 tokens  ██████████████████░░░░░░░   70.82%
-  openai-codex / pi · 93 sessions · USD $21.0066
-deepseek-v4.1-flash          419,257,203 tokens  █████░░░░░░░░░░░░░░░░░░░░   19.54%
-  opencode-go / pi · 8 sessions · USD $2.3238
-gpt-6.1-sol                  198,560,111 tokens  ██░░░░░░░░░░░░░░░░░░░░░░░    9.25%
-  openai-codex / pi · 10 sessions · USD $34.7820
-gpt-6-luna                     8,360,577 tokens  ░░░░░░░░░░░░░░░░░░░░░░░░░    0.39%
-  openai / codex · 5 sessions · USD N/A
+gpt-6-luna [pi]                  1.52B  ███████████░░░░  70.8%    $21.01
+deepseek-v4.1-flash [pi]       419.26M  ███░░░░░░░░░░░░  19.5%     $2.32
+gpt-6.1-sol [pi]               198.56M  █░░░░░░░░░░░░░░   9.3%    $34.78
+gpt-6-luna [codex]               8.36M  ░░░░░░░░░░░░░░░   0.4%       N/A
 
-Local logs: 07 Nov 2026 10:43 UTC – 14 Nov 2026 10:43 UTC.
-
-Separate from Wakapi lines/time above; do not add the two token sources.
-Token share includes cache and all models, not code contribution.
-Providers are recorded labels, not inferred billing routes.
-Cost: tool-recorded USD estimate (Pi only), not an invoice.
-Codex/Claude: N/A. Partial = covered responses; missing is not zero.
-Sessions are per model and may overlap.
+* Partial recorded cost; see details below.
 ```
+
+<details>
+<summary>Sources & usage details</summary>
+
+Local usage: 07 Nov 2026 10:43 UTC – 14 Nov 2026 10:43 UTC.
+
+- 2,145,617,988 tokens · 14,260 responses.
+- 40,148,251 Input Tokens · 6,985,001 Output Tokens.
+- 2,098,484,736 Cache Read · 0 Cache Write.
+- Recorded cost (USD): $58.1125 (partial: 14119/14260).
+- Separate from Wakapi lines/time above; the sources are not additive.
+- Bars show token share including cache, not code contribution.
+- Cost is the tool-recorded estimate (Pi only), not an invoice. Missing costs are N/A, not zero; * means partial coverage.
+- Provider labels are not billing routes; sessions can overlap across models.
+
+- gpt-6-luna (openai-codex / pi): 93 sessions; USD $21.0066.
+- deepseek-v4.1-flash (opencode-go / pi): 8 sessions; USD $2.3238.
+- gpt-6.1-sol (openai-codex / pi): 10 sessions; USD $34.7820.
+- gpt-6-luna (openai / codex): 5 sessions; USD N/A.
+
+</details>
 <!--END_SECTION:ai-coding-->
 
 <!--START_SECTION:ai-providers-->

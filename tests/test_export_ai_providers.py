@@ -111,6 +111,10 @@ class ExportProviderTests(unittest.TestCase):
         self.assertEqual(row['responses'], 2)
         self.assertIn('$999.0000 (partial: 1/2)', render_providers(snapshot))
         self.assertIn('350 tokens', render_providers(snapshot))
+        visible = render_providers(snapshot).split('```', 1)[0]
+        self.assertIn('Recorded cost $999.00* USD', visible)
+        self.assertIn('* Partial recorded cost', visible)
+        self.assertNotIn('partial: 1/2', visible)
 
     def test_recorded_cost_sums_without_counting_duplicate_responses(self):
         rows = self.pi_rows()
@@ -129,7 +133,7 @@ class ExportProviderTests(unittest.TestCase):
         snapshot = collect(self.home, self.now)
         self.assertIn('No local session usage', render_providers(snapshot))
         snapshot['rows'] = [{'provider': 'p', 'model': 'm', 'agent': 'pi'}]
-        self.assertIn('0.00%', render_providers(snapshot))
+        self.assertIn('0.0%', render_providers(snapshot))
         self.assertIn('Recorded cost (USD): N/A', render_providers(snapshot))
 
     def test_missing_cost_is_null_and_rendered_na(self):
@@ -156,9 +160,24 @@ class ExportProviderTests(unittest.TestCase):
              'responses': 1, 'sessions': 1} for i in range(13)]}
         rendered = render_providers(snapshot)
         self.assertIn('130 tokens', rendered)
-        self.assertIn('7.69%', rendered)
+        self.assertIn('7.7%', rendered)
         self.assertIn('Showing 12 of 13', rendered)
-        self.assertNotIn('m12 ', rendered)
+        visible = rendered.split('```', 1)[0]
+        self.assertNotIn('m12 ', visible)
+        self.assertIn('m12 (p / pi)', rendered)
+
+    def test_compact_model_rows_stay_short_and_keep_full_labels_in_details(self):
+        model = 'model-' + 'x' * 40
+        snapshot = {'start': self.when, 'end': self.now.isoformat(), 'rows': [
+            {'provider': 'p', 'model': model, 'agent': 'pi', 'input_tokens': 2_000_000,
+             'responses': 1, 'sessions': 1, 'cost_usd': 0.00001, 'cost_responses': 1}]}
+        rendered = render_providers(snapshot)
+        visible = rendered.split('```', 1)[0]
+        self.assertIn('2.00M', visible)
+        self.assertIn('<$0.01', visible)
+        self.assertNotIn(model, visible)
+        self.assertIn(model, rendered.split('<details>', 1)[1])
+        self.assertTrue(all(len(line) <= 85 for line in visible.splitlines()))
 
     def test_safe_labels_reject_urls_credentials_and_markdown(self):
         for value in ["https://gateway/api?key=secret", "sk-secret", "waka_secret", "bad|row", None]:
@@ -168,15 +187,27 @@ class ExportProviderTests(unittest.TestCase):
         self.log(".pi/agent/sessions/a.jsonl", self.pi_rows())
         snapshot = collect(self.home, self.now)
         readme = ("<!--START_SECTION:ai-coding-->🤖 **AI Coding This Week**\n\n"
-                  "```text\nWakapi lines\n```\n<!--END_SECTION:ai-coding-->\n\n"
+                  "```text\n⏱ AI Coding Time: not reported\n✍️ Lines changed: AI 10 · human 0\n"
+                  "🔤 999 Input Tokens\n🧠 50 AI Sessions\nWakapi models · share of AI lines\n"
+                  "old-model █████ 100%\n```\n<!--END_SECTION:ai-coding-->\n\n"
                   "<!--START_SECTION:ai-providers-->old<!--END_SECTION:ai-providers-->\n\n"
                   " Last Updated on 13 November 2026 UTC\n\ncontact")
         result = normalize_layout(update_provider_section(readme, snapshot), "14 November 2026")
-        self.assertIn("Wakapi lines", result)
+        self.assertIn("✍️ Lines changed: AI 10 · human 0", result)
         self.assertIn("gpt-example", result)
-        self.assertIn("openai-codex / pi · 1 sessions · USD $999.0000", result)
-        self.assertIn("100.00%", result)
-        self.assertIn("█" * 25, result)
+        self.assertIn("gpt-example (openai-codex / pi): 1 sessions; USD $999.0000", result)
+        visible = result.split('```text', 1)[1].split('```', 1)[0]
+        self.assertIn("100.0%", visible)
+        self.assertIn("█" * 15, visible)
+        self.assertIn("gpt-example [pi]", visible)
+        self.assertNotIn("not reported", visible)
+        self.assertNotIn("old-model", visible)
+        self.assertNotIn("999 Input Tokens", visible)
+        self.assertNotIn("50 AI Sessions", visible)
+        self.assertNotIn("Cache Read", visible)
+        self.assertNotIn("sessions;", visible)
+        self.assertIn('<details>\n<summary>Sources & usage details</summary>', result)
+        self.assertLess(result.index('```', result.index('```text') + 3), result.index('<details>'))
         self.assertIn("100 Input Tokens · 20 Output Tokens", result)
         self.assertIn("50 Cache Read · 5 Cache Write", result)
         self.assertNotIn("| Provider |", result)
@@ -187,10 +218,10 @@ class ExportProviderTests(unittest.TestCase):
         self.assertIn("<!--START_SECTION:ai-providers-->\n<!--END_SECTION:ai-providers-->", result)
         target = self.home / 'README.md'
         target.write_text(result)
-        update_readme(str(target), "🤖 **AI Coding This Week**\n\n```text\nNew Wakapi lines\n```\n")
+        update_readme(str(target), "🤖 **AI Coding This Week**\n\n```text\n✍️ Lines changed: AI 20 · human 1\n```\n")
         refreshed = target.read_text()
-        self.assertIn('New Wakapi lines', refreshed)
-        self.assertNotIn('\\nWakapi lines', refreshed)
+        self.assertIn('✍️ Lines changed: AI 20 · human 1', refreshed)
+        self.assertNotIn('AI 10 · human 0', refreshed)
         self.assertIn('USD $999.0000', refreshed)
         self.assertEqual(refreshed.count('```'), 2)
         self.assertEqual(refreshed.count(LOCAL_USAGE_DIVIDER), 1)

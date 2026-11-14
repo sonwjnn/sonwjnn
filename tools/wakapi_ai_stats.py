@@ -343,37 +343,63 @@ def render_providers(snapshot: dict) -> str:
     output_tokens = sum(max(0, _as_int(row.get("output_tokens"))) for row in ordered)
     cache_read = sum(max(0, _as_int(row.get("cache_read_tokens"))) for row in ordered)
     cache_write = sum(max(0, _as_int(row.get("cache_write_tokens"))) for row in ordered)
+    def compact_number(value: int) -> str:
+        for scale, suffix in ((1_000_000_000, "B"), (1_000_000, "M"), (1_000, "K")):
+            if value >= scale:
+                return f"{value / scale:.2f}{suffix}"
+        return str(value)
+
+    def compact_cost(value: float | None, covered: int, count: int) -> str:
+        if value is None:
+            return "N/A"
+        amount = f"${value:,.2f}" if value == 0 or value >= 0.01 else "<$0.01"
+        return amount + ("*" if covered < count else "")
+
     lines.extend([
-        f"🔤 {input_tokens:,} Input Tokens · {output_tokens:,} Output Tokens",
-        f"💾 {cache_read:,} Cache Read · {cache_write:,} Cache Write",
-        f"🧠 {responses:,} responses · {all_tokens:,} tokens (including cache)",
-        f"💵 Recorded cost (USD): {cost_text(cost, covered, responses)}", "",
+        f"Tokens {compact_number(all_tokens)} (incl. cache) · "
+        f"Recorded cost {compact_cost(cost, covered, responses)} USD", "",
     ])
     for row in ordered[:12]:
         label = _model_label(str(row.get('model', 'unknown')))
-        provider = _model_label(str(row.get('provider', 'unknown')))
         agent = _model_label(str(row.get('agent', 'unknown')))
+        name = f"{label} [{agent}]"
+        if len(name) > 30:
+            name = name[:29] + "…"
         percent = total(row) / all_tokens * 100 if all_tokens else 0
-        filled = round(percent / 100 * 25)
-        bar = "█" * filled + "░" * (25 - filled)
-        lines.extend([
-            f"{label:<24} {total(row):>15,} tokens  {bar}  {percent:6.2f}%",
-            f"  {provider} / {agent} · {max(0, _as_int(row.get('sessions'))):,} sessions · "
-            f"USD {cost_text(*cost_info(row), max(0, _as_int(row.get('responses'))))}",
-        ])
+        filled = round(percent / 100 * 15)
+        bar = "█" * filled + "░" * (15 - filled)
+        amount = compact_cost(*cost_info(row), max(0, _as_int(row.get('responses'))))
+        lines.append(
+            f"{name:<30} {compact_number(total(row)):>7}  {bar} {percent:5.1f}% {amount:>9}"
+        )
     if not ordered:
         lines = [LOCAL_USAGE_DIVIDER, "", "No local session usage exported for this period."]
     start = _parse_time(snapshot["start"]).strftime("%d %b %Y %H:%M UTC")
     end = _parse_time(snapshot["end"]).strftime("%d %b %Y %H:%M UTC")
-    lines.extend(["", f"Local logs: {start} – {end}.", "",
-                  "Separate from Wakapi lines/time above; do not add the two token sources.",
-                  "Token share includes cache and all models, not code contribution.",
-                  "Providers are recorded labels, not inferred billing routes.",
-                  "Cost: tool-recorded USD estimate (Pi only), not an invoice.",
-                  "Codex/Claude: N/A. Partial = covered responses; missing is not zero.",
-                  "Sessions are per model and may overlap."])
     if len(ordered) > 12:
         lines.append(f"Showing 12 of {len(ordered)} provider/model rows.")
+    if covered and covered < responses:
+        lines.extend(["", "* Partial recorded cost; see details below."])
+    lines.extend(["```", "", "<details>", "<summary>Sources & usage details</summary>", "",
+                  f"Local usage: {start} – {end}.", "",
+                  f"- {all_tokens:,} tokens · {responses:,} responses.",
+                  f"- {input_tokens:,} Input Tokens · {output_tokens:,} Output Tokens.",
+                  f"- {cache_read:,} Cache Read · {cache_write:,} Cache Write.",
+                  f"- Recorded cost (USD): {cost_text(cost, covered, responses)}.",
+                  "- Separate from Wakapi lines/time above; the sources are not additive.",
+                  "- Bars show token share including cache, not code contribution.",
+                  "- Cost is the tool-recorded estimate (Pi only), not an invoice. "
+                  "Missing costs are N/A, not zero; * means partial coverage.",
+                  "- Provider labels are not billing routes; sessions can overlap across models.", ""])
+    for row in ordered:
+        lines.append(
+            f"- {_model_label(str(row.get('model', 'unknown')))} "
+            f"({_model_label(str(row.get('provider', 'unknown')))} / "
+            f"{_model_label(str(row.get('agent', 'unknown')))}): "
+            f"{max(0, _as_int(row.get('sessions'))):,} sessions; "
+            f"USD {cost_text(*cost_info(row), max(0, _as_int(row.get('responses'))))}."
+        )
+    lines.extend(["", "</details>"])
     return "\n".join(lines)
 
 
@@ -384,7 +410,16 @@ def combine_ai_usage(content: str, local_usage: str) -> str:
         base = base[:-3].rstrip()
     if "```text" not in base:
         raise ValueError("AI coding content must contain a text code block")
-    return base + "\n\n" + local_usage.rstrip() + "\n```\n"
+    heading, body = base.split("```text", 1)
+    # With local usage present, keep only Wakapi's distinct line/time metrics.
+    # Avoid two token totals, two model charts, and unavailable-time placeholders.
+    summary = [line for line in body.splitlines()
+               if line.startswith("✍") or (line.startswith("⏱") and "not reported" not in line)]
+    base = heading.rstrip() + "\n\n```text\n" + "\n".join(summary)
+    usage = local_usage.rstrip()
+    if "```" not in usage:  # Compatibility with previously exported plain-text blocks.
+        usage += "\n```"
+    return base.rstrip() + "\n\n" + usage + "\n"
 
 
 def normalize_layout(readme: str, updated_date: str) -> str:
