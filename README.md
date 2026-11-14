@@ -29,9 +29,9 @@ Commits: 114
 
 Total: 3.94B tokens · $98.66
 
-openai-codex/gpt-6-luna [pi]           3.18B  ████████████░░░  80.6%    $45.53
+openai/gpt-6-luna [pi]                 3.18B  ████████████░░░  80.6%    $45.53
 opencode-go/deepseek-v4.1-flash [pi] 454.41M  ██░░░░░░░░░░░░░  11.5%     $2.62
-openai-codex/gpt-6.1-sol [pi]        301.60M  █░░░░░░░░░░░░░░   7.6%    $50.47
+openai/gpt-6.1-sol [pi]              301.60M  █░░░░░░░░░░░░░░   7.6%    $50.47
 openai/gpt-6-luna [codex]              8.61M  ░░░░░░░░░░░░░░░   0.2%       N/A
 opencode-go/gpt-6-luna [pi]            1.33M  ░░░░░░░░░░░░░░░   0.0%     $0.04
 ```

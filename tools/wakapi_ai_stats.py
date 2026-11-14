@@ -402,6 +402,8 @@ def render_providers(snapshot: dict) -> str:
     ])
     def row_label(row: dict) -> str:
         provider = _model_label(str(row.get('provider', 'unknown')))
+        if provider == 'openai-codex':
+            provider = 'openai'
         model = _model_label(str(row.get('model', 'unknown')))
         agent = _model_label(str(row.get('agent', 'unknown')))
         return f"{provider}/{model} [{agent}]"
