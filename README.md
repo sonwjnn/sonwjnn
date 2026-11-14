@@ -19,7 +19,7 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 🤖 **AI Coding This Week**
 
 ```text
-✍️ Lines changed: 14,796
+✍️ Lines changed: 14,838
 
 Total: 2.15B tokens · $58.11* USD
 
@@ -34,27 +34,6 @@ gpt-6-luna [codex]               8.36M  ░░░░░░░░░░░░░�
 <!--END_SECTION:ai-providers-->
 
 <!--START_SECTION:waka-->
-**I'm an Early 🐤** 
-
-```text
-🌞 Morning                50528 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.86 % 
-🌆 Daytime                174340 commits      █████████████░░░░░░░░░░░░   51.28 % 
-🌃 Evening                88395 commits       ██████░░░░░░░░░░░░░░░░░░░   26.00 % 
-🌙 Night                  26741 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.86 % 
-```
-📅 **I'm Most Productive on Wednesday** 
-
-```text
-Monday                   55288 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.26 % 
-Tuesday                  54689 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.08 % 
-Wednesday                62636 commits       █████░░░░░░░░░░░░░░░░░░░░   18.42 % 
-Thursday                 59693 commits       ████░░░░░░░░░░░░░░░░░░░░░   17.56 % 
-Friday                   50021 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.71 % 
-Saturday                 26289 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.73 % 
-Sunday                   31388 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   09.23 % 
-```
-
-
 📊 **This Week I Spent My Time On** 
 
 ```text
