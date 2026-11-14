@@ -70,26 +70,26 @@ Shell                    1 repo              ░░░░░░░░░░░�
 
 
 
- Last Updated on 14 November 2026 UTC
 <!--END_SECTION:waka-->
-
-### AI coding activity
 
 <!--START_SECTION:ai-coding-->
 🤖 **AI Coding This Week**
 
 ```text
-AI coding time: not reported
-Lines changed: AI 13,098 · human 0
-Token usage: 7,893,106 input · 1,270,833 output
-AI sessions: 52 · Prompts: 150 prompt-bearing events
+⏱ AI Coding Time: not reported
 
-Models:
-Gpt                            5,834 AI lines · 8,741,232 tokens
-Deepseek                       7,264 AI lines · 422,707 tokens
-Model not reported             0 AI lines · 0 tokens
+✍️ Lines changed: AI 13,098 · human 0
+
+🔤 7,893,106 Input Tokens, 1,270,833 Output Tokens
+
+🧠 52 AI Sessions · 150 prompt-bearing events
+
+Deepseek                     7,264 lines  ██████████████░░░░░░░░░░░   55.46 %
+Gpt                          5,834 lines  ███████████░░░░░░░░░░░░░░   44.54 %
 ```
 <!--END_SECTION:ai-coding-->
+
+ Last Updated on 14 November 2026 UTC
 
 ### Get in touch
 

@@ -12,6 +12,7 @@ from wakapi_ai_stats import (
     aggregate,
     render,
     replace_section,
+    normalize_layout,
 )
 
 
@@ -76,11 +77,36 @@ class WakapiAiStatsTests(unittest.TestCase):
         output = render(result)
 
         self.assertIn("AI Coding This Week", output)
-        self.assertIn("AI coding time: 2 hrs 0 mins (25.00%)", output)
+        self.assertIn("⏱ AI Coding Time: 2 hrs 0 mins (25.00%)", output)
         self.assertIn("AI 15 · human 5", output)
-        self.assertIn("1,500 input · 600 output", output)
-        self.assertIn("15 AI lines · 2,100 tokens", output)
+        self.assertIn("1,500 Input Tokens, 600 Output Tokens", output)
+        self.assertIn("█████████████████████████  100.00 %", output)
+        self.assertIn("15 lines", output)
         self.assertNotIn("cost", output.casefold())
+
+    def test_layout_has_one_title_and_date_below_ai(self) -> None:
+        readme = (
+            "<!--START_SECTION:waka-->stats\n Last Updated on 13 November 2026 UTC\n"
+            "<!--END_SECTION:waka-->\n\n### AI coding activity\n\n"
+            "<!--START_SECTION:ai-coding-->AI content<!--END_SECTION:ai-coding-->\n\n"
+            "### Get in touch\nlinks\n"
+        )
+        result = normalize_layout(readme, "14 November 2026")
+        self.assertNotIn("### AI coding activity", result)
+        self.assertEqual(result.count("Last Updated on"), 1)
+        self.assertLess(result.index("<!--END_SECTION:ai-coding-->"), result.index("Last Updated"))
+        self.assertLess(result.index("Last Updated"), result.index("### Get in touch"))
+        self.assertEqual(normalize_layout(result, "14 November 2026"), result)
+
+    def test_empty_models_are_hidden_and_bars_use_line_share(self) -> None:
+        result = aggregate(self.stats, self.heartbeats, self.start, self.end)
+        result["models"]["Unknown"] = {
+            "ai_lines": 0, "input_tokens": 0, "output_tokens": 0, "events": 1
+        }
+        output = render(result)
+        self.assertNotIn("Unknown", output)
+        self.assertIn("100.00 %", output)
+        self.assertIn("\n\n🧠", output)
 
     def test_empty_week_gets_clear_fallback(self) -> None:
         stats = {"categories": []}

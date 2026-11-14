@@ -227,18 +227,18 @@ def render(summary: dict) -> str:
     else:
         ai_time = _duration(summary["ai_seconds"])
         if summary["ai_percent"] is not None and summary["ai_seconds"] is not None:
-            lines.append(f"AI coding time: {ai_time} ({summary['ai_percent']:.2f}%)")
+            lines.append(f"⏱ AI Coding Time: {ai_time} ({summary['ai_percent']:.2f}%)")
         else:
-            lines.append(f"AI coding time: {ai_time}")
+            lines.append(f"⏱ AI Coding Time: {ai_time}")
 
         if summary["ai_event_count"]:
             lines.append(
-                "Lines changed: "
+                "\n✍️ Lines changed: "
                 f"AI {summary['ai_lines']:,} · human {summary['human_lines']:,}"
             )
             lines.append(
-                "Token usage: "
-                f"{summary['input_tokens']:,} input · {summary['output_tokens']:,} output"
+                "\n🔤 "
+                f"{summary['input_tokens']:,} Input Tokens, {summary['output_tokens']:,} Output Tokens"
             )
             sessions = (
                 f"{summary['sessions']:,}"
@@ -250,23 +250,24 @@ def render(summary: dict) -> str:
                 if summary["prompt_events_reported"]
                 else "not reported"
             )
-            lines.append(f"AI sessions: {sessions} · Prompts: {prompts}")
+            lines.append(f"\n🧠 {sessions} AI Sessions · {prompts}")
 
             model_rows = sorted(
-                summary["models"].items(),
-                key=lambda item: (
-                    item[1]["input_tokens"] + item[1]["output_tokens"],
-                    item[1]["ai_lines"],
-                ),
+                ((name, values) for name, values in summary["models"].items()
+                 if values["ai_lines"] or values["input_tokens"] or values["output_tokens"]),
+                key=lambda item: item[1]["ai_lines"],
                 reverse=True,
             )
             if model_rows:
-                lines.extend(["", "Models:"])
+                total_lines = sum(max(0, row["ai_lines"]) for _, row in model_rows)
+                lines.append("")
                 for model, values in model_rows[:5]:
-                    tokens = values["input_tokens"] + values["output_tokens"]
+                    percent = max(0, values["ai_lines"]) / total_lines * 100 if total_lines else 0
+                    filled = round(percent / 100 * 25)
+                    bar = "█" * filled + "░" * (25 - filled)
                     lines.append(
-                        f"{_model_label(model):<30} "
-                        f"{values['ai_lines']:,} AI lines · {tokens:,} tokens"
+                        f"{_model_label(model):<24} "
+                        f"{values['ai_lines']:>9,} lines  {bar}  {percent:6.2f} %"
                     )
                 if len(model_rows) > 5:
                     lines.append(f"... and {len(model_rows) - 5} more models")
@@ -287,10 +288,24 @@ def replace_section(readme: str, content: str) -> str:
     return readme[:start] + "\n" + content.rstrip() + "\n" + readme[end:]
 
 
+def normalize_layout(readme: str, updated_date: str) -> str:
+    """Keep one AI heading and put the refresh date after both generated blocks."""
+    readme = readme.replace("### AI coding activity\n\n", "")
+    readme = re.sub(r"\n+[ \t]*Last Updated on [^\n]+\n*", "\n\n", readme)
+    return readme.replace(
+        END_MARKER,
+        f"{END_MARKER}\n\n Last Updated on {updated_date} UTC",
+        1,
+    )
+
+
 def update_readme(path: str, content: str) -> bool:
     with open(path, encoding="utf-8") as readme_file:
         original = readme_file.read()
-    updated = replace_section(original, content)
+    updated = normalize_layout(
+        replace_section(original, content),
+        datetime.now(timezone.utc).strftime("%d %B %Y"),
+    )
     if updated == original:
         return False
     with open(path, "w", encoding="utf-8") as readme_file:

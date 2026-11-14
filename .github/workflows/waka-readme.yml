@@ -45,7 +45,8 @@ jobs:
           SECTION_NAME: waka
           SHOW_LANGUAGE: "True"
           SHOW_EDITORS: "True"
-          SHOW_UPDATED_DATE: "True"
+          # Custom AI updater places a single date below both activity blocks.
+          SHOW_UPDATED_DATE: "False"
           UPDATED_DATE_FORMAT: "%d %B %Y"
           SHOW_OS: "True"
           SHOW_PROJECTS: "False"
