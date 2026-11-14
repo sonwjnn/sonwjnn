@@ -27,6 +27,16 @@ The generator calls the configured stats API base URL directly; keep `/api/compa
 
 The action is pinned to a full upstream commit SHA for reproducibility. Review upstream changes before updating that SHA.
 
+## Local provider/model snapshot
+
+`python3 -B tools/export_ai_providers.py` reads local Pi, Codex and Claude JSONL logs and updates only `assets/ai-providers.json` and the `ai-providers` README marker. The rolling seven-day export contains provider/model labels, agent, aggregate token counts and session/response counts. No conversation text, prompts, tool output, API keys, URLs, local paths, session/response IDs or cost is exported. The local files themselves are never committed.
+
+Pi provides provider/model per assistant response. Codex provides `model_provider` in session metadata and the model in turn context; the exporter uses response-level `token_usage_record.usage`, not cumulative totals. Claude providers remain `unknown` unless explicitly recorded; synthetic/error messages are excluded. Older Codex logs without response-level usage records are not currently included. Repeated response IDs within each agent/provider/model are deduplicated to avoid counting copied forks twice.
+
+The provider table is independent of Wakapi's line counts and time. Tokens include input, output and cache usage; the exporter normalizes Codex's cache-inclusive input so cache tokens are not counted twice. A provider label identifies the configured log provider, not a verified upstream billing route. Separate Pi/Codex records are not cross-deduplicated, so the table is not a single combined usage total. The export dates show its freshness, even if the local machine has been offline.
+
+An Orca automation refreshes the snapshot daily at 09:00 in Orca's scheduler timezone (local machine time). It runs in a new isolated worktree, fetches current `origin/main`, exports aggregate data, stages only the two generated files, and pushes a normal commit to `main`. GitHub Actions preserves this separate marker and places the overall update date after it. Orca must be running with access to this machine's logs and Git credentials; this is not a cloud schedule. On a rejected push or unexpected changes, the automation must stop and report rather than force-push or overwrite other work.
+
 ## References
 
 - [WakaReadme configuration](https://github.com/anmol098/waka-readme-stats#new-to-this)

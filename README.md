@@ -89,6 +89,21 @@ Gpt                          5,834 lines  ███████████░�
 ```
 <!--END_SECTION:ai-coding-->
 
+<!--START_SECTION:ai-providers-->
+**Provider / Model**
+
+| Provider | Model | Agent | Tokens¹ | Sessions |
+| --- | --- | --- | ---: | ---: |
+| openai-codex | gpt-6-luna | pi | 1,526,334,316 | 93 |
+| opencode-go | deepseek-v4.1-flash | pi | 405,921,562 | 8 |
+| openai-codex | gpt-6.1-sol | pi | 191,594,919 | 9 |
+| openai | gpt-6-luna | codex | 8,360,577 | 5 |
+
+Local logs: 07 Nov 2026 10:14 UTC – 14 Nov 2026 10:14 UTC.
+
+¹ Input + output + cache tokens. Separate from Wakapi's lines/time above; providers are log labels, not inferred billing routes. Unknown providers stay unknown.
+<!--END_SECTION:ai-providers-->
+
  Last Updated on 14 November 2026 UTC
 
 ### Get in touch

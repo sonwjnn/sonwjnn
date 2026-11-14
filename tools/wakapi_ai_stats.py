@@ -308,13 +308,46 @@ def replace_section(readme: str, content: str) -> str:
     return readme[:start] + "\n" + content.rstrip() + "\n" + readme[end:]
 
 
+def render_providers(snapshot: dict) -> str:
+    """Display a separate local-log table; never attribute Wakapi lines to providers."""
+    rows = snapshot.get("rows", [])
+    lines = ["**Provider / Model**", "",
+             "| Provider | Model | Agent | Tokens¹ | Sessions |",
+             "| --- | --- | --- | ---: | ---: |"]
+    def total(row: dict) -> int:
+        return sum(max(0, _as_int(row.get(key))) for key in (
+            "input_tokens", "output_tokens", "cache_read_tokens", "cache_write_tokens"))
+    ordered = sorted((row for row in rows if isinstance(row, dict)), key=total, reverse=True)
+    for row in ordered[:12]:
+        lines.append(
+            f"| {_model_label(str(row.get('provider', 'unknown')))} "
+            f"| {_model_label(str(row.get('model', 'unknown')))} "
+            f"| {_model_label(str(row.get('agent', 'unknown')))} "
+            f"| {total(row):,} | {max(0, _as_int(row.get('sessions'))):,} |"
+        )
+    if not ordered:
+        lines = ["**Provider / Model**", "", "No local session usage exported for this period."]
+    start = _parse_time(snapshot["start"]).strftime("%d %b %Y %H:%M UTC")
+    end = _parse_time(snapshot["end"]).strftime("%d %b %Y %H:%M UTC")
+    lines.extend(["", f"Local logs: {start} – {end}.", "",
+                  "¹ Input + output + cache tokens. Separate from Wakapi's lines/time above; "
+                  "providers are log labels, not inferred billing routes. Unknown providers stay unknown."])
+    if len(ordered) > 12:
+        lines.append(f"Showing 12 of {len(ordered)} provider/model rows.")
+    return "\n".join(lines)
+
+
 def normalize_layout(readme: str, updated_date: str) -> str:
     """Keep one AI heading and put the refresh date after both generated blocks."""
     readme = readme.replace("### AI coding activity\n\n", "")
     readme = re.sub(r"\n+[ \t]*Last Updated on [^\n]+\n*", "\n\n", readme)
+    footer_marker = (
+        "<!--END_SECTION:ai-providers-->"
+        if "<!--END_SECTION:ai-providers-->" in readme else END_MARKER
+    )
     return readme.replace(
-        END_MARKER,
-        f"{END_MARKER}\n\n Last Updated on {updated_date} UTC",
+        footer_marker,
+        f"{footer_marker}\n\n Last Updated on {updated_date} UTC",
         1,
     )
 
