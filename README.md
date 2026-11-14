@@ -4,12 +4,17 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 
 ```json
 {
-  "role": "Frontend Developer",
+  "role": "Fullstack Developer (Frontend focus)",
   "languages": ["JavaScript", "TypeScript"],
-  "frontend": ["React", "Next.js", "Tailwind CSS"],
-  "backend": ["Node.js", "NestJS"],
-  "data": ["PostgreSQL", "Prisma", "Drizzle"],
-  "learning": ["Next.js", "NestJS", "TypeScript"]
+  "frontend": [
+    "Next.js", "React", "Redux", "Tailwind CSS", "HTML", "CSS", "SCSS",
+    "Bootstrap", "jQuery", "Babel", "Bun", "Vite", "Shadcn/ui", "Ant Design", "Refine", "Auth.js", "JWT"
+  ],
+  "backend": ["Node.js", "Nest.js", "Next.js", "Express", "Socket.IO", "Hono"],
+  "database": ["PostgreSQL", "MySQL", "Supabase", "Firebase", "MongoDB", "Prisma", "Drizzle", "Redis"],
+  "devOps": ["Docker", "GitHub Actions", "Nginx"],
+  "other": [ "Vim", "Neovim", "Postman", "Linux" ],
+  "currently": "Going deeper on system design & distributed architecture",
 }
 ```
 
