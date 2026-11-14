@@ -1,9 +1,9 @@
 {
   "version": 1,
   "source": "local-session-logs",
-  "generated_at": "2026-11-14T10:14:19.678052+00:00",
-  "start": "2026-11-07T10:14:19.678052+00:00",
-  "end": "2026-11-14T10:14:19.678052+00:00",
+  "generated_at": "2026-11-14T10:17:00.998242+00:00",
+  "start": "2026-11-07T10:17:00.998242+00:00",
+  "end": "2026-11-14T10:17:00.998242+00:00",
   "rows": [
     {
       "agent": "codex",
@@ -20,22 +20,22 @@
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6-luna",
-      "input_tokens": 33298582,
-      "output_tokens": 5770966,
-      "cache_read_tokens": 1487264768,
+      "input_tokens": 33343700,
+      "output_tokens": 5772487,
+      "cache_read_tokens": 1487483776,
       "cache_write_tokens": 0,
-      "responses": 11348,
-      "sessions": 93
+      "responses": 11356,
+      "sessions": 94
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.1-sol",
-      "input_tokens": 2456041,
-      "output_tokens": 275390,
-      "cache_read_tokens": 188863488,
+      "input_tokens": 2459873,
+      "output_tokens": 278101,
+      "cache_read_tokens": 190979584,
       "cache_write_tokens": 0,
-      "responses": 1138,
+      "responses": 1150,
       "sessions": 9
     },
     {
