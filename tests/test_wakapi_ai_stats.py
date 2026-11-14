@@ -8,7 +8,7 @@ from unittest.mock import patch
 from wakapi_ai_stats import (
     _api_base,
     _get_json,
-    _fetch_week,
+    _fetch_month,
     aggregate,
     render,
     replace_section,
@@ -19,7 +19,7 @@ from wakapi_ai_stats import (
 
 class WakapiAiStatsTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.start = datetime(2026, 11, 7, tzinfo=timezone.utc)
+        self.start = datetime(2026, 11, 1, tzinfo=timezone.utc)
         self.end = datetime(2026, 11, 14, tzinfo=timezone.utc)
         self.stats = {
             "timezone": "UTC",
@@ -92,7 +92,7 @@ class WakapiAiStatsTests(unittest.TestCase):
         self.assertEqual(result["models"]["sonnet/4.6"]["input_tokens"], 500)
         self.assertEqual(result["sessions"], 1)
 
-    def test_aggregates_weekly_heartbeat_fields(self) -> None:
+    def test_aggregates_heartbeat_fields_in_the_supplied_range(self) -> None:
         result = aggregate(self.stats, self.heartbeats, self.start, self.end)
 
         self.assertEqual(result["ai_seconds"], 7200)
@@ -109,7 +109,7 @@ class WakapiAiStatsTests(unittest.TestCase):
         result = aggregate(self.stats, self.heartbeats, self.start, self.end)
         output = render(result)
 
-        self.assertIn("AI Coding This Week", output)
+        self.assertIn("AI Coding This Month", output)
         self.assertIn("⏱ AI Coding Time: 2 hrs 0 mins (25.00%)", output)
         self.assertIn("✍️ Lines changed: 20", output)
         self.assertNotIn("AI 15 · human 5", output)
@@ -189,9 +189,9 @@ class WakapiAiStatsTests(unittest.TestCase):
 
         self.assertIn("No AI coding telemetry", render(result))
 
-    def test_fetch_week_uses_stats_range_and_user_timezone(self) -> None:
+    def test_fetch_month_uses_calendar_month_range_and_user_timezone(self) -> None:
         stats = {
-            "start": "2026-11-07T00:00:00+07:00",
+            "start": "2026-11-01T00:00:00+07:00",
             "end": "2026-11-14T00:00:00+07:00",
             "timezone": "Asia/Saigon",
             "categories": [],
@@ -200,21 +200,41 @@ class WakapiAiStatsTests(unittest.TestCase):
 
         def fake_get_json(url: str, _api_key: str) -> dict:
             calls.append(url)
-            if url.endswith("/stats/last_7_days"):
+            if url.endswith("/stats/month"):
                 return {"data": stats}
             return {"data": []}
 
         with patch("wakapi_ai_stats._get_json", side_effect=fake_get_json):
-            _, heartbeats, start, end = _fetch_week(
+            _, heartbeats, start, end = _fetch_month(
                 "https://wakapi.dev/api/compat/wakatime/v1", "key"
             )
 
         self.assertEqual(heartbeats, [])
         self.assertEqual(start.utcoffset().total_seconds(), 7 * 60 * 60)
         self.assertEqual(end.utcoffset().total_seconds(), 7 * 60 * 60)
-        self.assertEqual(len(calls), 9)  # Stats request plus Nov 7 through Nov 14.
-        self.assertIn("date=2026-11-07", calls[1])
+        self.assertEqual(start.day, 1)
+        self.assertTrue(calls[0].endswith('/stats/month'))
+        self.assertEqual(len(calls), 15)  # Stats request plus Nov 1 through Nov 14.
+        self.assertIn("date=2026-11-01", calls[1])
         self.assertIn("date=2026-11-14", calls[-1])
+
+    def test_month_fetch_filters_heartbeats_at_exact_range_boundaries(self) -> None:
+        stats = {'start': self.start.isoformat(), 'end': self.end.isoformat(), 'timezone': 'UTC'}
+        entries = [{'time': value} for value in [
+            self.start.timestamp() - 1, self.start.timestamp(),
+            self.start.timestamp() + 86400, self.end.timestamp(), self.end.timestamp() + 1]]
+
+        def fake_get_json(url: str, _api_key: str) -> dict:
+            if url.endswith('/stats/month'):
+                return {'data': stats}
+            return {'data': entries if 'date=2026-11-01' in url else []}
+
+        with patch('wakapi_ai_stats._get_json', side_effect=fake_get_json):
+            _, heartbeats, start, end = _fetch_month('https://wakapi.dev/api/compat/wakatime/v1', 'key')
+        self.assertEqual([event['time'] for event in heartbeats],
+                         [self.start.timestamp(), self.start.timestamp() + 86400])
+        self.assertEqual(start, self.start)
+        self.assertEqual(end, self.end)
 
     def test_api_base_accepts_stats_or_heartbeat_base(self) -> None:
         self.assertEqual(

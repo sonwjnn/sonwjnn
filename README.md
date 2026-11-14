@@ -16,17 +16,16 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 ### Coding activity
 
 <!--START_SECTION:ai-coding-->
-🤖 **AI Coding This Week**
+🤖 **AI Coding This Month**
 
 ```text
-✍️ Lines changed: 14,838
 
-Total: 2.15B tokens · $58.11* USD
+Total: 3.93B tokens · $98.09* USD
 
-gpt-6-luna [pi]                  1.52B  ███████████░░░░  70.8%    $21.01
-deepseek-v4.1-flash [pi]       419.26M  ███░░░░░░░░░░░░  19.5%     $2.32
-gpt-6.1-sol [pi]               198.56M  █░░░░░░░░░░░░░░   9.3%    $34.78
-gpt-6-luna [codex]               8.36M  ░░░░░░░░░░░░░░░   0.4%       N/A
+gpt-6-luna [pi]                  3.18B  ████████████░░░  80.8%    $45.53
+deepseek-v4.1-flash [pi]       448.61M  ██░░░░░░░░░░░░░  11.4%     $2.50
+gpt-6.1-sol [pi]               298.19M  █░░░░░░░░░░░░░░   7.6%    $50.06
+gpt-6-luna [codex]               8.61M  ░░░░░░░░░░░░░░░   0.2%       N/A
 ```
 <!--END_SECTION:ai-coding-->
 

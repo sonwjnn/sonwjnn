@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 from collections import defaultdict
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from decimal import Decimal
 import json
 import math
@@ -132,7 +132,9 @@ def events(path: Path, agent: str):
 
 
 def collect(home: Path, now: datetime) -> dict:
-    start = now - timedelta(days=7)
+    # Calendar month-to-date in UTC, not a trailing 30-day window.
+    now = now.astimezone(timezone.utc)
+    start = now.replace(day=1, hour=0, minute=0, second=0, microsecond=0)
     groups = defaultdict(lambda: {
         "input_tokens": 0, "output_tokens": 0, "cache_read_tokens": 0,
         "cache_write_tokens": 0, "responses": 0, "session_ids": set(),

@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import unittest
@@ -86,6 +86,41 @@ class ExportProviderTests(unittest.TestCase):
         rows[1]["timestamp"] = "2026-10-01T00:00:00Z"
         self.log(".pi/agent/sessions/old.jsonl", rows)
         self.assertEqual(collect(self.home, self.now)["rows"], [])
+
+    def test_calendar_month_includes_older_than_seven_days_and_excludes_boundaries(self):
+        rows = self.pi_rows()[:1]
+        for i, when in enumerate(['2026-10-31T23:59:59Z', '2026-11-01T00:00:00Z',
+                                  '2026-11-02T12:00:00Z', self.now.isoformat(),
+                                  '2026-12-01T00:00:00Z']):
+            event = self.pi_rows()[1]
+            event['timestamp'] = when
+            event['message']['responseId'] = f'response-{i}'
+            rows.append(event)
+        self.log('.pi/agent/sessions/month.jsonl', rows)
+        snapshot = collect(self.home, self.now)
+        self.assertEqual(snapshot['start'], '2026-11-01T00:00:00+00:00')
+        self.assertEqual(snapshot['end'], self.now.isoformat())
+        self.assertEqual(snapshot['rows'][0]['responses'], 2)
+        self.assertEqual(snapshot['rows'][0]['input_tokens'], 200)
+        self.assertEqual(snapshot['rows'][0]['cost_usd'], 1998)
+
+    def test_month_start_uses_utc_even_when_now_has_a_local_offset(self):
+        local_now = datetime(2026, 3, 1, 1, tzinfo=timezone(timedelta(hours=7)))
+        snapshot = collect(self.home, local_now)
+        self.assertEqual(snapshot['start'], '2026-02-01T00:00:00+00:00')
+        self.assertEqual(snapshot['end'], '2026-02-28T18:00:00+00:00')
+
+    def test_weekly_readme_migration_does_not_relabel_stale_wakapi_totals(self):
+        snapshot = collect(self.home, self.now)
+        readme = ('<!--START_SECTION:ai-coding-->🤖 **AI Coding This Week**\n\n'
+                  '```text\n✍️ Lines changed: 99,999\n```\n<!--END_SECTION:ai-coding-->\n'
+                  '<!--START_SECTION:ai-providers-->old<!--END_SECTION:ai-providers-->')
+        updated = update_provider_section(readme, snapshot)
+        self.assertIn('AI Coding This Month', updated)
+        self.assertNotIn('AI Coding This Week', updated)
+        self.assertNotIn('99,999', updated)
+        self.assertNotIn('Lines changed:', updated)
+        self.assertEqual(update_provider_section(updated, snapshot), updated)
 
     def test_recorded_cost_rejects_invalid_values_but_preserves_zero(self):
         for value in [None, True, False, -1, float('nan'), float('inf'), '1.20', {}]:
@@ -188,7 +223,7 @@ class ExportProviderTests(unittest.TestCase):
     def test_rendering_preserves_other_sections_and_keeps_date_last(self):
         self.log(".pi/agent/sessions/a.jsonl", self.pi_rows())
         snapshot = collect(self.home, self.now)
-        readme = ("<!--START_SECTION:ai-coding-->🤖 **AI Coding This Week**\n\n"
+        readme = ("<!--START_SECTION:ai-coding-->🤖 **AI Coding This Month**\n\n"
                   "```text\n⏱ AI Coding Time: not reported\n✍️ Lines changed: AI 10 · human 0\n"
                   "🔤 999 Input Tokens\n🧠 50 AI Sessions\nWakapi models · share of AI lines\n"
                   "old-model █████ 100%\n"
@@ -218,7 +253,7 @@ class ExportProviderTests(unittest.TestCase):
         self.assertNotIn('see details below', result)
         self.assertNotIn("| Provider |", result)
         self.assertEqual(result.count("```"), 2)
-        self.assertEqual(result.count("AI Coding This Week"), 1)
+        self.assertEqual(result.count("AI Coding This Month"), 1)
         self.assertEqual(result.count(LOCAL_USAGE_DIVIDER), 1)
         self.assertLess(result.index(LOCAL_USAGE_DIVIDER), result.index("<!--END_SECTION:ai-coding-->"))
         self.assertIn("<!--START_SECTION:ai-providers-->\n<!--END_SECTION:ai-providers-->", result)
@@ -228,7 +263,7 @@ class ExportProviderTests(unittest.TestCase):
                                 '<!--END_SECTION:ai-coding-->')
         self.assertEqual(update_provider_section(legacy, snapshot), result)
         target.write_text(result)
-        update_readme(str(target), "🤖 **AI Coding This Week**\n\n```text\n✍️ Lines changed: AI 20 · human 1\n```\n")
+        update_readme(str(target), "🤖 **AI Coding This Month**\n\n```text\n✍️ Lines changed: AI 20 · human 1\n```\n")
         refreshed = target.read_text()
         self.assertIn('✍️ Lines changed: 21', refreshed)
         self.assertNotIn('AI 10 · human 0', refreshed)

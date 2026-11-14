@@ -104,8 +104,9 @@ def _dates_in_range(start: datetime, end: datetime, timezone_name: str) -> list[
     return days
 
 
-def _fetch_week(api_base: str, api_key: str) -> tuple[dict, list[dict], datetime, datetime]:
-    stats_payload = _get_json(f"{api_base}/users/current/stats/last_7_days", api_key)
+def _fetch_month(api_base: str, api_key: str) -> tuple[dict, list[dict], datetime, datetime]:
+    # Wakapi's `month` interval starts on the first day in the account timezone.
+    stats_payload = _get_json(f"{api_base}/users/current/stats/month", api_key)
     stats = stats_payload.get("data")
     if not isinstance(stats, dict):
         raise RuntimeError("Wakapi stats response is missing its data object")
@@ -244,9 +245,9 @@ def _model_label(value: str) -> str:
 
 
 def render(summary: dict) -> str:
-    lines = ["🤖 **AI Coding This Week**", "", "```text", "Wakapi telemetry", ""]
+    lines = ["🤖 **AI Coding This Month**", "", "```text", "Wakapi telemetry", ""]
     if summary["ai_event_count"] == 0 and not (summary["ai_seconds"] or 0):
-        lines.append("No AI coding telemetry was returned by Wakapi for this week.")
+        lines.append("No AI coding telemetry was returned by Wakapi for this month.")
     else:
         ai_time = _duration(summary["ai_seconds"])
         if summary["ai_percent"] is not None and summary["ai_seconds"] is not None:
@@ -382,6 +383,10 @@ def combine_ai_usage(content: str, local_usage: str) -> str:
     if "```text" not in base:
         raise ValueError("AI coding content must contain a text code block")
     heading, body = base.split("```text", 1)
+    if "AI Coding This Month" not in heading:
+        # Never relabel a previously exported weekly Wakapi total as monthly.
+        # The next trusted Wakapi refresh supplies the month-to-date total.
+        heading, body = "🤖 **AI Coding This Month**", ""
     # With local usage present, keep only Wakapi's distinct line/time metrics.
     # Avoid two token totals, two model charts, and unavailable-time placeholders.
     summary = [line for line in body.splitlines()
@@ -466,7 +471,7 @@ def main() -> int:
 
     try:
         api_base = _api_base(configured_url)
-        stats, heartbeats, start, end = _fetch_week(api_base, api_key)
+        stats, heartbeats, start, end = _fetch_month(api_base, api_key)
         summary = aggregate(stats, heartbeats, start, end)
         content = render(summary)
         changed = update_readme("README.md", content)
