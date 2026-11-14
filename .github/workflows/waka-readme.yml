@@ -63,11 +63,21 @@ jobs:
           SHOW_AI_CODING: "False"
           COMMIT_MESSAGE: "docs: update coding activity"
 
+      - name: Check out repository for AI stats update
+        if: steps.config.outputs.configured == 'true'
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.ref_name }}
+          path: ai-checkout
+          token: ${{ github.token }}
+
       - name: Update AI coding activity from Wakapi
         if: steps.config.outputs.configured == 'true'
-        working-directory: repo
+        working-directory: ai-checkout
         run: |
-          python3 tools/wakapi_ai_stats.py
+          git fetch origin "${GITHUB_REF_NAME}"
+          git reset --hard "origin/${GITHUB_REF_NAME}"
+          python3 -B tools/wakapi_ai_stats.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git diff --quiet -- README.md; then
@@ -75,5 +85,5 @@ jobs:
           else
             git add README.md
             git commit -m "docs: update AI coding activity"
-            git push origin "$(git branch --show-current)"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
