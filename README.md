@@ -43,18 +43,18 @@ Sunday                   31148 commits       ██░░░░░░░░░�
 🕑︎ Time Zone: Asia/Saigon
 
 💬 Programming Languages: 
-Typescript               9 hrs 58 mins       ███████████░░░░░░░░░░░░░░   45.49 % 
-Markdown                 4 hrs 46 mins       █████░░░░░░░░░░░░░░░░░░░░   21.75 % 
-Unknown                  2 hrs 22 mins       ███░░░░░░░░░░░░░░░░░░░░░░   10.80 % 
-TSX                      1 hrs 54 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   08.69 % 
-TOML                     1 hrs 14 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   05.60 % 
+Typescript               10 hrs 4 mins       ███████████░░░░░░░░░░░░░░   45.47 % 
+Markdown                 4 hrs 51 mins       █████░░░░░░░░░░░░░░░░░░░░   21.88 % 
+Unknown                  2 hrs 25 mins       ███░░░░░░░░░░░░░░░░░░░░░░   10.91 % 
+TSX                      1 hrs 54 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   08.60 % 
+TOML                     1 hrs 14 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   05.54 % 
 
 🔥 Editors: 
-Orca                     21 hrs 27 mins      ████████████████████████░   97.85 % 
-Codex-vscode             0 hrs 28 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   02.15 % 
+Orca                     21 hrs 41 mins      ████████████████████████░   97.87 % 
+Codex-vscode             0 hrs 28 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   02.13 % 
 
 💻 Operating System: 
-Macos                    21 hrs 56 mins      █████████████████████████   100.00 % 
+Macos                    22 hrs 10 mins      █████████████████████████   100.00 % 
 ```
 
 🤖 **AI Coding This Week** 
