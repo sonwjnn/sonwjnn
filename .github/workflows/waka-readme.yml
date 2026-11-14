@@ -60,5 +60,20 @@ jobs:
           SHOW_PROFILE_VIEWS: "False"
           SHOW_TOTAL_CODE_TIME: "False"
           SHOW_AI_CODE_TIME: "False"
-          SHOW_AI_CODING: "True"
+          SHOW_AI_CODING: "False"
           COMMIT_MESSAGE: "docs: update coding activity"
+
+      - name: Update AI coding activity from Wakapi
+        if: steps.config.outputs.configured == 'true'
+        working-directory: repo
+        run: |
+          python3 tools/wakapi_ai_stats.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- README.md; then
+            echo "AI activity section is unchanged."
+          else
+            git add README.md
+            git commit -m "docs: update AI coding activity"
+            git push origin "$(git branch --show-current)"
+          fi

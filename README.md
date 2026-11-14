@@ -57,12 +57,6 @@ Codex-vscode             0 hrs 28 mins       █░░░░░░░░░░�
 Macos                    22 hrs 10 mins      █████████████████████████   100.00 % 
 ```
 
-🤖 **AI Coding This Week** 
-
-```text
-No AI Coding Activity Tracked This Week
-```
-
 **I Mostly Code in TypeScript** 
 
 ```text
@@ -78,6 +72,16 @@ Shell                    1 repo              ░░░░░░░░░░░�
 
  Last Updated on 14 November 2026 UTC
 <!--END_SECTION:waka-->
+
+### AI coding activity
+
+<!--START_SECTION:ai-coding-->
+🤖 **AI Coding This Week**
+
+```text
+AI usage data will appear after the next workflow run.
+```
+<!--END_SECTION:ai-coding-->
 
 ### Get in touch
 
