@@ -41,13 +41,13 @@ class ReadmeContracts(unittest.TestCase):
         second = dict(snapshot['rows'][0], provider='opencode-go')
         snapshot['rows'].append(second)
         output = render_providers(snapshot)
-        self.assertIn('openai/gpt-6-luna [pi]', output)
-        self.assertNotIn('openai-codex/', output)
+        self.assertIn('gpt-6-luna [openai] [pi]', output)
+        self.assertNotIn('[openai-codex]', output)
         self.assertEqual(snapshot['rows'][0]['provider'], 'openai-codex')
-        self.assertIn('opencode-go/gpt-6-luna [pi]', output)
+        self.assertIn('gpt-6-luna [opencode-go] [pi]', output)
         # Long labels must not lose the provider/model identity to truncation.
         snapshot['rows'][0]['model'] = 'gpt-6-luna-long-model-version'
-        self.assertIn('openai/gpt-6-luna-long-model-version [pi]', render_providers(snapshot))
+        self.assertIn('gpt-6-luna-long-model-version [openai] [pi]', render_providers(snapshot))
 
     def section(self, readme, name):
         return readme.split(f'<!--START_SECTION:{name}-->', 1)[1].split(f'<!--END_SECTION:{name}-->', 1)[0]

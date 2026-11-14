@@ -406,7 +406,7 @@ def render_providers(snapshot: dict) -> str:
             provider = 'openai'
         model = _model_label(str(row.get('model', 'unknown')))
         agent = _model_label(str(row.get('agent', 'unknown')))
-        return f"{provider}/{model} [{agent}]"
+        return f"{model} [{provider}] [{agent}]"
 
     name_width = max([30] + [len(row_label(row)) for row in ordered[:12]])
     for row in ordered[:12]:
