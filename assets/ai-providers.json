@@ -1,9 +1,9 @@
 {
   "version": 2,
   "source": "local-session-logs",
-  "generated_at": "2026-11-14T14:04:36.391136+00:00",
+  "generated_at": "2026-11-15T02:02:18.173619+00:00",
   "start": "2026-11-01T00:00:00+00:00",
-  "end": "2026-11-14T14:04:36.391136+00:00",
+  "end": "2026-11-15T02:02:18.173619+00:00",
   "rows": [
     {
       "agent": "codex",
@@ -22,54 +22,54 @@
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6-luna",
-      "input_tokens": 78128894,
-      "output_tokens": 13715768,
-      "cache_read_tokens": 3085706240,
+      "input_tokens": 78379944,
+      "output_tokens": 13751366,
+      "cache_read_tokens": 3100535168,
       "cache_write_tokens": 0,
-      "responses": 23058,
-      "cost_responses": 23058,
-      "cost_usd": 45.5278358,
-      "sessions": 223
+      "responses": 23150,
+      "cost_responses": 23150,
+      "cost_usd": 45.71902908,
+      "sessions": 224
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.1-sol",
-      "input_tokens": 3678461,
-      "output_tokens": 462707,
-      "cache_read_tokens": 297459328,
+      "input_tokens": 3704529,
+      "output_tokens": 486372,
+      "cache_read_tokens": 311157120,
       "cache_write_tokens": 0,
-      "responses": 1962,
-      "cost_responses": 1962,
-      "cost_usd": 50.4712924,
+      "responses": 2045,
+      "cost_responses": 2045,
+      "cost_usd": 52.1298576,
       "sessions": 15
     },
     {
       "agent": "pi",
       "provider": "opencode-go",
       "model": "deepseek-v4.1-flash",
-      "input_tokens": 4692975,
-      "output_tokens": 944343,
-      "cache_read_tokens": 448776832,
+      "input_tokens": 9060878,
+      "output_tokens": 2185153,
+      "cache_read_tokens": 871220096,
       "cache_write_tokens": 0,
-      "responses": 1822,
-      "cost_responses": 1822,
-      "cost_usd": 2.616882546,
-      "sessions": 10
+      "responses": 4450,
+      "cost_responses": 4450,
+      "cost_usd": 5.283883788,
+      "sessions": 34
     },
     {
       "agent": "pi",
       "provider": "opencode-go",
       "model": "gpt-6-luna",
-      "input_tokens": 156,
-      "output_tokens": 12256,
-      "cache_read_tokens": 1141157,
-      "cache_write_tokens": 176259,
-      "responses": 52,
-      "cost_responses": 52,
-      "cost_usd": 0.039587545,
-      "sessions": 4
+      "input_tokens": 237,
+      "output_tokens": 15930,
+      "cache_read_tokens": 1377742,
+      "cache_write_tokens": 200171,
+      "responses": 79,
+      "cost_responses": 79,
+      "cost_usd": 0.046787495,
+      "sessions": 6
     }
   ],
-  "github_commits": 114
+  "github_commits": 127
 }

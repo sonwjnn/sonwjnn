@@ -25,15 +25,15 @@ I'm Son, a frontend developer building performant, intuitive web interfaces with
 
 ```text
 Lines changed: 17,282
-Commits: 114
+Commits: 127
 
-Total: 3.94B tokens · $98.66
+Total: 4.40B tokens · $103.18
 
-gpt-6-luna [openai] [pi]                 3.18B  ████████████░░░  80.6%    $45.53
-deepseek-v4.1-flash [opencode-go] [pi] 454.41M  ██░░░░░░░░░░░░░  11.5%     $2.62
-gpt-6.1-sol [openai] [pi]              301.60M  █░░░░░░░░░░░░░░   7.6%    $50.47
+gpt-6-luna [openai] [pi]                 3.19B  ███████████░░░░  72.5%    $45.72
+deepseek-v4.1-flash [opencode-go] [pi] 882.47M  ███░░░░░░░░░░░░  20.1%     $5.28
+gpt-6.1-sol [openai] [pi]              315.35M  █░░░░░░░░░░░░░░   7.2%    $52.13
 gpt-6-luna [openai] [codex]              8.61M  ░░░░░░░░░░░░░░░   0.2%       N/A
-gpt-6-luna [opencode-go] [pi]            1.33M  ░░░░░░░░░░░░░░░   0.0%     $0.04
+gpt-6-luna [opencode-go] [pi]            1.59M  ░░░░░░░░░░░░░░░   0.0%     $0.05
 ```
 <!--END_SECTION:ai-coding-->
 
@@ -76,7 +76,7 @@ Shell                    1 repo              ░░░░░░░░░░░�
 
 <!--END_SECTION:waka-->
 
- Last Updated on 14/11/2026 15:51:19 UTC
+ Last Updated on 15/11/2026 02:02:24 UTC
 
 ### Get in touch
 
