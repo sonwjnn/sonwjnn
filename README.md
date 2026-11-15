@@ -41,27 +41,48 @@ gpt-6-luna [opencode-go] [pi]            1.59M  ░░░░░░░░░░�
 <!--END_SECTION:ai-providers-->
 
 <!--START_SECTION:waka-->
-📊 **This Month I Spent My Time On**
+**I'm an Early 🐤** 
 
 ```text
-Time Zone: Asia/Saigon
+🌞 Morning                50775 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.83 % 
+🌆 Daytime                175235 commits      █████████████░░░░░░░░░░░░   51.20 % 
+🌃 Evening                89204 commits       ███████░░░░░░░░░░░░░░░░░░   26.06 % 
+🌙 Night                  27068 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.91 % 
+```
+📅 **I'm Most Productive on Wednesday** 
 
-Programming Languages:
-Typescript               13 hrs 47 mins       ███████████░░░░░░░░░░░░░░  42.60 %
-Markdown                 7 hrs 45 mins        ██████░░░░░░░░░░░░░░░░░░░  23.95 %
-Unknown                  4 hrs 17 mins        ███░░░░░░░░░░░░░░░░░░░░░░  13.24 %
-TSX                      2 hrs 10 mins        ██░░░░░░░░░░░░░░░░░░░░░░░   6.68 %
-TOML                     1 hrs 14 mins        █░░░░░░░░░░░░░░░░░░░░░░░░   3.80 %
-
-Editors:
-Orca                     31 hrs 53 mins       █████████████████████████  98.54 %
-Codex-vscode             0 hrs 28 mins        ░░░░░░░░░░░░░░░░░░░░░░░░░   1.46 %
-
-Operating System:
-Macos                    32 hrs 21 mins       █████████████████████████ 100.00 %
+```text
+Monday                   55598 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.24 % 
+Tuesday                  54951 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.05 % 
+Wednesday                62848 commits       █████░░░░░░░░░░░░░░░░░░░░   18.36 % 
+Thursday                 59903 commits       ████░░░░░░░░░░░░░░░░░░░░░   17.50 % 
+Friday                   50377 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.72 % 
+Saturday                 26706 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.80 % 
+Sunday                   31899 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   09.32 % 
 ```
 
-💻 **I Mostly Code in TypeScript** 
+
+📊 **This Week I Spent My Time On** 
+
+```text
+🕑︎ Time Zone: Asia/Saigon
+
+💬 Programming Languages: 
+Typescript               15 hrs 13 mins      ███████████░░░░░░░░░░░░░░   43.92 % 
+Markdown                 8 hrs 17 mins       ██████░░░░░░░░░░░░░░░░░░░   23.93 % 
+Unknown                  4 hrs 33 mins       ███░░░░░░░░░░░░░░░░░░░░░░   13.13 % 
+TSX                      2 hrs 11 mins       ██░░░░░░░░░░░░░░░░░░░░░░░   06.30 % 
+TOML                     1 hrs 14 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   03.54 % 
+
+🔥 Editors: 
+Orca                     34 hrs 10 mins      █████████████████████████   98.64 % 
+Codex-vscode             0 hrs 28 mins       ░░░░░░░░░░░░░░░░░░░░░░░░░   01.36 % 
+
+💻 Operating System: 
+Macos                    34 hrs 38 mins      █████████████████████████   100.00 % 
+```
+
+**I Mostly Code in TypeScript** 
 
 ```text
 TypeScript               65 repos            ████████████████████░░░░░   78.31 % 
