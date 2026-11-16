@@ -8,10 +8,16 @@
     "React.js", "Next.js", "Redux", "Tailwind CSS", "SCSS",
     "Bootstrap 5", "Vite", "shadcn/ui", "Ant Design", "Refine", "Zustand"
   ],
-  "backend  & architecture": ["Node.js", "NestJS", "Express.js", "Bun", "REST API design",  "Socket.IO", "Hono", "Redis Pub/Sub", "Better Auth", "Auth.js", "clean architecture", "hexagonal architecture", "vertical slice architecture"],
+  "backend  & architecture": [
+    "Node.js", "NestJS", "Express.js", "Bun", "REST API design",  "Socket.IO", "Hono", "Redis Pub/Sub",
+    "Better Auth", "Auth.js", "clean architecture", "hexagonal architecture", "vertical slice architecture"
+  ],
   "database": ["PostgreSQL", "MySQL", "MongoDB", "Prisma", "Drizzle", "Redis"],
   "cloud & devOps": ["AWS (EC2, S3, IAM)", "Docker", "CI/CD pipelines"],
-  "testing & practices": [ "jest", "vitest", "playwright", "postman", "sentry", "biome", "git", "code-review", "AI-assisted development" ],
+  "testing & practices": [ 
+    "jest", "vitest", "playwright", "postman", "sentry",
+   "biome", "git", "code-review", "AI-assisted development" 
+  ],
   "currently": "Going deeper on system design & distributed architecture"
 }
 ```
