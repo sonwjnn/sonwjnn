@@ -1,22 +1,22 @@
 ### A little more about me...
 
-I'm Son, a frontend developer building performant, intuitive web interfaces with React and Next.js. I enjoy clean code, solving practical problems, and learning new tools. Away from the keyboard, you'll find me gaming, listening to music, or catching up with friends over coffee.
-
 ```json
 {
   "role": "Fullstack Developer (Frontend focus)",
-  "languages": ["JavaScript", "TypeScript"],
+  "languages": ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3"],
   "frontend": [
-    "Next.js", "React", "Redux", "Tailwind CSS", "HTML", "CSS", "SCSS",
-    "Bootstrap", "jQuery", "Babel", "Bun", "Vite", "Shadcn/ui", "Ant Design", "Refine", "Auth.js", "JWT"
+    "React.js", "Next.js", "Redux", "Tailwind CSS", "SCSS",
+    "Bootstrap 5", "Vite", "shadcn/ui", "Ant Design", "Refine", "Zustand"
   ],
-  "backend": ["Node.js", "Nest.js", "Next.js", "Express", "Socket.IO", "Hono"],
-  "database": ["PostgreSQL", "MySQL", "Supabase", "Firebase", "MongoDB", "Prisma", "Drizzle", "Redis"],
-  "devOps": ["Docker", "GitHub Actions", "Nginx"],
-  "other": [ "Vim", "Neovim", "Postman", "Linux" ],
+  "backend  & architecture": ["Node.js", "NestJS", "Express.js", "Bun", "REST API design",  "Socket.IO", "Hono", "Redis Pub/Sub", "Better Auth", "Auth.js", "clean architecture", "hexagonal architecture", "vertical slice architecture"],
+  "database": ["PostgreSQL", "MySQL", "MongoDB", "Prisma", "Drizzle", "Redis"],
+  "cloud & devOps": ["AWS (EC2, S3, IAM)", "Docker", "CI/CD pipelines"],
+  "testing & practices": [ "jest", "vitest", "playwright", "postman", "sentry", "biome", "git", "code-review", "AI-assisted development" ],
   "currently": "Going deeper on system design & distributed architecture"
 }
 ```
+
+Full Stack Developer with experience building web applications with React/Next.js, TypeScript, Node.js, and PostgreSQL. Shipped data-heavy dashboards and LLM-powered assistants. Specialize in frontend architecture, state management, and performance optimization.
 
 ### Coding activity
 
