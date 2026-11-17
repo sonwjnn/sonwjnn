@@ -1,48 +1,48 @@
 {
   "version": 2,
   "source": "local-session-logs",
-  "generated_at": "2026-11-16T03:20:21.128969+00:00",
+  "generated_at": "2026-11-17T03:02:27.479066+00:00",
   "start": "2026-11-01T00:00:00+00:00",
-  "end": "2026-11-16T03:20:21.128969+00:00",
+  "end": "2026-11-17T03:02:27.479066+00:00",
   "rows": [
     {
       "agent": "codex",
       "provider": "openai",
       "model": "gpt-6-luna",
-      "input_tokens": 597962,
-      "output_tokens": 100190,
-      "cache_read_tokens": 7971968,
+      "input_tokens": 278031,
+      "output_tokens": 25201,
+      "cache_read_tokens": 2342016,
       "cache_write_tokens": 0,
-      "responses": 148,
+      "responses": 51,
       "cost_responses": 0,
       "cost_usd": null,
-      "sessions": 6
+      "sessions": 4
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6-luna",
-      "input_tokens": 86378492,
-      "output_tokens": 15180963,
-      "cache_read_tokens": 3379100928,
+      "input_tokens": 93314118,
+      "output_tokens": 16290229,
+      "cache_read_tokens": 3606949248,
       "cache_write_tokens": 0,
-      "responses": 25290,
-      "cost_responses": 25290,
-      "cost_usd": 50.01933998,
-      "sessions": 249
+      "responses": 27110,
+      "cost_responses": 27110,
+      "cost_usd": 53.546018780000004,
+      "sessions": 272
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.1-sol",
-      "input_tokens": 4137159,
-      "output_tokens": 521878,
-      "cache_read_tokens": 324175104,
+      "input_tokens": 4533378,
+      "output_tokens": 564527,
+      "cache_read_tokens": 336839168,
       "cache_write_tokens": 0,
-      "responses": 2220,
-      "cost_responses": 2220,
-      "cost_usd": 54.651976000000005,
-      "sessions": 19
+      "responses": 2382,
+      "cost_responses": 2382,
+      "cost_usd": 57.137310400000004,
+      "sessions": 22
     },
     {
       "agent": "pi",
@@ -71,5 +71,5 @@
       "sessions": 6
     }
   ],
-  "github_commits": 145
+  "github_commits": 156
 }
