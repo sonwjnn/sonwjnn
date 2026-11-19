@@ -1,48 +1,48 @@
 {
   "version": 2,
   "source": "local-session-logs",
-  "generated_at": "2026-11-17T03:02:27.479066+00:00",
+  "generated_at": "2026-11-19T06:34:09.098414+00:00",
   "start": "2026-11-01T00:00:00+00:00",
-  "end": "2026-11-17T03:02:27.479066+00:00",
+  "end": "2026-11-19T06:34:09.098414+00:00",
   "rows": [
     {
       "agent": "codex",
       "provider": "openai",
       "model": "gpt-6-luna",
-      "input_tokens": 278031,
-      "output_tokens": 25201,
-      "cache_read_tokens": 2342016,
+      "input_tokens": 396381,
+      "output_tokens": 44926,
+      "cache_read_tokens": 5323520,
       "cache_write_tokens": 0,
-      "responses": 51,
+      "responses": 95,
       "cost_responses": 0,
       "cost_usd": null,
-      "sessions": 4
+      "sessions": 5
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6-luna",
-      "input_tokens": 93314118,
-      "output_tokens": 16290229,
-      "cache_read_tokens": 3606949248,
+      "input_tokens": 124979801,
+      "output_tokens": 22643007,
+      "cache_read_tokens": 4690489088,
       "cache_write_tokens": 0,
-      "responses": 27110,
-      "cost_responses": 27110,
-      "cost_usd": 53.546018780000004,
-      "sessions": 272
+      "responses": 38586,
+      "cost_responses": 38586,
+      "cost_usd": 70.72437448,
+      "sessions": 433
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.1-sol",
-      "input_tokens": 4533378,
-      "output_tokens": 564527,
-      "cache_read_tokens": 336839168,
+      "input_tokens": 4844308,
+      "output_tokens": 582117,
+      "cache_read_tokens": 343962752,
       "cache_write_tokens": 0,
-      "responses": 2382,
-      "cost_responses": 2382,
-      "cost_usd": 57.137310400000004,
-      "sessions": 22
+      "responses": 2466,
+      "cost_responses": 2466,
+      "cost_usd": 58.6474288,
+      "sessions": 23
     },
     {
       "agent": "pi",
@@ -71,5 +71,5 @@
       "sessions": 6
     }
   ],
-  "github_commits": 156
+  "github_commits": 157
 }
