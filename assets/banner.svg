@@ -2,6 +2,9 @@
   <title id="title">sonwin — “Probably coding. Possibly snacking.”</title>
   <desc id="description">An ice-blue gradient pixel wordmark and italic quote on charcoal, with a rounded 3-by-3 logo tile grid enlarged to bleed beyond the left, top and bottom edges, tilted twelve degrees, and dimmed behind the foreground name and quote and ice-blue pixels on the right.</desc>
   <defs>
+    <clipPath id="banner-clip">
+      <rect width="1600" height="480" rx="24" ry="24"/>
+    </clipPath>
     <style>
       .ground { fill: #111419; }
       .wordmark { fill: url(#wordmark-color); }
@@ -49,6 +52,7 @@
     </filter>
     <!-- The pixel wordmark is drawn directly below. -->
   </defs>
+  <g clip-path="url(#banner-clip)">
   <rect class="ground" width="1600" height="480" fill="#111419"/>
   <g aria-hidden="true">
     <rect width="1600" height="480" fill="url(#graph-grid)" mask="url(#grid-mask)" opacity=".24"/>
@@ -199,4 +203,5 @@ m-1885 -556 c115 -29 333 -70 374 -70 14 0 36 -19 66 -57 60 -77 167 -200 263
     <path d="M630 42h19v19h-19zM672 42h19v19h-19zM693 42h19v19h-19zM630 63h19v19h-19zM651 63h19v19h-19zM714 63h19v19h-19zM630 84h19v19h-19zM714 84h19v19h-19zM630 105h19v19h-19zM714 105h19v19h-19zM630 126h19v19h-19zM714 126h19v19h-19z"/>
   </g>
   <text class="quote" x="160" y="376" fill="#c4ced9" font-family="monospace" font-size="38" font-style="italic" font-weight="400"><tspan class="punctuation" fill="#a5daf9">“</tspan>Probably coding. Possibly snacking.<tspan class="punctuation" fill="#a5daf9">”</tspan></text>
+  </g>
 </svg>
