@@ -1,3 +1,5 @@
+![Banner](assets/banner.svg)
+
 ### A little more about me...
 
 ```json
