@@ -1,4 +1,4 @@
-<img src="assets/banner.svg" alt="Banner" width="100%" style="border-radius: 16px;" />
+<img src="assets/banner.svg" alt="Banner" width="100%" />
 
 ### A little more about me...
 

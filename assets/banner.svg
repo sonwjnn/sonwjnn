@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="480" viewBox="0 0 1600 480" role="img" aria-labelledby="title description">
   <title id="title">sonwin — “Probably coding. Possibly snacking.”</title>
-  <desc id="description">An ice-blue gradient pixel wordmark and italic quote on charcoal, with a rounded 3-by-3 logo tile grid enlarged to bleed beyond the left, top and bottom edges, tilted twelve degrees, and dimmed behind the foreground name and quote and ice-blue pixels on the right.</desc>
+  <desc id="description">An ice-blue gradient pixel wordmark and italic quote on charcoal, with a square 3-by-3 logo tile grid on the left, tilted twelve degrees and dimmed behind the foreground name and quote and ice-blue pixels on the right.</desc>
   <defs>
     <clipPath id="banner-clip">
-      <rect width="1600" height="480" rx="24" ry="24"/>
+      <rect width="1600" height="480" rx="48" ry="48"/>
     </clipPath>
     <style>
       .ground { fill: #111419; }
@@ -56,18 +56,18 @@
   <rect class="ground" width="1600" height="480" fill="#111419"/>
   <g aria-hidden="true">
     <rect width="1600" height="480" fill="url(#graph-grid)" mask="url(#grid-mask)" opacity=".24"/>
-    <!-- Rounded grid enlarged beyond the canvas and tilted behind the foreground text. -->
-    <g opacity=".5" transform="translate(-168 -192) rotate(-12 216 240) scale(1.8)">
+    <!-- Square logo tiles tilted behind the foreground text. -->
+    <g opacity=".5" transform="translate(-71 -84) rotate(-12 216 240) scale(1.35)">
     <g fill="#171a1f" stroke="#292e36" stroke-width="1">
-      <rect x="48" y="72" width="104" height="104" rx="20"/>
-      <rect x="164" y="72" width="104" height="104" rx="20"/>
-      <rect x="280" y="72" width="104" height="104" rx="20"/>
-      <rect x="48" y="188" width="104" height="104" rx="20"/>
-      <rect x="164" y="188" width="104" height="104" rx="20"/>
-      <rect x="280" y="188" width="104" height="104" rx="20"/>
-      <rect x="48" y="304" width="104" height="104" rx="20"/>
-      <rect x="164" y="304" width="104" height="104" rx="20"/>
-      <rect x="280" y="304" width="104" height="104" rx="20"/>
+      <rect x="48" y="72" width="104" height="104"/>
+      <rect x="164" y="72" width="104" height="104"/>
+      <rect x="280" y="72" width="104" height="104"/>
+      <rect x="48" y="188" width="104" height="104"/>
+      <rect x="164" y="188" width="104" height="104"/>
+      <rect x="280" y="188" width="104" height="104"/>
+      <rect x="48" y="304" width="104" height="104"/>
+      <rect x="164" y="304" width="104" height="104"/>
+      <rect x="280" y="304" width="104" height="104"/>
     </g>
     <!-- All nine tiles now contain brand logos. -->
     <g filter="url(#logo-ice)" opacity=".76">
