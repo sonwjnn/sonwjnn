@@ -1,4 +1,4 @@
-![Banner](assets/banner.svg)
+<img src="assets/banner.svg" alt="Banner" width="100%" style="border-radius: 16px;" />
 
 ### A little more about me...
 
