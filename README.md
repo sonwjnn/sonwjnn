@@ -3,22 +3,22 @@
 ```json
 {
   "role": "Fullstack Developer (Frontend focus)",
-  "languages": ["JavaScript (ES6+)", "TypeScript", "HTML5", "CSS3"],
+  "languages": ["JavaScript", "TypeScript"],
   "frontend": [
-    "React.js", "Next.js", "Astro", "Redux", "Tailwind CSS", "SCSS", "Tanstack",
-    "Bootstrap 5", "Vite", "shadcn/ui", "Ant Design", "Refine", "Zustand"
+    "React.js", "Next.js", "Tanstack Query", "Redux", "HTML5", "CSS3", "Tailwind CSS", "Vite", "shadcn/ui", 
+    "Ant Design", "Refine", "Zustand"
   ],
-  "backend  & architecture": [
-    "Node.js", "NestJS", "Express.js", "Bun", "REST API design",  "Socket.IO", 
-    "Hono", "Redis Pub/Sub", "Better Auth", "Auth.js", "clean architecture", 
-    "hexagonal architecture", "vertical slice architecture"
+  "backend": [
+    "NestJS", "Node.js", "Express.js", "Bun", "Hono", "REST API design", "GraphQL",  "WebSocket", 
+    "JWT", "OAuth 2.0", "SSO", "RBAC", "Better Auth", "Auth.js" 
   ],
-  "database": ["PostgreSQL", "MySQL", "MongoDB", "Prisma", "Drizzle", "Redis"],
-  "cloud & devOps": ["AWS (EC2, S3, IAM)", "Docker", "CI/CD pipelines"],
-  "testing & practices": [ 
-    "Jest", "Vitest", "Playwright", "Postman", "Sentry",
-   "Biome", "Git", "code-review", "AI-assisted development" 
+  "database & ORM": ["PostgreSQL", "MySQL", "MongoDB", "Redis (caching & Pub/Sub)", "Prisma", "Drizzle"],
+  "architecture & practices": [
+    "clean architecture", "hexagonal architecture", "vertical slice", "BFF", "design pattern",
+    "code review", "mentoring"
   ],
+  "cloud & devOps": ["AWS (EC2, S3, RDS, CloudFront, IAM)", "Docker", "CI/CD (github actions)"],
+  "testing & practices": [ "Jest", "Vitest", "Playwright", "Postman", "Sentry", "Biome", "Git"],
   "currently": "Going deeper on system design & distributed architecture"
 }
 ```
