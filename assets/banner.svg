@@ -37,11 +37,7 @@
     <mask id="grid-mask">
       <rect width="1600" height="480" fill="url(#grid-fade)"/>
     </mask>
-    <linearGradient id="pixel-color" gradientUnits="userSpaceOnUse" x1="1000" y1="310" x2="1590" y2="100">
-      <stop stop-color="#405a78"/>
-      <stop offset=".62" stop-color="#6596c8"/>
-      <stop offset="1" stop-color="#a5daf9"/>
-    </linearGradient>
+    <linearGradient id="pixel-color" href="#wordmark-color" gradientUnits="userSpaceOnUse" x1="960" y1="150" x2="1600" y2="255"/>
     <linearGradient id="wordmark-color" gradientUnits="userSpaceOnUse" x1="0" y1="24" x2="733" y2="144">
       <stop stop-color="#f0f5fa"/>
       <stop offset=".48" stop-color="#c2dcec"/>
