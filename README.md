@@ -18,8 +18,8 @@
     "code review", "mentoring"
   ],
   "cloud & devOps": ["AWS (EC2, S3, RDS, CloudFront, IAM)", "Docker", "CI/CD (github actions)"],
-  "testing & practices": [ "Jest", "Vitest", "Playwright", "Postman", "Sentry", "Biome", "Git"],
-  "currently": "Going deeper on system design & distributed architecture"
+  "testing": [ "Jest", "Vitest", "Playwright", "Postman", "Sentry", "Biome", "Git"],
+  "currently focus": "Going deeper on system design & distributed architecture"
 }
 ```
 
