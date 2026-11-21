@@ -31,7 +31,7 @@ Full Stack Developer with experience building web applications with React/Next.j
 🤖 **AI Coding This Month**
 
 ```text
-Lines changed: 48,004
+Lines changed: 48,885
 Commits: 215
 
 Total: 6.56B tokens · $146.28
@@ -56,18 +56,18 @@ gpt-6-luna [opencode-go] [pi]            1.59M  ░░░░░░░░░░�
 Time Zone: Asia/Saigon
 
 Programming Languages:
-Typescript               28 hrs 16 mins       ████████░░░░░░░░░░░░░░░░░  33.74 %
-Markdown                 17 hrs 23 mins       █████░░░░░░░░░░░░░░░░░░░░  20.75 %
-TSX                      16 hrs 38 mins       █████░░░░░░░░░░░░░░░░░░░░  19.86 %
-Unknown                  13 hrs 1 mins        ████░░░░░░░░░░░░░░░░░░░░░  15.54 %
-Json                     2 hrs 1 mins         █░░░░░░░░░░░░░░░░░░░░░░░░   2.41 %
+Typescript               28 hrs 20 mins       ████████░░░░░░░░░░░░░░░░░  32.40 %
+Markdown                 18 hrs 23 mins       █████░░░░░░░░░░░░░░░░░░░░  21.02 %
+TSX                      17 hrs 6 mins        █████░░░░░░░░░░░░░░░░░░░░  19.56 %
+Unknown                  14 hrs 4 mins        ████░░░░░░░░░░░░░░░░░░░░░  16.08 %
+Json                     2 hrs 11 mins        █░░░░░░░░░░░░░░░░░░░░░░░░   2.49 %
 
 Editors:
-Orca                     82 hrs 42 mins       █████████████████████████  98.70 %
-Codex-vscode             1 hrs 5 mins         ░░░░░░░░░░░░░░░░░░░░░░░░░   1.30 %
+Orca                     86 hrs 17 mins       █████████████████████████  98.65 %
+Codex-vscode             1 hrs 11 mins        ░░░░░░░░░░░░░░░░░░░░░░░░░   1.35 %
 
 Operating System:
-Macos                    83 hrs 47 mins       █████████████████████████ 100.00 %
+Macos                    87 hrs 28 mins       █████████████████████████ 100.00 %
 ```
 
 💻 **I Mostly Code in TypeScript** 
@@ -85,7 +85,7 @@ Shell                    1 repo              ░░░░░░░░░░░�
 
 <!--END_SECTION:waka-->
 
- Last Updated on 20/11/2026 07:56:53 UTC
+ Last Updated on 21/11/2026 07:57:14 UTC
 
 ### Get in touch
 
