@@ -1,74 +1,74 @@
 {
   "version": 2,
   "source": "local-session-logs",
-  "generated_at": "2026-11-20T03:03:52.308418+00:00",
+  "generated_at": "2026-11-22T02:01:14.480399+00:00",
   "start": "2026-11-01T00:00:00+00:00",
-  "end": "2026-11-20T03:03:52.308418+00:00",
+  "end": "2026-11-22T02:01:14.480399+00:00",
   "rows": [
     {
       "agent": "codex",
       "provider": "openai",
       "model": "gpt-6-luna",
-      "input_tokens": 1045012,
-      "output_tokens": 155366,
-      "cache_read_tokens": 28540032,
+      "input_tokens": 1363998,
+      "output_tokens": 196169,
+      "cache_read_tokens": 35521280,
       "cache_write_tokens": 0,
-      "responses": 231,
+      "responses": 341,
       "cost_responses": 0,
       "cost_usd": null,
-      "sessions": 4
+      "sessions": 11
     },
     {
       "agent": "codex",
       "provider": "openai",
       "model": "gpt-6.2-sol",
-      "input_tokens": 1216658,
-      "output_tokens": 42226,
-      "cache_read_tokens": 26913408,
+      "input_tokens": 1980746,
+      "output_tokens": 101550,
+      "cache_read_tokens": 50975744,
       "cache_write_tokens": 0,
-      "responses": 107,
+      "responses": 352,
       "cost_responses": 0,
       "cost_usd": null,
-      "sessions": 1
+      "sessions": 8
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6-luna",
-      "input_tokens": 134170587,
-      "output_tokens": 24714873,
-      "cache_read_tokens": 5079679104,
+      "input_tokens": 138415571,
+      "output_tokens": 25373269,
+      "cache_read_tokens": 5271481216,
       "cache_write_tokens": 0,
-      "responses": 41906,
-      "cost_responses": 41906,
-      "cost_usd": 76.57128624,
-      "sessions": 475
+      "responses": 43499,
+      "cost_responses": 43499,
+      "cost_usd": 79.24300376000001,
+      "sessions": 504
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.1-sol",
-      "input_tokens": 4844308,
-      "output_tokens": 582117,
-      "cache_read_tokens": 343962752,
+      "input_tokens": 5058060,
+      "output_tokens": 605389,
+      "cache_read_tokens": 353954944,
       "cache_write_tokens": 0,
-      "responses": 2466,
-      "cost_responses": 2466,
-      "cost_usd": 58.6474288,
-      "sessions": 23
+      "responses": 2563,
+      "cost_responses": 2563,
+      "cost_usd": 60.306872000000006,
+      "sessions": 25
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.2-sol",
-      "input_tokens": 2117292,
-      "output_tokens": 23946,
-      "cache_read_tokens": 10909696,
+      "input_tokens": 6017155,
+      "output_tokens": 110791,
+      "cache_read_tokens": 68900864,
       "cache_write_tokens": 0,
-      "responses": 127,
-      "cost_responses": 127,
-      "cost_usd": 5.5650136,
-      "sessions": 2
+      "responses": 746,
+      "cost_responses": 746,
+      "cost_usd": 20.0323064,
+      "sessions": 8
     },
     {
       "agent": "pi",
@@ -97,5 +97,5 @@
       "sessions": 6
     }
   ],
-  "github_commits": 215
+  "github_commits": 242
 }
