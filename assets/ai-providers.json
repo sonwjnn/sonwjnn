@@ -1,9 +1,9 @@
 {
   "version": 2,
   "source": "local-session-logs",
-  "generated_at": "2026-11-22T02:01:14.480399+00:00",
+  "generated_at": "2026-11-23T02:53:59.138485+00:00",
   "start": "2026-11-01T00:00:00+00:00",
-  "end": "2026-11-22T02:01:14.480399+00:00",
+  "end": "2026-11-23T02:53:59.138485+00:00",
   "rows": [
     {
       "agent": "codex",
@@ -22,11 +22,11 @@
       "agent": "codex",
       "provider": "openai",
       "model": "gpt-6.2-sol",
-      "input_tokens": 1980746,
-      "output_tokens": 101550,
-      "cache_read_tokens": 50975744,
+      "input_tokens": 2151782,
+      "output_tokens": 139875,
+      "cache_read_tokens": 68284544,
       "cache_write_tokens": 0,
-      "responses": 352,
+      "responses": 499,
       "cost_responses": 0,
       "cost_usd": null,
       "sessions": 8
@@ -35,14 +35,14 @@
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6-luna",
-      "input_tokens": 138415571,
-      "output_tokens": 25373269,
-      "cache_read_tokens": 5271481216,
+      "input_tokens": 138594364,
+      "output_tokens": 25384090,
+      "cache_read_tokens": 5272976896,
       "cache_write_tokens": 0,
-      "responses": 43499,
-      "cost_responses": 43499,
-      "cost_usd": 79.24300376000001,
-      "sessions": 504
+      "responses": 43539,
+      "cost_responses": 43539,
+      "cost_usd": 79.28125036,
+      "sessions": 508
     },
     {
       "agent": "pi",
@@ -61,14 +61,14 @@
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.2-sol",
-      "input_tokens": 6017155,
-      "output_tokens": 110791,
-      "cache_read_tokens": 68900864,
+      "input_tokens": 6946771,
+      "output_tokens": 186310,
+      "cache_read_tokens": 143940096,
       "cache_write_tokens": 0,
-      "responses": 746,
-      "cost_responses": 746,
-      "cost_usd": 20.0323064,
-      "sessions": 8
+      "responses": 1284,
+      "cost_responses": 1284,
+      "cost_usd": 30.1506516,
+      "sessions": 10
     },
     {
       "agent": "pi",
@@ -97,5 +97,5 @@
       "sessions": 6
     }
   ],
-  "github_commits": 242
+  "github_commits": 260
 }
