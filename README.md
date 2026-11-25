@@ -33,7 +33,7 @@ Full Stack Developer with experience building web applications with React/Next.j
 🤖 **AI Coding This Month**
 
 ```text
-Lines changed: 53,425
+Lines changed: 53,518
 Commits: 265
 
 Total: 7.09B tokens · $184.14
@@ -52,48 +52,27 @@ gpt-6-luna [opencode-go] [pi]            1.59M  ░░░░░░░░░░�
 <!--END_SECTION:ai-providers-->
 
 <!--START_SECTION:waka-->
-**I'm an Early 🐤** 
+📊 **This Month I Spent My Time On**
 
 ```text
-🌞 Morning                53424 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.76 % 
-🌆 Daytime                184691 commits      █████████████░░░░░░░░░░░░   51.03 % 
-🌃 Evening                94814 commits       ███████░░░░░░░░░░░░░░░░░░   26.20 % 
-🌙 Night                  28987 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   08.01 % 
-```
-📅 **I'm Most Productive on Wednesday** 
+Time Zone: Asia/Saigon
 
-```text
-Monday                   58595 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.19 % 
-Tuesday                  57910 commits       ████░░░░░░░░░░░░░░░░░░░░░   16.00 % 
-Wednesday                65784 commits       █████░░░░░░░░░░░░░░░░░░░░   18.18 % 
-Thursday                 62754 commits       ████░░░░░░░░░░░░░░░░░░░░░   17.34 % 
-Friday                   53497 commits       ████░░░░░░░░░░░░░░░░░░░░░   14.78 % 
-Saturday                 28860 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   07.97 % 
-Sunday                   34516 commits       ██░░░░░░░░░░░░░░░░░░░░░░░   09.54 % 
-```
+Programming Languages:
+Typescript               30 hrs 9 mins        ███████░░░░░░░░░░░░░░░░░░  29.34 %
+Markdown                 20 hrs 39 mins       █████░░░░░░░░░░░░░░░░░░░░  20.09 %
+Unknown                  19 hrs 56 mins       █████░░░░░░░░░░░░░░░░░░░░  19.39 %
+TSX                      19 hrs 17 mins       █████░░░░░░░░░░░░░░░░░░░░  18.77 %
+TOML                     3 hrs 13 mins        █░░░░░░░░░░░░░░░░░░░░░░░░   3.13 %
 
+Editors:
+Orca                     100 hrs 20 mins      ████████████████████████░  97.63 %
+Codex-vscode             2 hrs 26 mins        █░░░░░░░░░░░░░░░░░░░░░░░░   2.37 %
 
-📊 **This Week I Spent My Time On** 
-
-```text
-🕑︎ Time Zone: Asia/Saigon
-
-💬 Programming Languages: 
-Unknown                  9 hrs 56 mins       ██████░░░░░░░░░░░░░░░░░░░   25.28 % 
-TSX                      8 hrs 56 mins       ██████░░░░░░░░░░░░░░░░░░░   22.75 % 
-Markdown                 7 hrs 43 mins       █████░░░░░░░░░░░░░░░░░░░░   19.67 % 
-Typescript               6 hrs 31 mins       ████░░░░░░░░░░░░░░░░░░░░░   16.58 % 
-TOML                     1 hrs 58 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   05.02 % 
-
-🔥 Editors: 
-Orca                     37 hrs 18 mins      ████████████████████████░   95.00 % 
-Codex-vscode             1 hrs 58 mins       █░░░░░░░░░░░░░░░░░░░░░░░░   05.00 % 
-
-💻 Operating System: 
-Macos                    39 hrs 16 mins      █████████████████████████   100.00 % 
+Operating System:
+Macos                    102 hrs 47 mins      █████████████████████████ 100.00 %
 ```
 
-**I Mostly Code in TypeScript** 
+💻 **I Mostly Code in TypeScript** 
 
 ```text
 TypeScript               66 repos            ███████████████████░░░░░░   75.86 % 
@@ -108,7 +87,7 @@ PHP                      1 repo              ░░░░░░░░░░░�
 
 <!--END_SECTION:waka-->
 
- Last Updated on 25/11/2026 03:04:23 UTC
+ Last Updated on 25/11/2026 04:11:26 UTC
 
 ### Get in touch
 
