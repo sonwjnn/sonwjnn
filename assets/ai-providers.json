@@ -1,48 +1,48 @@
 {
   "version": 2,
   "source": "local-session-logs",
-  "generated_at": "2026-11-25T03:04:14.030683+00:00",
+  "generated_at": "2026-11-27T02:01:12.554037+00:00",
   "start": "2026-11-01T00:00:00+00:00",
-  "end": "2026-11-25T03:04:14.030683+00:00",
+  "end": "2026-11-27T02:01:12.554037+00:00",
   "rows": [
     {
       "agent": "codex",
       "provider": "openai",
       "model": "gpt-6-luna",
-      "input_tokens": 1187520,
-      "output_tokens": 173093,
-      "cache_read_tokens": 32291712,
+      "input_tokens": 1947313,
+      "output_tokens": 320554,
+      "cache_read_tokens": 46225920,
       "cache_write_tokens": 0,
-      "responses": 290,
+      "responses": 447,
       "cost_responses": 0,
       "cost_usd": null,
-      "sessions": 9
+      "sessions": 13
     },
     {
       "agent": "codex",
       "provider": "openai",
       "model": "gpt-6.2-sol",
-      "input_tokens": 3304321,
-      "output_tokens": 266706,
-      "cache_read_tokens": 135498368,
+      "input_tokens": 3376217,
+      "output_tokens": 268684,
+      "cache_read_tokens": 135934208,
       "cache_write_tokens": 0,
-      "responses": 1053,
+      "responses": 1063,
       "cost_responses": 0,
       "cost_usd": null,
-      "sessions": 15
+      "sessions": 16
     },
     {
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6-luna",
-      "input_tokens": 139334089,
-      "output_tokens": 25474481,
-      "cache_read_tokens": 5291548672,
+      "input_tokens": 143500593,
+      "output_tokens": 26145377,
+      "cache_read_tokens": 5377024512,
       "cache_write_tokens": 0,
-      "responses": 43798,
-      "cost_responses": 43798,
-      "cost_usd": 79.58613612,
-      "sessions": 516
+      "responses": 45960,
+      "cost_responses": 45960,
+      "cost_usd": 81.19299292,
+      "sessions": 565
     },
     {
       "agent": "pi",
@@ -61,14 +61,14 @@
       "agent": "pi",
       "provider": "openai-codex",
       "model": "gpt-6.2-sol",
-      "input_tokens": 8107399,
-      "output_tokens": 271641,
-      "cache_read_tokens": 198160768,
+      "input_tokens": 9721043,
+      "output_tokens": 365415,
+      "cache_read_tokens": 270042624,
       "cache_write_tokens": 0,
-      "responses": 1699,
-      "cost_responses": 1699,
-      "cost_usd": 38.7472848,
-      "sessions": 12
+      "responses": 2187,
+      "cost_responses": 2187,
+      "cost_usd": 50.1004984,
+      "sessions": 14
     },
     {
       "agent": "pi",
@@ -97,5 +97,5 @@
       "sessions": 6
     }
   ],
-  "github_commits": 265
+  "github_commits": 276
 }
